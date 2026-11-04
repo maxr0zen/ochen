@@ -1,0 +1,26 @@
+[
+  {
+    "file": "examples/v3/01.svg",
+    "objects": 4,
+    "paths": 338,
+    "background": "backdrop:violet:S",
+    "sourceGeometryIdentical": true,
+    "paletteValid": true
+  },
+  {
+    "file": "examples/v3/02.svg",
+    "objects": 4,
+    "paths": 239,
+    "background": "backdrop:peach:L",
+    "sourceGeometryIdentical": true,
+    "paletteValid": true
+  },
+  {
+    "file": "examples/v3/03.svg",
+    "objects": 3,
+    "paths": 229,
+    "background": "backdrop:turquoise:S",
+    "sourceGeometryIdentical": true,
+    "paletteValid": true
+  }
+]

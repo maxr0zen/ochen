@@ -1,0 +1,50 @@
+{
+  "variants": 40,
+  "comparisons": [
+    {
+      "gold": "L-01",
+      "family": "flowers",
+      "state": "background",
+      "extractedShapes": 131,
+      "referenceShapes": 131,
+      "meanChannelDifference": 0.00982666015625,
+      "differentPixelFraction": 0.00008392333984375
+    },
+    {
+      "gold": "L-02",
+      "family": "flowers",
+      "state": "main",
+      "extractedShapes": 131,
+      "referenceShapes": 131,
+      "meanChannelDifference": 0.0317230224609375,
+      "differentPixelFraction": 0.000713348388671875
+    },
+    {
+      "gold": "L-03",
+      "family": "coin",
+      "state": "background",
+      "extractedShapes": 136,
+      "referenceShapes": 136,
+      "meanChannelDifference": 0.01830291748046875,
+      "differentPixelFraction": 0.000209808349609375
+    },
+    {
+      "gold": "L-04",
+      "family": "coin",
+      "state": "main",
+      "extractedShapes": 136,
+      "referenceShapes": 136,
+      "meanChannelDifference": 0.02264404296875,
+      "differentPixelFraction": 0.000514984130859375
+    },
+    {
+      "gold": "L-05",
+      "family": "folder",
+      "state": "background",
+      "extractedShapes": 22,
+      "referenceShapes": 22,
+      "meanChannelDifference": 0.01659393310546875,
+      "differentPixelFraction": 0.000164031982421875
+    }
+  ]
+}

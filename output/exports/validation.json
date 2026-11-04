@@ -1,0 +1,41 @@
+[
+  {
+    "file": "examples/v3/01.svg",
+    "bytes": 168789,
+    "width": "1080",
+    "height": "1080",
+    "viewBox": "0 0 1080 1080",
+    "groups": 5,
+    "paths": 347,
+    "images": 0,
+    "gradients": 0,
+    "screenshot": "output/exports/01.png",
+    "valid": true
+  },
+  {
+    "file": "examples/v3/02.svg",
+    "bytes": 127053,
+    "width": "1200",
+    "height": "900",
+    "viewBox": "0 0 1200 900",
+    "groups": 6,
+    "paths": 242,
+    "images": 0,
+    "gradients": 0,
+    "screenshot": "output/exports/02.png",
+    "valid": true
+  },
+  {
+    "file": "examples/v3/03.svg",
+    "bytes": 114524,
+    "width": "900",
+    "height": "1200",
+    "viewBox": "0 0 900 1200",
+    "groups": 4,
+    "paths": 238,
+    "images": 0,
+    "gradients": 0,
+    "screenshot": "output/exports/03.png",
+    "valid": true
+  }
+]

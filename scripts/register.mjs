@@ -1,0 +1,13 @@
+import {readFile,writeFile,mkdir,copyFile} from 'node:fs/promises';
+import {resolve,join,sep,relative} from 'node:path';
+const root=process.cwd(),dir=resolve(process.argv[2]??'figma-registration/registered-plugin');
+if(!dir.startsWith(root+sep))throw new Error('Папка регистрации должна находиться внутри проекта.');
+const generated=JSON.parse(await readFile(join(dir,'manifest.json'),'utf8'));
+if(typeof generated.id!=='string'||!/^\d{8,}$/.test(generated.id))throw new Error('В созданном Figma manifest нет назначенного ID.');
+const manifest=JSON.parse(await readFile('manifest.json','utf8'));manifest.id=generated.id;
+await writeFile('manifest.json',JSON.stringify(manifest,null,2)+'\n');
+await writeFile('.figma-registration.json',JSON.stringify({directory:relative(root,dir)},null,2)+'\n');
+await mkdir(join(dir,'dist'),{recursive:true});
+await writeFile(join(dir,'manifest.json'),JSON.stringify(manifest,null,2)+'\n');
+await copyFile('dist/code.js',join(dir,'dist/code.js'));await copyFile('dist/ui.html',join(dir,'dist/ui.html'));
+console.log('Figma ID перенесён в проект. Зарегистрированный плагин использует текущую сборку.');

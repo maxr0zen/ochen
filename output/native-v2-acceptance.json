@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "createdAt": "2026-11-03T22:22:29.276Z",
+  "sourceIllustrations": 20,
+  "sourceVariants": 40,
+  "variantsPassed": 40,
+  "variantFailures": [],
+  "cases": 54,
+  "passed": 54,
+  "colorGuard": true,
+  "relativeGuard": true,
+  "sceneScale": true,
+  "manualOperations": true,
+  "guardError": "",
+  "originalsUnchanged": true,
+  "failures": [],
+  "retryHistory": [
+    {
+      "createdAt": "2026-11-03T22:22:29.275Z",
+      "previousPassed": 52,
+      "attempted": 2,
+      "passed": 2,
+      "originalsUnchanged": true
+    }
+  ]
+}

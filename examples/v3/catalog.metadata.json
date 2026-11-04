@@ -1,0 +1,1130 @@
+[
+  {
+    "id": "book:S:main",
+    "nodeId": "10:4949",
+    "name": "Книга",
+    "synonyms": [
+      "book"
+    ],
+    "tags": [
+      "чтение",
+      "знания",
+      "обучение",
+      "образование",
+      "исследование"
+    ],
+    "metaphors": [],
+    "role": "hero",
+    "familyId": "book",
+    "detail": "S",
+    "appearance": "main",
+    "width": 728.9458618164062,
+    "height": 494.331787109375,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/S/book",
+      "illustrationName": "Книга · S",
+      "nodeId": "21:25859",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "phone:S:main",
+    "nodeId": "10:5001",
+    "name": "Телефон",
+    "synonyms": [
+      "phone"
+    ],
+    "tags": [
+      "связь",
+      "общение",
+      "коммуникация",
+      "контакт",
+      "цифровой"
+    ],
+    "metaphors": [],
+    "role": "support",
+    "familyId": "phone",
+    "detail": "S",
+    "appearance": "main",
+    "width": 404.26171875,
+    "height": 236.836181640625,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/S/phone",
+      "illustrationName": "Телефон · S",
+      "nodeId": "21:25859",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "puzzle:S:main",
+    "nodeId": "10:5098",
+    "name": "Пазлы",
+    "synonyms": [
+      "puzzle"
+    ],
+    "tags": [
+      "команда",
+      "сотрудничество",
+      "вместе",
+      "партнерство",
+      "решение"
+    ],
+    "metaphors": [],
+    "role": "support",
+    "familyId": "puzzle",
+    "detail": "S",
+    "appearance": "main",
+    "width": 278.0819091796875,
+    "height": 162.763427734375,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/S/puzzle",
+      "illustrationName": "Пазлы · S",
+      "nodeId": "21:25859",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "coin:S:main",
+    "nodeId": "10:5156",
+    "name": "Монета",
+    "synonyms": [
+      "coin"
+    ],
+    "tags": [
+      "деньги",
+      "финансы",
+      "оплата",
+      "инвестиции",
+      "бюджет"
+    ],
+    "metaphors": [],
+    "role": "support",
+    "familyId": "coin",
+    "detail": "S",
+    "appearance": "main",
+    "width": 158.395263671875,
+    "height": 106.19775390625,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/S/coin",
+      "illustrationName": "Монета · S",
+      "nodeId": "21:25859",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "headphones:S:main",
+    "nodeId": "10:5287",
+    "name": "Наушники",
+    "synonyms": [
+      "headphones"
+    ],
+    "tags": [
+      "музыка",
+      "общение",
+      "слушать",
+      "поддержка",
+      "коммуникация"
+    ],
+    "metaphors": [],
+    "role": "support",
+    "familyId": "headphones",
+    "detail": "S",
+    "appearance": "main",
+    "width": 450.0747985839844,
+    "height": 351.769775390625,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/S/headphones",
+      "illustrationName": "Наушники · S",
+      "nodeId": "21:25859",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "lamp:S:main",
+    "nodeId": "10:5367",
+    "name": "Лампа",
+    "synonyms": [
+      "lamp"
+    ],
+    "tags": [
+      "идея",
+      "идеи",
+      "вдохновение",
+      "творчество",
+      "решение",
+      "свет"
+    ],
+    "metaphors": [],
+    "role": "hero",
+    "familyId": "lamp",
+    "detail": "S",
+    "appearance": "main",
+    "width": 478.9739990234375,
+    "height": 570.4892578125,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/S/lamp",
+      "illustrationName": "Лампа · S",
+      "nodeId": "21:25859",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "flowers:S:main",
+    "nodeId": "10:5395",
+    "name": "Цветы",
+    "synonyms": [
+      "flowers"
+    ],
+    "tags": [
+      "рост",
+      "забота",
+      "развитие",
+      "благодарность",
+      "вдохновение"
+    ],
+    "metaphors": [],
+    "role": "support",
+    "familyId": "flowers",
+    "detail": "S",
+    "appearance": "main",
+    "width": 329.2685546875,
+    "height": 414.945556640625,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/S/flowers",
+      "illustrationName": "Цветы · S",
+      "nodeId": "21:25859",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "wallet:S:main",
+    "nodeId": "10:5527",
+    "name": "Кошелёк",
+    "synonyms": [
+      "wallet",
+      "кошелек"
+    ],
+    "tags": [
+      "деньги",
+      "финансы",
+      "сбережения",
+      "бюджет",
+      "капитал"
+    ],
+    "metaphors": [],
+    "role": "hero",
+    "familyId": "wallet",
+    "detail": "S",
+    "appearance": "main",
+    "width": 321.207275390625,
+    "height": 204.154296875,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/S/wallet",
+      "illustrationName": "Кошелёк · S",
+      "nodeId": "21:25859",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "folder:S:main",
+    "nodeId": "10:5611",
+    "name": "Папка",
+    "synonyms": [
+      "folder"
+    ],
+    "tags": [
+      "документы",
+      "порядок",
+      "работа",
+      "организация",
+      "управление"
+    ],
+    "metaphors": [],
+    "role": "support",
+    "familyId": "folder",
+    "detail": "S",
+    "appearance": "main",
+    "width": 626.3092651367188,
+    "height": 335.293701171875,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/S/folder",
+      "illustrationName": "Папка · S",
+      "nodeId": "21:25859",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "pen:S:main",
+    "nodeId": "10:5632",
+    "name": "Ручка",
+    "synonyms": [
+      "pen"
+    ],
+    "tags": [
+      "письмо",
+      "творчество",
+      "идея",
+      "план",
+      "договор"
+    ],
+    "metaphors": [],
+    "role": "support",
+    "familyId": "pen",
+    "detail": "S",
+    "appearance": "main",
+    "width": 260.2088623046875,
+    "height": 148.70361328125,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/S/pen",
+      "illustrationName": "Ручка · S",
+      "nodeId": "21:25859",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "book:S:background",
+    "nodeId": "10:5657",
+    "name": "Книга",
+    "synonyms": [
+      "book"
+    ],
+    "tags": [
+      "чтение",
+      "знания",
+      "обучение",
+      "образование",
+      "исследование"
+    ],
+    "metaphors": [],
+    "role": "hero",
+    "familyId": "book",
+    "detail": "S",
+    "appearance": "background",
+    "width": 728.9458618164062,
+    "height": 494.32666015625,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/S/book",
+      "illustrationName": "Книга · S",
+      "nodeId": "21:25859",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "phone:S:background",
+    "nodeId": "10:5712",
+    "name": "Телефон",
+    "synonyms": [
+      "phone"
+    ],
+    "tags": [
+      "связь",
+      "общение",
+      "коммуникация",
+      "контакт",
+      "цифровой"
+    ],
+    "metaphors": [],
+    "role": "support",
+    "familyId": "phone",
+    "detail": "S",
+    "appearance": "background",
+    "width": 404.26171875,
+    "height": 236.83642578125,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/S/phone",
+      "illustrationName": "Телефон · S",
+      "nodeId": "21:25859",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "puzzle:S:background",
+    "nodeId": "10:5868",
+    "name": "Пазлы",
+    "synonyms": [
+      "puzzle"
+    ],
+    "tags": [
+      "команда",
+      "сотрудничество",
+      "вместе",
+      "партнерство",
+      "решение"
+    ],
+    "metaphors": [],
+    "role": "support",
+    "familyId": "puzzle",
+    "detail": "S",
+    "appearance": "background",
+    "width": 278.0819091796875,
+    "height": 162.76806640625,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/S/puzzle",
+      "illustrationName": "Пазлы · S",
+      "nodeId": "21:25859",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "coin:S:background",
+    "nodeId": "10:5926",
+    "name": "Монета",
+    "synonyms": [
+      "coin"
+    ],
+    "tags": [
+      "деньги",
+      "финансы",
+      "оплата",
+      "инвестиции",
+      "бюджет"
+    ],
+    "metaphors": [],
+    "role": "support",
+    "familyId": "coin",
+    "detail": "S",
+    "appearance": "background",
+    "width": 158.392578125,
+    "height": 106.2060546875,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/S/coin",
+      "illustrationName": "Монета · S",
+      "nodeId": "21:25859",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "headphones:S:background",
+    "nodeId": "10:6063",
+    "name": "Наушники",
+    "synonyms": [
+      "headphones"
+    ],
+    "tags": [
+      "музыка",
+      "общение",
+      "слушать",
+      "поддержка",
+      "коммуникация"
+    ],
+    "metaphors": [],
+    "role": "support",
+    "familyId": "headphones",
+    "detail": "S",
+    "appearance": "background",
+    "width": 450.0747985839844,
+    "height": 351.76953125,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/S/headphones",
+      "illustrationName": "Наушники · S",
+      "nodeId": "21:25859",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "lamp:S:background",
+    "nodeId": "10:6148",
+    "name": "Лампа",
+    "synonyms": [
+      "lamp"
+    ],
+    "tags": [
+      "идея",
+      "идеи",
+      "вдохновение",
+      "творчество",
+      "решение",
+      "свет"
+    ],
+    "metaphors": [],
+    "role": "hero",
+    "familyId": "lamp",
+    "detail": "S",
+    "appearance": "background",
+    "width": 478.9739990234375,
+    "height": 570.494140625,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/S/lamp",
+      "illustrationName": "Лампа · S",
+      "nodeId": "21:25859",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "flowers:S:background",
+    "nodeId": "10:6176",
+    "name": "Цветы",
+    "synonyms": [
+      "flowers"
+    ],
+    "tags": [
+      "рост",
+      "забота",
+      "развитие",
+      "благодарность",
+      "вдохновение"
+    ],
+    "metaphors": [],
+    "role": "support",
+    "familyId": "flowers",
+    "detail": "S",
+    "appearance": "background",
+    "width": 329.2677001953125,
+    "height": 414.94677734375,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/S/flowers",
+      "illustrationName": "Цветы · S",
+      "nodeId": "21:25859",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "wallet:S:background",
+    "nodeId": "10:6308",
+    "name": "Кошелёк",
+    "synonyms": [
+      "wallet",
+      "кошелек"
+    ],
+    "tags": [
+      "деньги",
+      "финансы",
+      "сбережения",
+      "бюджет",
+      "капитал"
+    ],
+    "metaphors": [],
+    "role": "hero",
+    "familyId": "wallet",
+    "detail": "S",
+    "appearance": "background",
+    "width": 321.207275390625,
+    "height": 204.15625,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/S/wallet",
+      "illustrationName": "Кошелёк · S",
+      "nodeId": "21:25859",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "folder:S:background",
+    "nodeId": "10:6395",
+    "name": "Папка",
+    "synonyms": [
+      "folder"
+    ],
+    "tags": [
+      "документы",
+      "порядок",
+      "работа",
+      "организация",
+      "управление"
+    ],
+    "metaphors": [],
+    "role": "support",
+    "familyId": "folder",
+    "detail": "S",
+    "appearance": "background",
+    "width": 626.3092651367188,
+    "height": 335.2978515625,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/S/folder",
+      "illustrationName": "Папка · S",
+      "nodeId": "21:25859",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "pen:S:background",
+    "nodeId": "10:6418",
+    "name": "Ручка",
+    "synonyms": [
+      "pen"
+    ],
+    "tags": [
+      "письмо",
+      "творчество",
+      "идея",
+      "план",
+      "договор"
+    ],
+    "metaphors": [],
+    "role": "support",
+    "familyId": "pen",
+    "detail": "S",
+    "appearance": "background",
+    "width": 260.2088623046875,
+    "height": 148.701171875,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/S/pen",
+      "illustrationName": "Ручка · S",
+      "nodeId": "21:25859",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "book:L:main",
+    "nodeId": "10:6443",
+    "name": "Книга",
+    "synonyms": [
+      "book"
+    ],
+    "tags": [
+      "чтение",
+      "знания",
+      "обучение",
+      "образование",
+      "исследование"
+    ],
+    "metaphors": [],
+    "role": "hero",
+    "familyId": "book",
+    "detail": "L",
+    "appearance": "main",
+    "width": 1451.893798828125,
+    "height": 982.66748046875,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/L/book",
+      "illustrationName": "Книга · L",
+      "nodeId": "21:25788",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "phone:L:main",
+    "nodeId": "10:6497",
+    "name": "Телефон",
+    "synonyms": [
+      "phone"
+    ],
+    "tags": [
+      "связь",
+      "общение",
+      "коммуникация",
+      "контакт",
+      "цифровой"
+    ],
+    "metaphors": [],
+    "role": "support",
+    "familyId": "phone",
+    "detail": "L",
+    "appearance": "main",
+    "width": 802.5301513671875,
+    "height": 467.671630859375,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/L/phone",
+      "illustrationName": "Телефон · L",
+      "nodeId": "21:25788",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "puzzle:L:main",
+    "nodeId": "10:6653",
+    "name": "Пазлы",
+    "synonyms": [
+      "puzzle"
+    ],
+    "tags": [
+      "команда",
+      "сотрудничество",
+      "вместе",
+      "партнерство",
+      "решение"
+    ],
+    "metaphors": [],
+    "role": "support",
+    "familyId": "puzzle",
+    "detail": "L",
+    "appearance": "main",
+    "width": 550.164306640625,
+    "height": 319.53564453125,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/L/puzzle",
+      "illustrationName": "Пазлы · L",
+      "nodeId": "21:25788",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "coin:L:main",
+    "nodeId": "10:6711",
+    "name": "Монета",
+    "synonyms": [
+      "coin"
+    ],
+    "tags": [
+      "деньги",
+      "финансы",
+      "оплата",
+      "инвестиции",
+      "бюджет"
+    ],
+    "metaphors": [],
+    "role": "support",
+    "familyId": "coin",
+    "detail": "L",
+    "appearance": "main",
+    "width": 292.676025390625,
+    "height": 194.501708984375,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/L/coin",
+      "illustrationName": "Монета · L",
+      "nodeId": "21:25788",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "headphones:L:main",
+    "nodeId": "10:6848",
+    "name": "Наушники",
+    "synonyms": [
+      "headphones"
+    ],
+    "tags": [
+      "музыка",
+      "общение",
+      "слушать",
+      "поддержка",
+      "коммуникация"
+    ],
+    "metaphors": [],
+    "role": "support",
+    "familyId": "headphones",
+    "detail": "L",
+    "appearance": "main",
+    "width": 894.15185546875,
+    "height": 697.5390625,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/L/headphones",
+      "illustrationName": "Наушники · L",
+      "nodeId": "21:25788",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "lamp:L:main",
+    "nodeId": "10:6933",
+    "name": "Лампа",
+    "synonyms": [
+      "lamp"
+    ],
+    "tags": [
+      "идея",
+      "идеи",
+      "вдохновение",
+      "творчество",
+      "решение",
+      "свет"
+    ],
+    "metaphors": [],
+    "role": "hero",
+    "familyId": "lamp",
+    "detail": "L",
+    "appearance": "main",
+    "width": 951.9449462890625,
+    "height": 1134.98828125,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/L/lamp",
+      "illustrationName": "Лампа · L",
+      "nodeId": "21:25788",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "flowers:L:main",
+    "nodeId": "10:6961",
+    "name": "Цветы",
+    "synonyms": [
+      "flowers"
+    ],
+    "tags": [
+      "рост",
+      "забота",
+      "развитие",
+      "благодарность",
+      "вдохновение"
+    ],
+    "metaphors": [],
+    "role": "support",
+    "familyId": "flowers",
+    "detail": "L",
+    "appearance": "main",
+    "width": 596.57421875,
+    "height": 753.10546875,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/L/flowers",
+      "illustrationName": "Цветы · L",
+      "nodeId": "21:25788",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "wallet:L:main",
+    "nodeId": "10:7093",
+    "name": "Кошелёк",
+    "synonyms": [
+      "wallet",
+      "кошелек"
+    ],
+    "tags": [
+      "деньги",
+      "финансы",
+      "сбережения",
+      "бюджет",
+      "капитал"
+    ],
+    "metaphors": [],
+    "role": "hero",
+    "familyId": "wallet",
+    "detail": "L",
+    "appearance": "main",
+    "width": 636.41943359375,
+    "height": 402.3076171875,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/L/wallet",
+      "illustrationName": "Кошелёк · L",
+      "nodeId": "21:25788",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "folder:L:main",
+    "nodeId": "10:7180",
+    "name": "Папка",
+    "synonyms": [
+      "folder"
+    ],
+    "tags": [
+      "документы",
+      "порядок",
+      "работа",
+      "организация",
+      "управление"
+    ],
+    "metaphors": [],
+    "role": "support",
+    "familyId": "folder",
+    "detail": "L",
+    "appearance": "main",
+    "width": 1246.6175537109375,
+    "height": 664.58349609375,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/L/folder",
+      "illustrationName": "Папка · L",
+      "nodeId": "21:25788",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "pen:L:main",
+    "nodeId": "10:7203",
+    "name": "Ручка",
+    "synonyms": [
+      "pen"
+    ],
+    "tags": [
+      "письмо",
+      "творчество",
+      "идея",
+      "план",
+      "договор"
+    ],
+    "metaphors": [],
+    "role": "support",
+    "familyId": "pen",
+    "detail": "L",
+    "appearance": "main",
+    "width": 514.4281005859375,
+    "height": 291.40185546875,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/L/pen",
+      "illustrationName": "Ручка · L",
+      "nodeId": "21:25788",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "book:L:background",
+    "nodeId": "10:7228",
+    "name": "Книга",
+    "synonyms": [
+      "book"
+    ],
+    "tags": [
+      "чтение",
+      "знания",
+      "обучение",
+      "образование",
+      "исследование"
+    ],
+    "metaphors": [],
+    "role": "hero",
+    "familyId": "book",
+    "detail": "L",
+    "appearance": "background",
+    "width": 1451.893798828125,
+    "height": 982.66162109375,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/L/book",
+      "illustrationName": "Книга · L",
+      "nodeId": "21:25788",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "phone:L:background",
+    "nodeId": "10:7282",
+    "name": "Телефон",
+    "synonyms": [
+      "phone"
+    ],
+    "tags": [
+      "связь",
+      "общение",
+      "коммуникация",
+      "контакт",
+      "цифровой"
+    ],
+    "metaphors": [],
+    "role": "support",
+    "familyId": "phone",
+    "detail": "L",
+    "appearance": "background",
+    "width": 802.5301513671875,
+    "height": 467.6669921875,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/L/phone",
+      "illustrationName": "Телефон · L",
+      "nodeId": "21:25788",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "puzzle:L:background",
+    "nodeId": "10:7438",
+    "name": "Пазлы",
+    "synonyms": [
+      "puzzle"
+    ],
+    "tags": [
+      "команда",
+      "сотрудничество",
+      "вместе",
+      "партнерство",
+      "решение"
+    ],
+    "metaphors": [],
+    "role": "support",
+    "familyId": "puzzle",
+    "detail": "L",
+    "appearance": "background",
+    "width": 550.164306640625,
+    "height": 319.53173828125,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/L/puzzle",
+      "illustrationName": "Пазлы · L",
+      "nodeId": "21:25788",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "coin:L:background",
+    "nodeId": "10:7496",
+    "name": "Монета",
+    "synonyms": [
+      "coin"
+    ],
+    "tags": [
+      "деньги",
+      "финансы",
+      "оплата",
+      "инвестиции",
+      "бюджет"
+    ],
+    "metaphors": [],
+    "role": "support",
+    "familyId": "coin",
+    "detail": "L",
+    "appearance": "background",
+    "width": 292.676025390625,
+    "height": 194.5,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/L/coin",
+      "illustrationName": "Монета · L",
+      "nodeId": "21:25788",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "headphones:L:background",
+    "nodeId": "10:7633",
+    "name": "Наушники",
+    "synonyms": [
+      "headphones"
+    ],
+    "tags": [
+      "музыка",
+      "общение",
+      "слушать",
+      "поддержка",
+      "коммуникация"
+    ],
+    "metaphors": [],
+    "role": "support",
+    "familyId": "headphones",
+    "detail": "L",
+    "appearance": "background",
+    "width": 894.15185546875,
+    "height": 697.5439453125,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/L/headphones",
+      "illustrationName": "Наушники · L",
+      "nodeId": "21:25788",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "lamp:L:background",
+    "nodeId": "10:7718",
+    "name": "Лампа",
+    "synonyms": [
+      "lamp"
+    ],
+    "tags": [
+      "идея",
+      "идеи",
+      "вдохновение",
+      "творчество",
+      "решение",
+      "свет"
+    ],
+    "metaphors": [],
+    "role": "hero",
+    "familyId": "lamp",
+    "detail": "L",
+    "appearance": "background",
+    "width": 951.9449462890625,
+    "height": 1134.9833984375,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/L/lamp",
+      "illustrationName": "Лампа · L",
+      "nodeId": "21:25788",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "flowers:L:background",
+    "nodeId": "10:7746",
+    "name": "Цветы",
+    "synonyms": [
+      "flowers"
+    ],
+    "tags": [
+      "рост",
+      "забота",
+      "развитие",
+      "благодарность",
+      "вдохновение"
+    ],
+    "metaphors": [],
+    "role": "support",
+    "familyId": "flowers",
+    "detail": "L",
+    "appearance": "background",
+    "width": 596.568603515625,
+    "height": 753.1064453125,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/L/flowers",
+      "illustrationName": "Цветы · L",
+      "nodeId": "21:25788",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "wallet:L:background",
+    "nodeId": "10:7878",
+    "name": "Кошелёк",
+    "synonyms": [
+      "wallet",
+      "кошелек"
+    ],
+    "tags": [
+      "деньги",
+      "финансы",
+      "сбережения",
+      "бюджет",
+      "капитал"
+    ],
+    "metaphors": [],
+    "role": "hero",
+    "familyId": "wallet",
+    "detail": "L",
+    "appearance": "background",
+    "width": 636.41943359375,
+    "height": 402.3154296875,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/L/wallet",
+      "illustrationName": "Кошелёк · L",
+      "nodeId": "21:25788",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "folder:L:background",
+    "nodeId": "10:7965",
+    "name": "Папка",
+    "synonyms": [
+      "folder"
+    ],
+    "tags": [
+      "документы",
+      "порядок",
+      "работа",
+      "организация",
+      "управление"
+    ],
+    "metaphors": [],
+    "role": "support",
+    "familyId": "folder",
+    "detail": "L",
+    "appearance": "background",
+    "width": 1246.6175537109375,
+    "height": 664.6142578125,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/L/folder",
+      "illustrationName": "Папка · L",
+      "nodeId": "21:25788",
+      "capturedAt": "2026-11-03"
+    }
+  },
+  {
+    "id": "pen:L:background",
+    "nodeId": "10:7988",
+    "name": "Ручка",
+    "synonyms": [
+      "pen"
+    ],
+    "tags": [
+      "письмо",
+      "творчество",
+      "идея",
+      "план",
+      "договор"
+    ],
+    "metaphors": [],
+    "role": "support",
+    "familyId": "pen",
+    "detail": "L",
+    "appearance": "background",
+    "width": 514.4281005859375,
+    "height": 291.35546875,
+    "source": {
+      "illustrationId": "4MCFttsSoP7hgQh29zq5G3/L/pen",
+      "illustrationName": "Ручка · L",
+      "nodeId": "21:25788",
+      "capturedAt": "2026-11-03"
+    }
+  }
+]

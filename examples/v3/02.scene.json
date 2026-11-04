@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "settings": {
+    "width": 1200,
+    "height": 900,
+    "seed": 42,
+    "layout": "focus",
+    "detail": "L",
+    "appearanceMode": "mixed",
+    "backdrop": "source"
+  },
+  "query": "Идеи для команды",
+  "choices": [
+    {
+      "assetId": "lamp:L:main",
+      "count": 1,
+      "reason": "Совпадения по смысловым тегам: идеи, иде, творче, вдохнов"
+    },
+    {
+      "assetId": "puzzle:L:background",
+      "count": 1,
+      "reason": "Совпадения по смысловым тегам: команд, сотруднич, вместе, партнер"
+    },
+    {
+      "assetId": "pen:L:main",
+      "count": 1,
+      "reason": "Совпадения по смысловым тегам: иде, творче"
+    },
+    {
+      "assetId": "flowers:L:background",
+      "count": 1,
+      "reason": "Совпадения по смысловым тегам: вдохнов"
+    }
+  ],
+  "placements": [
+    {
+      "assetId": "lamp:L:main",
+      "instanceId": "42-0-lamp:L:main",
+      "cx": 358.4383816624156,
+      "cy": 505.8308887189847,
+      "scale": 0.5466120071995506,
+      "rotation": 0,
+      "z": 2
+    },
+    {
+      "assetId": "pen:L:main",
+      "instanceId": "42-1-pen:L:main",
+      "cx": 888.7181491394015,
+      "cy": 582.14327155751,
+      "scale": 0.5466120071995506,
+      "rotation": 0,
+      "z": 3
+    },
+    {
+      "assetId": "flowers:L:background",
+      "instanceId": "42-2-flowers:L:background",
+      "cx": 938.6881063548964,
+      "cy": 289.798512853592,
+      "scale": 0.5466120071995506,
+      "rotation": 0,
+      "z": 1
+    },
+    {
+      "assetId": "puzzle:L:background",
+      "instanceId": "42-3-puzzle:L:background",
+      "cx": 949.094997111587,
+      "cy": 662.0374463908105,
+      "scale": 0.5466120071995506,
+      "rotation": 0,
+      "z": 0
+    }
+  ],
+  "palette": {
+    "name": "Схема 2 · персиковая",
+    "colors": [
+      "#FDD7B9",
+      "#FAC896",
+      "#D27532",
+      "#181817",
+      "#F9ECB0",
+      "#80DADA",
+      "#BEEBEB",
+      "#FFFFFF"
+    ],
+    "backgroundColors": [
+      "#FDD7B9",
+      "#FAC896",
+      "#D27532",
+      "#181817"
+    ],
+    "objectColors": [
+      "#F9ECB0",
+      "#80DADA",
+      "#BEEBEB",
+      "#FFFFFF"
+    ]
+  }
+}

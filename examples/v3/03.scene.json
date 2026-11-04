@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "settings": {
+    "width": 900,
+    "height": 1200,
+    "seed": 42,
+    "layout": "diagonal",
+    "detail": "S",
+    "appearanceMode": "mixed",
+    "backdrop": "source"
+  },
+  "query": "книга (фон), наушники (главный), телефон (главный)",
+  "choices": [
+    {
+      "assetId": "book:S:background",
+      "count": 1,
+      "reason": "Компонент: Книга"
+    },
+    {
+      "assetId": "headphones:S:main",
+      "count": 1,
+      "reason": "Компонент: Наушники"
+    },
+    {
+      "assetId": "phone:S:main",
+      "count": 1,
+      "reason": "Компонент: Телефон"
+    }
+  ],
+  "placements": [
+    {
+      "assetId": "book:S:background",
+      "instanceId": "42-0-book:S:background",
+      "cx": 408.6656757415731,
+      "cy": 704.6692504941117,
+      "scale": 0.8908636230748002,
+      "rotation": 0,
+      "z": 0
+    },
+    {
+      "assetId": "headphones:S:main",
+      "instanceId": "42-1-headphones:S:main",
+      "cx": 311.2569730191013,
+      "cy": 537.325747503392,
+      "scale": 0.8908636230748002,
+      "rotation": 0,
+      "z": 2
+    },
+    {
+      "assetId": "phone:S:main",
+      "instanceId": "42-2-phone:S:main",
+      "cx": 635.9589702819645,
+      "cy": 380.6362992070416,
+      "scale": 0.8908636230748002,
+      "rotation": 0,
+      "z": 1
+    }
+  ],
+  "palette": {
+    "name": "Схема 3 · бирюзовая",
+    "colors": [
+      "#BEEBEB",
+      "#80DADA",
+      "#5ABEBE",
+      "#181817",
+      "#FFD4F2",
+      "#6D7BFC",
+      "#B6C6FE",
+      "#FFFFFF"
+    ],
+    "backgroundColors": [
+      "#BEEBEB",
+      "#80DADA",
+      "#5ABEBE",
+      "#181817"
+    ],
+    "objectColors": [
+      "#FFD4F2",
+      "#6D7BFC",
+      "#B6C6FE",
+      "#FFFFFF"
+    ]
+  }
+}

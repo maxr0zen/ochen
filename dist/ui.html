@@ -1,0 +1,1857 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Сочетание — векторные композиции</title><style>:root{--ground:#f0f2f1;--surface:#fff;--text:#202725;--muted:#606966;--line:#dde2df;--accent:#285e52;--error:#9e2929;--radius:6px;font-family:Arial,"Segoe UI",sans-serif;color:var(--text);font-size:13px;font-synthesis:none}
+*{box-sizing:border-box}body{margin:0;background:var(--ground)}button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer;min-height:34px;border:1px solid transparent;border-radius:var(--radius);background:transparent;padding:7px 10px;font-weight:500;transition:background .12s}button:hover{background:#e5e9e6}button:active{transform:translateY(1px)}button:disabled{cursor:not-allowed;opacity:.45;transform:none}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px}button.primary{background:var(--text);color:#fff}button.primary:hover:not(:disabled){background:#3a4540}.secondary{background:var(--surface);border-color:#c7ceca}.text-button{padding-inline:2px;color:var(--muted);font-size:12px}.app{max-width:620px;margin:auto;padding:0 8px 8px}header{height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 16px}.brand{display:flex;align-items:center;gap:10px}.brand strong{font-size:18px;font-weight:600;letter-spacing:-.4px}.brand span{display:block;font-size:11px;color:var(--muted);margin-top:3px}.version{font-size:11px;color:var(--muted)}nav{display:flex;padding:0 12px;gap:24px}.tab{border-radius:0;color:var(--muted);padding:9px 0 12px;border-bottom:2px solid transparent}.tab.active{color:var(--text);border-bottom-color:var(--text)}.tab span{font-size:11px;margin-left:6px;font-variant-numeric:tabular-nums}main{background:var(--surface);border:1px solid var(--line);border-radius:10px 10px 0 0;padding:20px}h1,h2,p{margin:0}h1{font-size:18px;font-weight:600;letter-spacing:-.4px}h2{font-size:13px;font-weight:600}.section-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:14px}.step{color:var(--muted);font-size:11px;white-space:nowrap}.divider{border-top:1px solid var(--line);padding-top:18px;margin-top:20px}.segmented{display:flex;background:var(--ground);padding:3px;border-radius:7px;margin:0 0 16px}.segmented button{width:50%;min-height:32px;font-size:12px}.segmented .selected{background:var(--surface);border-color:var(--line)}label{display:block;font-size:12px;margin:13px 0 7px}input,textarea,select{display:block;width:100%;border:1px solid #bec8c2;background:var(--surface);border-radius:var(--radius);padding:9px;margin-top:6px;font-size:13px;min-width:0}textarea{resize:vertical;line-height:1.5;min-height:80px}input[type=number]{font-variant-numeric:tabular-nums}input::placeholder,textarea::placeholder{color:#747d78}select{min-height:36px}.hint{font-size:11px;line-height:1.6;color:var(--muted);margin-top:8px}.formats{display:flex;gap:8px}.formats button{flex:1;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;gap:8px;font-size:12px}.formats .selected{border-color:var(--text);background:var(--ground)}.format-icon{display:inline-block;width:13px;height:13px;border:1px solid currentColor;border-radius:1px}.format-icon.landscape{width:17px;height:10px}.format-icon.portrait{width:10px;height:15px}.grid{display:grid;gap:10px}.three{grid-template-columns:1fr 1fr 1fr}.grid label{font-size:11px}.palette-row{display:flex;gap:8px;align-items:center}.palette-row select{margin:0;flex:1}.palette-row button{white-space:nowrap;font-size:12px}.swatches{display:flex;gap:5px;margin:12px 0;min-height:23px;align-items:center}.swatch{height:23px;flex:1;border:1px solid #00000013;border-radius:3px}.swatches .hint{margin:0}.actions{display:flex;gap:8px}.compact button{font-size:11px;min-height:30px}.build-row{display:flex;gap:8px;margin-top:20px}.build-row>.primary{flex:1;display:flex;justify-content:space-between;padding:11px 13px}.build-row .secondary{font-size:12px}#reflow{margin-top:6px}.empty{background:#f7f9f7;border:1px dashed #c6d0c8;border-radius:6px;padding:15px;margin-top:18px;font-size:12px;line-height:1.6}.empty p{margin:5px 0 12px;color:var(--muted)}.empty strong{font-weight:500}#chosen{margin-top:20px}#choices{padding:0;list-style:none;margin:8px 0}#choices li{border-top:1px solid var(--line);padding:9px 0;font-size:12px}#choices small{display:block;color:var(--muted);line-height:1.5;font-size:11px;margin-top:4px}.advanced{margin-top:20px;border-top:1px solid var(--line);padding-top:12px}.advanced summary{cursor:pointer;color:var(--muted);font-size:11px}.advanced button{margin-top:8px}.intro{font-size:12px;line-height:1.6;color:var(--muted);margin-bottom:15px}#add-selection{width:100%;display:flex;justify-content:space-between}.asset-list{margin:14px 0}.asset{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}.asset img{width:48px;height:48px;object-fit:contain;background:#f5f7f5;border-radius:4px}.asset .asset-copy{flex:1;min-width:0}.asset strong{font-weight:500;font-size:12px;overflow-wrap:anywhere}.asset small{display:block;color:var(--muted);font-size:11px;margin-top:4px;overflow-wrap:anywhere}.asset button{font-size:11px}.asset .asset-copy button{display:block;padding:0;min-height:24px;color:var(--muted);font-size:10px}#asset-form{scroll-margin-top:15px}#asset-form>.primary{margin-top:14px;width:100%}#provenance{overflow-wrap:anywhere}figure{margin:14px 0;background:var(--ground);padding:10px;border-radius:6px}figure img{width:100%;height:170px;object-fit:contain}figcaption{font-size:11px;color:var(--muted);margin-top:8px}footer{background:var(--surface);border:1px solid var(--line);border-top:0;border-radius:0 0 10px 10px;padding:16px 20px}.export-row{display:flex;gap:8px;align-items:center}.export-row>.primary{flex:1}.export-row button{font-size:12px}.footnote{font-size:11px;color:var(--muted);margin-top:12px;line-height:1.6}.footnote button{display:block;font-size:11px}#status{font-size:12px;line-height:1.5;padding-top:10px;margin-top:10px;border-top:1px solid var(--line);overflow-wrap:anywhere}#status.error{color:var(--error)}#status.success{color:var(--accent)}.notice{font-size:11px;line-height:1.5;background:#fff9e8;border:1px solid #e9d7a8;padding:10px;margin:0 12px 12px;border-radius:5px;color:#6a521e}[hidden]{display:none!important}@media(min-width:900px){.app{padding-top:24px;padding-bottom:24px}}@media(max-width:380px){main,footer{padding:16px 12px}.step{display:none}.build-row{flex-direction:column}.three{gap:6px}.palette-row button{font-size:11px;padding-inline:7px}.export-row{flex-wrap:wrap}.export-row>.primary{min-width:100px}.asset{gap:8px}}@media(prefers-reduced-motion:reduce){button{transition:none}button:active{transform:none}}
+.grid.two{grid-template-columns:1fr 1fr}#close-plugin{position:fixed;top:10px;right:14px;z-index:5;background:var(--surface);border-color:var(--line);font-size:11px;min-height:28px;padding:4px 7px}#choices button{font-size:11px;margin-top:4px}
+#ai-panel .ai-option{display:flex;align-items:flex-start;gap:8px;margin-top:14px}#ai-panel input[type=checkbox]{width:15px;height:15px;min-height:15px;margin:2px 0 0;flex:0 0 15px}#ai-panel code{overflow-wrap:anywhere}#ai-connection{overflow-wrap:anywhere}
+#scene-rules{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}#scene-rules h3{font-size:12px;margin:0 0 8px}#scene-rule-list{padding-left:16px;font-size:11px;line-height:1.5;color:var(--muted)}#scene-rule-list li{margin:6px 0}#scene-rule-list .rule-warning{color:#8b5b20}
+</style></head>
+<body><div class="app">
+  <header><div class="brand"><svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><rect x="2" y="2" width="14" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="var(--surface)" stroke="currentColor" stroke-width="1.5"/></svg><div><strong>Сочетание</strong><span>Иллюстрации из исходной библиотеки</span></div></div><span class="version">v0.6</span></header>
+  <div id="preview-notice" class="notice" hidden>Предпросмотр панели. Документ Figma не подключён. Откройте плагин в Figma для сборки и экспорта.</div>
+  <nav aria-label="Разделы"><button class="tab active" data-tab="compose" aria-pressed="true">Композиция</button><button class="tab" data-tab="library" aria-pressed="false">Библиотека <span id="count">0</span></button></nav>
+  <main>
+    <section id="compose-panel">
+      <div class="section-head"><h1>Собрать иллюстрацию</h1><span class="step">01 / замысел</span></div>
+      <div class="segmented" role="group" aria-label="Режим сборки"><button data-mode="metaphor" class="selected" aria-pressed="true">По метафоре</button><button data-mode="components" aria-pressed="false">Из компонентов</button></div>
+      <label for="query" id="query-label">Метафора или заголовок</label><textarea id="query" rows="3" maxlength="2000" placeholder="Например, «вместе к новым вершинам»"></textarea>
+      <p class="hint" id="search-hint">Локальный смысловой поиск по именам, тегам и метафорам. Без внешней AI-модели.</p>
+      <details class="advanced" id="ai-panel"><summary>AI-композиция · Gemini / Groq</summary>
+       <p class="hint">AI предлагает расположение. Исходные SVG и общий масштаб проверяет конструктор. Нужен локальный сервер: <code>npm run ai</code>.</p>
+       <label for="ai-token">Код подключения из .env.local</label><input id="ai-token" type="password" autocomplete="off" spellcheck="false" placeholder="AI_CONNECTION_TOKEN — не API-ключ">
+       <button id="ai-connect" class="secondary">Проверить подключение AI</button><p id="ai-connection" class="hint">Сервер ещё не подключён</p>
+       <label class="hint ai-option"><input id="ai-images" type="checkbox"> Отправлять миниатюры предметов и предпросмотр в Gemini</label>
+       <p class="hint">Названия, теги и размеры отправляются выбранному провайдеру. Миниатюры — только при включённой опции. SVG-контуры модель не редактирует.</p>
+       <div class="actions compact"><button id="ai-generate" class="secondary">Предложить AI-композицию</button><button id="ai-cancel" class="text-button" disabled>Отменить AI-запрос</button></div>
+       <figure id="ai-result" hidden><img id="ai-preview" alt="Предпросмотр AI-композиции" style="display:block;width:100%;max-height:400px;object-fit:contain;background:white"><figcaption id="ai-summary" class="hint"></figcaption>
+        <label for="ai-feedback">Что изменить в расположении?</label><textarea id="ai-feedback" rows="2" maxlength="1000" placeholder="Например: приблизить монеты к книге, оставить больше воздуха справа"></textarea>
+        <div class="actions compact"><button id="ai-refine" class="secondary" disabled>Улучшить AI-план</button><button id="ai-apply" class="primary" disabled>Добавить AI-сцену в Figma</button></div>
+       </figure>
+      </details>
+      <div class="grid two"><label>Детализация объектов<select id="detail"><option value="S">S · меньше деталей</option><option value="L">L · больше деталей</option></select></label><label>Состояния объектов<select id="appearance-mode"><option value="mixed">Главные и фоновые</option><option value="main">Только главные</option><option value="background">Только фоновые</option></select></label></div>
+      <p class="hint">Размер S/L выбирает исходные варианты, а не масштаб. Относительные размеры предметов сохраняются. Состояние каждого экземпляра можно изменить после сборки.</p>
+      <div class="section-head divider"><h2>Холст и композиция</h2><span class="step">02 / форма</span></div>
+      <div class="formats" role="group" aria-label="Формат холста"><button data-format="1080,1080" class="selected" aria-pressed="true"><i class="format-icon square"></i>Квадрат</button><button data-format="1600,900" aria-pressed="false"><i class="format-icon landscape"></i>Альбом</button><button data-format="900,1600" aria-pressed="false"><i class="format-icon portrait"></i>Портрет</button></div>
+      <div class="grid three"><label>Ширина, px<input id="width" type="number" min="128" max="8192" value="1080" required></label><label>Высота, px<input id="height" type="number" min="128" max="8192" value="1080" required></label><label>Вариант / seed<input id="seed" type="number" min="0" max="2147483647" value="42" required></label></div>
+      <label for="layout">Схема размещения</label><select id="layout"><option value="focus">Акцент и окружение</option><option value="balanced">Сбалансированная группа</option><option value="diagonal">Диагональный ритм</option></select>
+      <div class="section-head divider"><h2>Палитра</h2><span class="step">03 / цвет</span></div>
+      <label>Фон холста<select id="backdrop"><option value="source">Исходный векторный фон</option><option value="solid">Только заливка из схемы</option><option value="none">Без фона · прозрачный</option></select></label>
+      <p class="hint">Исходный фон автоматически выбирается по S/L и палитре, помещается под предметами и обрезается по холсту без растяжения.</p>
+      <div class="palette-row"><select id="palette" aria-label="Цветовая палитра"><option value="violet">Схема 1 · сиреневая</option><option value="peach">Схема 2 · персиковая</option><option value="turquoise">Схема 3 · бирюзовая</option></select><button id="palette-file-button" class="secondary">Загрузить JSON</button><input hidden id="palette-file" type="file" accept=".json,application/json"></div>
+      <p class="hint">Первые четыре образца — фоновые цвета, следующие — цвета главных объектов. Фоновые цвета разрешены в главных объектах; обратное запрещено.</p>
+      <div class="swatches" id="swatches"><span class="hint">Цвета объектов сохранятся</span></div>
+      <div class="actions compact"><button id="preview-palette" data-scene class="secondary" disabled>Предпросмотр</button><button id="apply-palette" data-scene class="secondary" disabled>Применить</button><button id="restore-palette" data-scene class="text-button" disabled>Сбросить</button></div>
+      <figure id="palette-preview" hidden><img id="preview-image" alt="Предпросмотр выбранной палитры"><figcaption>Предпросмотр: холст пока не изменён.</figcaption></figure>
+      <div class="build-row"><button id="compose" class="primary" disabled>Собрать композицию <span aria-hidden="true">↗</span></button><button id="variant" data-scene class="secondary" disabled title="Собрать ещё один вариант">Ещё вариант</button></div>
+      <button id="reflow" data-scene class="text-button" disabled>Пересобрать в новом формате рядом</button>
+      <div id="empty" class="empty"><strong>Подготовка исходной библиотеки</strong><p>После запуска в Figma автоматически появятся 40 исходных вариантов S/L. Выберите предметы по названию или метафоре.</p><button class="secondary" id="go-library">Открыть библиотеку</button></div>
+      <div id="chosen" hidden><h2>Выбранные объекты</h2><ul id="choices"></ul><section id="scene-rules" hidden><h3>Связи предметов</h3><ul id="scene-rule-list"></ul><button id="check-scene-rules" data-scene class="text-button" disabled>Проверить связи на холсте</button><p class="hint">После ручных правок проверьте связи на холсте или пересоберите композицию, чтобы применить правила снова.</p></section></div>
+      <details class="advanced"><summary>Структурированный план</summary><p class="hint">Вставьте план от внешней модели. Используйте только assetId из библиотеки. Новые объекты не принимаются.</p><textarea id="plan" rows="4" aria-label="JSON-план" placeholder='{"choices":[{"assetId":"…","count":1,"reason":"…"}]}'></textarea><button id="apply-plan" class="secondary">Собрать из JSON</button></details>
+    </section>
+    <section id="library-panel" hidden>
+      <div class="section-head"><h1>Ваши объекты</h1><span class="step" id="source-count">0 источников</span></div>
+      <p class="intro">Утверждённая библиотека: 10 предметов × S/L × главное/фоновое состояние. Все 40 вариантов копируются из исходных SVG; посторонние объекты не добавляются. Здесь показана выбранная детализация.</p>
+      <button hidden id="add-selection">Добавить выделенное <span id="selection-count">0</span></button>
+      <button hidden id="add-section">Добавить объекты из выбранного раздела</button>
+      <p class="hint">Копии сохраняются на отдельной странице этого Figma-файла. Геометрия и пропорции сохраняются.</p>
+      <label for="filter">Найти в библиотеке</label><input id="filter" type="search" placeholder="Имя, тег или метафора">
+      <div id="asset-list" class="asset-list"></div><p id="library-empty" class="empty">Библиотека подготовится автоматически после запуска плагина в Figma.</p>
+      <button id="export-catalog" class="text-button">Скачать метаданные каталога</button>
+      <form id="asset-form" hidden><div class="section-head divider"><h2>Описание объекта</h2><button id="close-edit" type="button" class="text-button">Закрыть</button></div><input id="edit-id" type="hidden"><label>Название<input id="edit-name" maxlength="160" required></label><label>Синонимы через запятую<input id="edit-synonyms" maxlength="2000"></label><label>Теги через запятую<input id="edit-tags" maxlength="2000" placeholder="команда, люди, сотрудничество"></label><label>Подходящие метафоры<textarea id="edit-metaphors" rows="2" maxlength="2000" placeholder="работа вместе, общая цель"></textarea></label><label>Приоритет композиции<select id="edit-role"><option value="hero">Акцент</option><option value="support">Поддерживающий</option><option value="detail">Деталь</option></select></label><p id="provenance" class="hint"></p><button class="primary" type="submit">Сохранить описание</button></form>
+    </section>
+  </main>
+  <footer><div class="export-row"><button id="export-svg" data-scene class="primary" disabled>Скачать SVG</button><button id="save-scene" data-scene class="secondary" disabled>Сохранить сцену</button><button id="load-scene-button" class="text-button">Открыть</button><input id="scene-file" type="file" accept=".json,application/json" hidden></div><div class="footnote">Правки, дублирование и слои — на холсте Figma.<button id="reimport" class="text-button" disabled>Проверить SVG в Figma</button><button id="show-svg" data-scene class="text-button" disabled>SVG для копирования</button><button id="export-bundle" data-scene class="text-button" disabled>Скачать все композиции (ZIP)</button></div><details id="svg-code" hidden><summary>Код проверенного SVG</summary><label for="raw-svg">SVG для копирования</label><textarea id="raw-svg" readonly rows="5"></textarea><button id="select-svg" class="secondary">Выделить весь SVG</button></details><div id="status" role="status" aria-live="polite">Готово к работе</div></footer>
+<button id="close-plugin" class="text-button">Закрыть конструктор</button>
+<details class="advanced"><summary>Проверка библиотеки и примеры</summary><p class="hint">Проверяет исходные варианты во всех форматах и схемах, сохраняет оригиналы и собирает три примера.</p><button id="acceptance" class="secondary">Проверить библиотеку</button><button id="retry-acceptance" class="secondary">Повторить проверки с ошибками</button><button id="create-examples" class="secondary">Собрать три примера</button><button id="export-examples" class="secondary" disabled>Скачать три примера</button><pre id="acceptance-report" hidden></pre></details>
+</div><script>"use strict";
+(() => {
+  // src/scene-rules.ts
+  var SCENE_RULES = {
+    lamp: { emitter: { x: 0.81, y: 0.29 }, direction: { x: 0.84, y: 0.54 }, halfAngle: 20, maxDistance: 2, targets: ["book", "puzzle", "folder", "pen", "wallet", "coin", "phone", "headphones", "flowers"] },
+    pen: { tip: { x: 0.95, y: 0.87 }, targets: ["book", "folder", "puzzle"] },
+    coins: { targets: ["wallet", "book"] },
+    audio: { gapX: 0.72, gapY: 0.5 }
+  };
+  var surface = { book: { x: 0.55, y: 0.4 }, puzzle: { x: 0.5, y: 0.44 }, folder: { x: 0.55, y: 0.4 }, pen: { x: 0.6, y: 0.5 }, wallet: { x: 0.5, y: 0.45 }, coin: { x: 0.45, y: 0.45 }, phone: { x: 0.5, y: 0.4 }, headphones: { x: 0.5, y: 0.5 }, flowers: { x: 0.5, y: 0.45 } };
+  function rotate(point, degrees) {
+    const r = degrees * Math.PI / 180;
+    return { x: point.x * Math.cos(r) - point.y * Math.sin(r), y: point.x * Math.sin(r) + point.y * Math.cos(r) };
+  }
+  function offset(n, anchor2) {
+    return rotate({ x: (anchor2.x - 0.5) * n.a.width, y: (anchor2.y - 0.5) * n.a.height }, n.p.rotation);
+  }
+  function anchor(n, at) {
+    const d = offset(n, at);
+    return { x: n.x + d.x, y: n.y + d.y };
+  }
+  function sorted(nodes) {
+    return [...nodes].sort((a, b) => a.p.instanceId.localeCompare(b.p.instanceId));
+  }
+  function targets(nodes, families) {
+    return nodes.filter((n) => families.includes(n.a.familyId ?? "")).sort((a, b) => families.indexOf(a.a.familyId) - families.indexOf(b.a.familyId) || a.p.instanceId.localeCompare(b.p.instanceId));
+  }
+  function holdersFor(nodes) {
+    const candidates = targets(nodes, SCENE_RULES.coins.targets);
+    return candidates.filter((n) => n.a.familyId === candidates[0]?.a.familyId);
+  }
+  function nodesFor(placements, assets2, sourceUnits = false) {
+    return placements.map((p) => {
+      const a = assets2.find((a2) => a2.id === p.assetId);
+      return { p: { ...p }, a, x: sourceUnits ? p.cx / p.scale : p.cx, y: sourceUnits ? p.cy / p.scale : p.cy };
+    });
+  }
+  var family = (nodes, name) => sorted(nodes.filter((n) => n.a.familyId === name));
+  function inspectSceneRules(placements, assets2) {
+    const nodes = nodesFor(placements, assets2), result = [];
+    for (const n of nodes) {
+      n.a = { ...n.a, width: n.a.width * n.p.scale, height: n.a.height * n.p.scale };
+    }
+    const lamps = family(nodes, "lamp"), lit = targets(nodes, SCENE_RULES.lamp.targets);
+    for (const [i, lamp] of lamps.entries()) {
+      const target = lit[i % lit.length];
+      if (!target) {
+        result.push({ kind: "illuminates", sourceId: lamp.p.instanceId, ok: false, message: "\u0423 \u043B\u0430\u043C\u043F\u044B \u043D\u0435\u0442 \u0446\u0435\u043B\u0438. \u0414\u043E\u0431\u0430\u0432\u044C\u0442\u0435 \u043A\u043D\u0438\u0433\u0443, \u043F\u0430\u0437\u043B\u044B \u0438\u043B\u0438 \u0434\u0440\u0443\u0433\u043E\u0439 \u043F\u0440\u0435\u0434\u043C\u0435\u0442; \u043D\u043E\u0432\u044B\u0435 \u043E\u0431\u044A\u0435\u043A\u0442\u044B \u0430\u0432\u0442\u043E\u043C\u0430\u0442\u0438\u0447\u0435\u0441\u043A\u0438 \u043D\u0435 \u0434\u043E\u0431\u0430\u0432\u043B\u044F\u044E\u0442\u0441\u044F." });
+        continue;
+      }
+      const from = anchor(lamp, SCENE_RULES.lamp.emitter), to = anchor(target, surface[target.a.familyId] ?? { x: 0.5, y: 0.5 }), d = rotate(SCENE_RULES.lamp.direction, lamp.p.rotation), v = { x: to.x - from.x, y: to.y - from.y }, distance = Math.hypot(v.x, v.y), cos = distance > 0 ? (d.x * v.x + d.y * v.y) / Math.hypot(d.x, d.y) / distance : -1, angle = Math.acos(Math.max(-1, Math.min(1, cos))) * 180 / Math.PI, ok = angle <= SCENE_RULES.lamp.halfAngle && distance > lamp.a.height * 0.2;
+      const reachable = ok && distance <= lamp.a.height * (SCENE_RULES.lamp.maxDistance + Math.floor(i / lit.length) * 0.88);
+      result.push({ kind: "illuminates", sourceId: lamp.p.instanceId, targetId: target.p.instanceId, ok: reachable, angle, message: reachable ? `\u041B\u0430\u043C\u043F\u0430 \u2192 ${target.a.name}: \u0446\u0435\u043B\u044C \u043D\u0430\u0445\u043E\u0434\u0438\u0442\u0441\u044F \u043F\u0435\u0440\u0435\u0434 \u043F\u043B\u0430\u0444\u043E\u043D\u043E\u043C, \u0432 \u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u0438 \u0441\u0432\u0435\u0442\u0430.` : `\u041B\u0430\u043C\u043F\u0430 \u2192 ${target.a.name}: \u043F\u0440\u0435\u0434\u043C\u0435\u0442 \u0441\u043B\u0438\u0448\u043A\u043E\u043C \u0434\u0430\u043B\u0435\u043A\u043E \u0438\u043B\u0438 \u0432\u043D\u0435 \u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F \u0441\u0432\u0435\u0442\u0430.` });
+    }
+    const coins = family(nodes, "coin"), holders = holdersFor(nodes);
+    if (coins.length && holders.length) {
+      for (const [i, c] of coins.entries()) {
+        const base = holders[i % holders.length], ok = Math.hypot(c.x - base.x, c.y - base.y) < Math.max(base.a.width, base.a.height) * 1.5 + c.a.width * 0.8;
+        result.push({ kind: "coins", sourceId: c.p.instanceId, targetId: base.p.instanceId, ok, message: ok ? `\u041C\u043E\u043D\u0435\u0442\u044B \u2192 ${base.a.name}: \u0441\u0433\u0440\u0443\u043F\u043F\u0438\u0440\u043E\u0432\u0430\u043D\u044B \u0440\u044F\u0434\u043E\u043C \u0441 \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u043E\u043C.` : `\u041C\u043E\u043D\u0435\u0442\u044B \u2192 ${base.a.name}: \u0433\u0440\u0443\u043F\u043F\u0430 \u0441\u043B\u0438\u0448\u043A\u043E\u043C \u0434\u0430\u043B\u0435\u043A\u043E \u043E\u0442 \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u0430.` });
+      }
+    } else if (coins.length > 1) {
+      const connected2 = /* @__PURE__ */ new Set([coins[0]]);
+      for (let pass = 0; pass < coins.length; pass++) for (const c of coins) if ([...connected2].some((n) => Math.hypot(n.x - c.x, n.y - c.y) <= Math.max(n.a.width, c.a.width) * 1.8)) connected2.add(c);
+      const ok = connected2.size === coins.length;
+      result.push({ kind: "coins", sourceId: coins[0].p.instanceId, targetId: coins[1].p.instanceId, ok, message: ok ? "\u041C\u043E\u043D\u0435\u0442\u044B \u0441\u043E\u0431\u0440\u0430\u043D\u044B \u0432 \u043A\u043E\u043C\u043F\u0430\u043A\u0442\u043D\u0443\u044E \u0433\u0440\u0443\u043F\u043F\u0443." : "\u041C\u043E\u043D\u0435\u0442\u044B \u0440\u0430\u0437\u043D\u0435\u0441\u0435\u043D\u044B \u043D\u0430 \u043E\u0442\u0434\u0435\u043B\u044C\u043D\u044B\u0435 \u0433\u0440\u0443\u043F\u043F\u044B." });
+    }
+    const paper = targets(nodes, SCENE_RULES.pen.targets);
+    for (const [i, pen] of family(nodes, "pen").entries()) if (paper.length) {
+      const base = paper[i % paper.length], tip = anchor(pen, SCENE_RULES.pen.tip), ok = Math.hypot(tip.x - base.x, tip.y - base.y) < Math.max(base.a.width, base.a.height) * 0.65;
+      result.push({ kind: "writing", sourceId: pen.p.instanceId, targetId: base.p.instanceId, ok, message: ok ? `\u0420\u0443\u0447\u043A\u0430 \u2192 ${base.a.name}: \u043D\u0430\u043A\u043E\u043D\u0435\u0447\u043D\u0438\u043A \u043D\u0430\u043F\u0440\u0430\u0432\u043B\u0435\u043D \u043D\u0430 \u0440\u0430\u0431\u043E\u0447\u0443\u044E \u043F\u043E\u0432\u0435\u0440\u0445\u043D\u043E\u0441\u0442\u044C.` : `\u0420\u0443\u0447\u043A\u0430 \u2192 ${base.a.name}: \u043D\u0430\u043A\u043E\u043D\u0435\u0447\u043D\u0438\u043A \u0432\u043D\u0435 \u0440\u0430\u0431\u043E\u0447\u0435\u0439 \u043F\u043E\u0432\u0435\u0440\u0445\u043D\u043E\u0441\u0442\u0438.` });
+    }
+    const headphones = family(nodes, "headphones");
+    for (const [i, phone] of family(nodes, "phone").entries()) if (headphones.length) {
+      const h = headphones[i % headphones.length], ok = Math.hypot(phone.x - h.x, phone.y - h.y) < Math.max(h.a.width, phone.a.width) * 1.5;
+      result.push({ kind: "audio", sourceId: phone.p.instanceId, targetId: h.p.instanceId, ok, message: ok ? "\u0422\u0435\u043B\u0435\u0444\u043E\u043D \u0438 \u043D\u0430\u0443\u0448\u043D\u0438\u043A\u0438 \u0440\u0430\u0441\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u044B \u043A\u0430\u043A \u0441\u0432\u044F\u0437\u0430\u043D\u043D\u0430\u044F \u043F\u0430\u0440\u0430." : "\u0422\u0435\u043B\u0435\u0444\u043E\u043D \u0441\u043B\u0438\u0448\u043A\u043E\u043C \u0434\u0430\u043B\u0435\u043A\u043E \u043E\u0442 \u043D\u0430\u0443\u0448\u043D\u0438\u043A\u043E\u0432." });
+    }
+    return result;
+  }
+
+  // src/core.ts
+  var UserError = class extends Error {
+  };
+  var normalize = (s) => s.toLocaleLowerCase("ru").replace(/ё/g, "\u0435").replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+  function object(value) {
+    if (!value || typeof value !== "object" || Array.isArray(value)) throw new UserError("\u041E\u0436\u0438\u0434\u0430\u043B\u0441\u044F JSON-\u043E\u0431\u044A\u0435\u043A\u0442.");
+    return value;
+  }
+  function text(value, max = 2e3) {
+    if (typeof value !== "string" || value.length > max) throw new UserError(`\u041E\u0436\u0438\u0434\u0430\u043B\u0441\u044F \u0442\u0435\u043A\u0441\u0442 \u0434\u043E ${max} \u0441\u0438\u043C\u0432\u043E\u043B\u043E\u0432.`);
+    return value.trim();
+  }
+  function number(value, min, max) {
+    if (typeof value !== "number" || !Number.isFinite(value) || value < min || value > max) throw new UserError(`\u0427\u0438\u0441\u043B\u043E \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u043E\u0442 ${min} \u0434\u043E ${max}.`);
+    return value;
+  }
+  function settings(value) {
+    const v = object(value);
+    if (!["focus", "diagonal", "balanced"].includes(String(v.layout))) throw new UserError("\u041D\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043D\u0430\u044F \u0441\u0445\u0435\u043C\u0430 \u043A\u043E\u043C\u043F\u043E\u0437\u0438\u0446\u0438\u0438.");
+    if (v.detail !== void 0 && !["S", "L"].includes(String(v.detail))) throw new UserError("\u0414\u0435\u0442\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u044F \u0434\u043E\u043B\u0436\u043D\u0430 \u0431\u044B\u0442\u044C S \u0438\u043B\u0438 L.");
+    if (v.appearanceMode !== void 0 && !["main", "mixed", "background"].includes(String(v.appearanceMode))) throw new UserError("\u041D\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043D\u044B\u0439 \u0440\u0435\u0436\u0438\u043C \u0444\u043E\u043D\u043E\u0432\u044B\u0445 \u043E\u0431\u044A\u0435\u043A\u0442\u043E\u0432.");
+    if (v.backdrop !== void 0 && !["none", "source", "solid"].includes(String(v.backdrop))) throw new UserError("\u041D\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043D\u044B\u0439 \u0440\u0435\u0436\u0438\u043C \u0444\u043E\u043D\u0430 \u0445\u043E\u043B\u0441\u0442\u0430.");
+    return { width: number(v.width, 128, 8192), height: number(v.height, 128, 8192), seed: Math.trunc(number(v.seed, 0, 2147483647)), layout: v.layout, detail: v.detail ?? "S", appearanceMode: v.appearanceMode ?? "main", backdrop: v.backdrop ?? "none" };
+  }
+  function hex(value) {
+    if (typeof value !== "string" || !/^#[\da-f]{6}$/i.test(value)) throw new UserError("\u0426\u0432\u0435\u0442 \u0434\u043E\u043B\u0436\u0435\u043D \u0438\u043C\u0435\u0442\u044C \u0444\u043E\u0440\u043C\u0430\u0442 #RRGGBB.");
+    return value.toUpperCase();
+  }
+  function palette(value) {
+    const v = object(value);
+    if (!Array.isArray(v.colors) || v.colors.length < 2 || v.colors.length > 12) throw new UserError("\u041F\u0430\u043B\u0438\u0442\u0440\u0430 \u0434\u043E\u043B\u0436\u043D\u0430 \u0441\u043E\u0434\u0435\u0440\u0436\u0430\u0442\u044C \u043E\u0442 2 \u0434\u043E 12 \u0446\u0432\u0435\u0442\u043E\u0432.");
+    const result = { name: text(v.name || "\u0421\u0432\u043E\u044F \u043F\u0430\u043B\u0438\u0442\u0440\u0430", 80), colors: v.colors.map(hex) };
+    if (v.backgroundColors !== void 0 || v.objectColors !== void 0) {
+      if (!Array.isArray(v.backgroundColors) || v.backgroundColors.length !== 4 || !Array.isArray(v.objectColors) || v.objectColors.length !== 4) throw new UserError("\u041D\u0443\u0436\u043D\u044B \u0447\u0435\u0442\u044B\u0440\u0435 \u0444\u043E\u043D\u043E\u0432\u044B\u0445 \u0438 \u0447\u0435\u0442\u044B\u0440\u0435 \u043E\u0431\u044A\u0435\u043A\u0442\u043D\u044B\u0445 \u0446\u0432\u0435\u0442\u043E\u0432\u044B\u0445 \u0440\u043E\u043B\u0438.");
+      result.backgroundColors = v.backgroundColors.map(hex);
+      result.objectColors = v.objectColors.map(hex);
+      result.colors = [.../* @__PURE__ */ new Set([...result.backgroundColors, ...result.objectColors])];
+    }
+    if (v.background !== void 0) result.background = hex(v.background);
+    if (v.map !== void 0) {
+      result.map = {};
+      for (const [from, to] of Object.entries(object(v.map))) result.map[hex(from)] = hex(to);
+    }
+    return result;
+  }
+  function validateChoices(value, assets2) {
+    const v = object(value);
+    if (!Array.isArray(v.choices) || !v.choices.length || v.choices.length > 12) throw new UserError("\u041F\u043B\u0430\u043D \u0434\u043E\u043B\u0436\u0435\u043D \u0441\u043E\u0434\u0435\u0440\u0436\u0430\u0442\u044C \u043E\u0442 1 \u0434\u043E 12 \u043F\u043E\u0437\u0438\u0446\u0438\u0439 choices.");
+    let total = 0;
+    const choices = v.choices.map((raw) => {
+      const c = object(raw), assetId = text(c.assetId, 120), count = number(c.count, 1, 12);
+      if (!Number.isInteger(count)) throw new UserError("\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0434\u043E\u043B\u0436\u043D\u043E \u0431\u044B\u0442\u044C \u0446\u0435\u043B\u044B\u043C.");
+      if (!assets2.some((a) => a.id === assetId)) throw new UserError(`\u041E\u0431\u044A\u0435\u043A\u0442\u0430 ${assetId} \u043D\u0435\u0442 \u0432 \u0431\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0435.`);
+      total += count;
+      const result = { assetId, count, reason: text(c.reason || "\u0412\u044B\u0431\u0440\u0430\u043D \u0438\u0437 \u043A\u0430\u0442\u0430\u043B\u043E\u0433\u0430", 500) };
+      if (c.appearance !== void 0) {
+        if (!["main", "background"].includes(String(c.appearance))) throw new UserError("\u041D\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043D\u043E\u0435 \u0441\u043E\u0441\u0442\u043E\u044F\u043D\u0438\u0435 \u043E\u0431\u044A\u0435\u043A\u0442\u0430.");
+        result.appearance = c.appearance;
+      }
+      return result;
+    });
+    if (total > 12) throw new UserError("\u041D\u0435 \u0431\u043E\u043B\u0435\u0435 12 \u043E\u0431\u044A\u0435\u043A\u0442\u043E\u0432 \u0432 \u043E\u0434\u043D\u043E\u0439 \u043A\u043E\u043C\u043F\u043E\u0437\u0438\u0446\u0438\u0438. \u0423\u043C\u0435\u043D\u044C\u0448\u0438\u0442\u0435 \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E.");
+    return choices;
+  }
+  function direct(query, assets2) {
+    if (!query.trim()) throw new UserError("\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u044F \u043A\u043E\u043C\u043F\u043E\u043D\u0435\u043D\u0442\u043E\u0432 \u0447\u0435\u0440\u0435\u0437 \u0437\u0430\u043F\u044F\u0442\u0443\u044E.");
+    const choices = [];
+    for (const item of query.split(/[,;\n]+/).map((s) => s.trim()).filter(Boolean)) {
+      const state = item.match(/\((фон|фоновый|фоновая|главный|главная)\)/i), clean = item.replace(/\((фон|фоновый|фоновая|главный|главная)\)/ig, "").trim();
+      const match = clean.match(/^(.+?)\s*[×x*]\s*(\d+)$/i);
+      const name = normalize(match ? match[1] : clean), count = match ? Number(match[2]) : 1;
+      const exact = assets2.filter((a) => [a.name, a.id, a.familyId ?? "", ...a.synonyms].some((s) => normalize(s) === name));
+      const candidates = exact.length ? exact : assets2.filter((a) => [a.name, ...a.synonyms, ...a.tags].some((s) => normalize(s).includes(name)));
+      if (!candidates.length) throw new UserError(`\xAB${item}\xBB \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D\u043E. \u0414\u043E\u0441\u0442\u0443\u043F\u043D\u044B: ${assets2.slice(0, 8).map((a) => a.name).join(", ") || "\u0431\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0430 \u043F\u0443\u0441\u0442\u0430"}.`);
+      if (candidates.length > 1) throw new UserError(`\xAB${item}\xBB \u043D\u0435\u043E\u0434\u043D\u043E\u0437\u043D\u0430\u0447\u043D\u043E: ${candidates.map((a) => `${a.name} [${a.id}]`).join(", ")}. \u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0442\u043E\u0447\u043D\u043E\u0435 \u0438\u043C\u044F \u0438\u043B\u0438 assetId.`);
+      const choice = { assetId: candidates[0].id, count, reason: `\u041A\u043E\u043C\u043F\u043E\u043D\u0435\u043D\u0442: ${candidates[0].name}` };
+      if (state) choice.appearance = /^фон/i.test(state[1]) ? "background" : "main";
+      choices.push(choice);
+    }
+    return validateChoices({ choices }, assets2);
+  }
+  function eligibleAssets(assets2, config) {
+    const cfg2 = settings(config), wanted = cfg2.appearanceMode === "background" ? "background" : "main";
+    return assets2.filter((a) => !a.familyId || a.detail === cfg2.detail && a.appearance === wanted);
+  }
+  function variant(asset, assets2, detail, appearance) {
+    if (!asset.familyId) return asset;
+    const found = assets2.find((a) => a.familyId === asset.familyId && a.detail === detail && a.appearance === appearance);
+    if (!found) throw new UserError(`\u041D\u0435\u0442 \u0432\u0430\u0440\u0438\u0430\u043D\u0442\u0430 \xAB${asset.name}\xBB: ${detail}, ${appearance === "main" ? "\u0433\u043B\u0430\u0432\u043D\u044B\u0439" : "\u0444\u043E\u043D\u043E\u0432\u044B\u0439"}.`);
+    return found;
+  }
+  function resolveVariants(choices, assets2, config, preserve = false) {
+    const cfg2 = settings(config), result = [];
+    for (const [i, c] of choices.entries()) {
+      const original = assets2.find((a) => a.id === c.assetId);
+      if (!original) throw new UserError("\u041E\u0431\u044A\u0435\u043A\u0442 \u043E\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442 \u0432 \u043A\u0430\u0442\u0430\u043B\u043E\u0433\u0435.");
+      const state = c.appearance ?? (preserve ? original.appearance : void 0) ?? (cfg2.appearanceMode === "background" || cfg2.appearanceMode === "mixed" && i % 2 === 1 ? "background" : "main");
+      const target = variant(original, assets2, cfg2.detail, state), previous = result.find((r) => r.assetId === target.id);
+      if (previous) previous.count += c.count;
+      else result.push({ assetId: target.id, count: c.count, reason: c.reason });
+    }
+    return validateChoices({ choices: result }, assets2);
+  }
+  function rotatedBounds(width, height, degrees) {
+    const r = degrees * Math.PI / 180, c = Math.abs(Math.cos(r)), s = Math.abs(Math.sin(r));
+    return { width: width * c + height * s, height: width * s + height * c };
+  }
+  function validateScene(value, assets2) {
+    const v = object(value);
+    if (v.version !== 1) throw new UserError("\u041D\u0435\u043F\u043E\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u043C\u0430\u044F \u0432\u0435\u0440\u0441\u0438\u044F \u0441\u0446\u0435\u043D\u044B.");
+    const cfg2 = settings(v.settings), choices = validateChoices({ choices: v.choices }, assets2);
+    if (!Array.isArray(v.placements) || !v.placements.length || v.placements.length > 12) throw new UserError("\u041D\u0435\u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u044B\u0435 \u044D\u043A\u0437\u0435\u043C\u043F\u043B\u044F\u0440\u044B \u0441\u0446\u0435\u043D\u044B.");
+    const ids = /* @__PURE__ */ new Set();
+    const placements = v.placements.map((raw) => {
+      const p = object(raw), assetId = text(p.assetId, 120), instanceId = text(p.instanceId, 200);
+      if (!assets2.some((a) => a.id === assetId) || ids.has(instanceId)) throw new UserError("\u041D\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043D\u044B\u0439 \u043E\u0431\u044A\u0435\u043A\u0442 \u0438\u043B\u0438 \u043F\u043E\u0432\u0442\u043E\u0440\u043D\u044B\u0439 instanceId.");
+      ids.add(instanceId);
+      return { assetId, instanceId, cx: number(p.cx, -1e5, 1e5), cy: number(p.cy, -1e5, 1e5), scale: number(p.scale, 0.01, 1e3), rotation: number(p.rotation, -360, 360), z: number(p.z, 0, 100) };
+    });
+    const common = placements[0].scale;
+    if (placements.some((p) => Math.abs(p.scale - common) > common * 2e-3)) throw new UserError("\u041C\u0430\u0441\u0448\u0442\u0430\u0431 \u043E\u0431\u044A\u0435\u043A\u0442\u043E\u0432 \u0440\u0430\u0437\u043B\u0438\u0447\u0430\u0435\u0442\u0441\u044F. \u041F\u0440\u043E\u043F\u043E\u0440\u0446\u0438\u0438 \u043C\u0435\u0436\u0434\u0443 \u043E\u0431\u044A\u0435\u043A\u0442\u0430\u043C\u0438 \u0434\u043E\u043B\u0436\u043D\u044B \u0441\u043E\u0445\u0440\u0430\u043D\u044F\u0442\u044C\u0441\u044F. \u041F\u0435\u0440\u0435\u0441\u043E\u0431\u0435\u0440\u0438\u0442\u0435 \u0441\u0446\u0435\u043D\u0443.");
+    if (placements.some((p) => {
+      const a = assets2.find((a2) => a2.id === p.assetId);
+      return a.detail && a.detail !== cfg2.detail;
+    })) throw new UserError("\u0421\u0446\u0435\u043D\u0430 \u0441\u043E\u0434\u0435\u0440\u0436\u0438\u0442 \u043E\u0431\u044A\u0435\u043A\u0442\u044B \u0434\u0440\u0443\u0433\u043E\u0439 \u0434\u0435\u0442\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u0438.");
+    const declared = /* @__PURE__ */ new Map(), actual = /* @__PURE__ */ new Map();
+    for (const c of choices) declared.set(c.assetId, (declared.get(c.assetId) ?? 0) + c.count);
+    for (const p of placements) actual.set(p.assetId, (actual.get(p.assetId) ?? 0) + 1);
+    if (declared.size !== actual.size || [...declared].some(([id, count]) => actual.get(id) !== count)) throw new UserError("\u041F\u043B\u0430\u043D \u0438 \u044D\u043A\u0437\u0435\u043C\u043F\u043B\u044F\u0440\u044B \u0441\u0446\u0435\u043D\u044B \u043D\u0435 \u0441\u043E\u0432\u043F\u0430\u0434\u0430\u044E\u0442.");
+    return { version: 1, settings: cfg2, query: text(v.query), choices, placements, palette: v.palette === null ? null : palette(v.palette) };
+  }
+
+  // src/schemes.ts
+  var SCHEMES = {
+    violet: { name: "\u0421\u0445\u0435\u043C\u0430 1 \xB7 \u0441\u0438\u0440\u0435\u043D\u0435\u0432\u0430\u044F", colors: [], backgroundColors: ["#D7CDF5", "#AA9BF0", "#7864D7", "#181817"], objectColors: ["#F9ECB0", "#F9A3AA", "#FFE3E1", "#FFFFFF"] },
+    peach: { name: "\u0421\u0445\u0435\u043C\u0430 2 \xB7 \u043F\u0435\u0440\u0441\u0438\u043A\u043E\u0432\u0430\u044F", colors: [], backgroundColors: ["#FDD7B9", "#FAC896", "#D27532", "#181817"], objectColors: ["#F9ECB0", "#80DADA", "#BEEBEB", "#FFFFFF"] },
+    turquoise: { name: "\u0421\u0445\u0435\u043C\u0430 3 \xB7 \u0431\u0438\u0440\u044E\u0437\u043E\u0432\u0430\u044F", colors: [], backgroundColors: ["#BEEBEB", "#80DADA", "#5ABEBE", "#181817"], objectColors: ["#FFD4F2", "#6D7BFC", "#B6C6FE", "#FFFFFF"] }
+  };
+  for (const p of Object.values(SCHEMES)) p.colors = [.../* @__PURE__ */ new Set([...p.backgroundColors, ...p.objectColors])];
+  function scheme(value) {
+    const v = object(value);
+    const slots = (key) => {
+      const list = v[key];
+      if (!Array.isArray(list) || list.length !== 4) throw new UserError(`${key}: \u043D\u0443\u0436\u043D\u044B \u0447\u0435\u0442\u044B\u0440\u0435 HEX-\u0446\u0432\u0435\u0442\u0430 \u043F\u043E \u0438\u0441\u0445\u043E\u0434\u043D\u044B\u043C \u0446\u0432\u0435\u0442\u043E\u0432\u044B\u043C \u0440\u043E\u043B\u044F\u043C.`);
+      return list.map(hex);
+    };
+    const backgroundColors = slots("backgroundColors"), objectColors = slots("objectColors");
+    const hue = (color) => {
+      const rgb = [1, 3, 5].map((i) => parseInt(color.slice(i, i + 2), 16) / 255), max = Math.max(...rgb), min = Math.min(...rgb), delta = max - min;
+      if (delta < 0.08) return null;
+      let h = max === rgb[0] ? (rgb[1] - rgb[2]) / delta : max === rgb[1] ? (rgb[2] - rgb[0]) / delta + 2 : (rgb[0] - rgb[1]) / delta + 4;
+      return (h * 60 + 360) % 360;
+    };
+    const hues = backgroundColors.map(hue).filter((h) => h !== null);
+    if (hues.some((h) => Math.min(Math.abs(h - hues[0]), 360 - Math.abs(h - hues[0])) > 18)) throw new UserError("\u0424\u043E\u043D\u043E\u0432\u044B\u0435 \u0446\u0432\u0435\u0442\u0430 \u0434\u043E\u043B\u0436\u043D\u044B \u0431\u044B\u0442\u044C \u043C\u043E\u043D\u043E\u0445\u0440\u043E\u043C\u043D\u044B\u043C\u0438: \u043E\u0442\u0442\u0435\u043D\u043A\u0438 \u043E\u0434\u043D\u043E\u0433\u043E \u0442\u043E\u043D\u0430 \u0438 \u043D\u0435\u0439\u0442\u0440\u0430\u043B\u044C\u043D\u044B\u0435 \u0446\u0432\u0435\u0442\u0430.");
+    const colors = [.../* @__PURE__ */ new Set([...backgroundColors, ...objectColors])];
+    const parsed = palette({ name: text(v.name || "\u0421\u0432\u043E\u044F \u0441\u0445\u0435\u043C\u0430", 80), colors, ...v.background === void 0 ? {} : { background: v.background } });
+    if (parsed.background && !backgroundColors.includes(parsed.background)) throw new UserError("\u0424\u043E\u043D \u0445\u043E\u043B\u0441\u0442\u0430 \u043C\u043E\u0436\u0435\u0442 \u0438\u0441\u043F\u043E\u043B\u044C\u0437\u043E\u0432\u0430\u0442\u044C \u0442\u043E\u043B\u044C\u043A\u043E \u0444\u043E\u043D\u043E\u0432\u044B\u0435 \u0446\u0432\u0435\u0442\u0430 \u0441\u0445\u0435\u043C\u044B.");
+    if (v.map !== void 0) throw new UserError("\u0418\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439\u0442\u0435 \u0446\u0432\u0435\u0442\u043E\u0432\u044B\u0435 \u0440\u043E\u043B\u0438 backgroundColors/objectColors \u0432\u043C\u0435\u0441\u0442\u043E \u043F\u0440\u043E\u0438\u0437\u0432\u043E\u043B\u044C\u043D\u043E\u0439 map.");
+    return { ...parsed, backgroundColors, objectColors };
+  }
+  function roleColorTable(p, state) {
+    const target = scheme(p), base = SCHEMES.violet;
+    const source = [...base.backgroundColors, ...base.objectColors], colors = [...target.backgroundColors, ...target.objectColors];
+    const table = Object.fromEntries(source.map((c, i) => [c, colors[i]]));
+    if (state === "background") for (const c of base.objectColors) delete table[c];
+    return table;
+  }
+
+  // src/svg.ts
+  function validateSvg(svg) {
+    if (svg.length > 2e6) throw new UserError("SVG \u0441\u043B\u0438\u0448\u043A\u043E\u043C \u0431\u043E\u043B\u044C\u0448\u043E\u0439: \u043F\u0440\u0435\u0434\u0435\u043B 2 \u041C\u0411.");
+    if (/<!DOCTYPE|<!ENTITY/i.test(svg)) throw new UserError("SVG \u0441 DTD \u0438 \u0441\u0443\u0449\u043D\u043E\u0441\u0442\u044F\u043C\u0438 \u043D\u0435 \u043F\u043E\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u0442\u0441\u044F.");
+    const doc = new DOMParser().parseFromString(svg, "image/svg+xml");
+    if (doc.querySelector("parsererror") || doc.documentElement.localName !== "svg") throw new UserError("\u041D\u0435 \u0443\u0434\u0430\u043B\u043E\u0441\u044C \u043F\u0440\u043E\u0447\u0438\u0442\u0430\u0442\u044C SVG.");
+    const ids = /* @__PURE__ */ new Set(), references = [];
+    const allowed = /* @__PURE__ */ new Set(["svg", "g", "path", "rect", "circle", "ellipse", "line", "polyline", "polygon", "defs", "linearGradient", "radialGradient", "stop", "clipPath", "mask", "use", "title", "desc", "metadata"]);
+    for (const el of Array.from(doc.querySelectorAll("*"))) {
+      if (!allowed.has(el.localName)) throw new UserError(`SVG \u0441\u043E\u0434\u0435\u0440\u0436\u0438\u0442 \u043D\u0435\u043F\u043E\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u043C\u044B\u0439 \u044D\u043B\u0435\u043C\u0435\u043D\u0442 ${el.localName}. \u0422\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044F \u0430\u0432\u0442\u043E\u043D\u043E\u043C\u043D\u044B\u0439 \u0432\u0435\u043A\u0442\u043E\u0440 \u0431\u0435\u0437 \u0440\u0430\u0441\u0442\u0440\u0430, \u0442\u0435\u043A\u0441\u0442\u0430 \u0438 \u0444\u0438\u043B\u044C\u0442\u0440\u043E\u0432.`);
+      if (el.id) {
+        if (ids.has(el.id)) throw new UserError(`SVG \u0441\u043E\u0434\u0435\u0440\u0436\u0438\u0442 \u043F\u043E\u0432\u0442\u043E\u0440\u043D\u044B\u0439 id: ${el.id}.`);
+        ids.add(el.id);
+      }
+      for (const attr of Array.from(el.attributes)) {
+        if (/^on/i.test(attr.localName)) throw new UserError("SVG \u0441\u043E\u0434\u0435\u0440\u0436\u0438\u0442 \u043E\u0431\u0440\u0430\u0431\u043E\u0442\u0447\u0438\u043A\u0438 \u0441\u043E\u0431\u044B\u0442\u0438\u0439.");
+        if (attr.localName === "href") {
+          if (!attr.value.startsWith("#")) throw new UserError("\u0412\u043D\u0435\u0448\u043D\u0438\u0435 \u0440\u0435\u0441\u0443\u0440\u0441\u044B \u0432 SVG \u0437\u0430\u043F\u0440\u0435\u0449\u0435\u043D\u044B.");
+          references.push(attr.value.slice(1));
+        }
+        if (/@import|javascript:|data:|https?:|\/\//i.test(attr.value) && !["xmlns", "xmlns:xlink"].includes(attr.name)) throw new UserError("SVG \u0441\u043E\u0434\u0435\u0440\u0436\u0438\u0442 \u0432\u043D\u0435\u0448\u043D\u0438\u0435 \u0440\u0435\u0441\u0443\u0440\u0441\u044B \u0438\u043B\u0438 \u0432\u0441\u0442\u0440\u043E\u0435\u043D\u043D\u044B\u0435 \u0434\u0430\u043D\u043D\u044B\u0435.");
+        if (/url\s*\(/i.test(attr.value)) {
+          const urls = [...attr.value.matchAll(/url\s*\(\s*['"]?([^)'"\s]+)['"]?\s*\)/gi)];
+          if (!urls.length) throw new UserError("\u041D\u0435\u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u0430\u044F \u0441\u0441\u044B\u043B\u043A\u0430 url() \u0432 SVG.");
+          for (const url of urls) {
+            if (!url[1].startsWith("#")) throw new UserError("\u0412\u043D\u0435\u0448\u043D\u0438\u0435 url() \u0432 SVG \u0437\u0430\u043F\u0440\u0435\u0449\u0435\u043D\u044B.");
+            references.push(url[1].slice(1));
+          }
+        }
+      }
+    }
+    for (const ref of references) if (!ids.has(ref)) throw new UserError(`SVG \u0441\u0441\u044B\u043B\u0430\u0435\u0442\u0441\u044F \u043D\u0430 \u043E\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u044E\u0449\u0438\u0439 id: ${ref}.`);
+    return doc;
+  }
+
+  // ../../node_modules/fflate/esm/browser.js
+  var u8 = Uint8Array;
+  var u16 = Uint16Array;
+  var i32 = Int32Array;
+  var fleb = new u8([
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    2,
+    2,
+    2,
+    2,
+    3,
+    3,
+    3,
+    3,
+    4,
+    4,
+    4,
+    4,
+    5,
+    5,
+    5,
+    5,
+    0,
+    /* unused */
+    0,
+    0,
+    /* impossible */
+    0
+  ]);
+  var fdeb = new u8([
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    2,
+    2,
+    3,
+    3,
+    4,
+    4,
+    5,
+    5,
+    6,
+    6,
+    7,
+    7,
+    8,
+    8,
+    9,
+    9,
+    10,
+    10,
+    11,
+    11,
+    12,
+    12,
+    13,
+    13,
+    /* unused */
+    0,
+    0
+  ]);
+  var clim = new u8([16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15]);
+  var freb = function(eb, start) {
+    var b = new u16(31);
+    for (var i = 0; i < 31; ++i) {
+      b[i] = start += 1 << eb[i - 1];
+    }
+    var r = new i32(b[30]);
+    for (var i = 1; i < 30; ++i) {
+      for (var j = b[i]; j < b[i + 1]; ++j) {
+        r[j] = j - b[i] << 5 | i;
+      }
+    }
+    return { b, r };
+  };
+  var _a = freb(fleb, 2);
+  var fl = _a.b;
+  var revfl = _a.r;
+  fl[28] = 258, revfl[258] = 28;
+  var _b = freb(fdeb, 0);
+  var fd = _b.b;
+  var revfd = _b.r;
+  var rev = new u16(32768);
+  for (i = 0; i < 32768; ++i) {
+    x = (i & 43690) >> 1 | (i & 21845) << 1;
+    x = (x & 52428) >> 2 | (x & 13107) << 2;
+    x = (x & 61680) >> 4 | (x & 3855) << 4;
+    rev[i] = ((x & 65280) >> 8 | (x & 255) << 8) >> 1;
+  }
+  var x;
+  var i;
+  var hMap = (function(cd, mb, r) {
+    var s = cd.length;
+    var i = 0;
+    var l = new u16(mb);
+    for (; i < s; ++i) {
+      if (cd[i])
+        ++l[cd[i] - 1];
+    }
+    var le = new u16(mb);
+    for (i = 1; i < mb; ++i) {
+      le[i] = le[i - 1] + l[i - 1] << 1;
+    }
+    var co;
+    if (r) {
+      co = new u16(1 << mb);
+      var rvb = 15 - mb;
+      for (i = 0; i < s; ++i) {
+        if (cd[i]) {
+          var sv = i << 4 | cd[i];
+          var r_1 = mb - cd[i];
+          var v = le[cd[i] - 1]++ << r_1;
+          for (var m = v | (1 << r_1) - 1; v <= m; ++v) {
+            co[rev[v] >> rvb] = sv;
+          }
+        }
+      }
+    } else {
+      co = new u16(s);
+      for (i = 0; i < s; ++i) {
+        if (cd[i]) {
+          co[i] = rev[le[cd[i] - 1]++] >> 15 - cd[i];
+        }
+      }
+    }
+    return co;
+  });
+  var flt = new u8(288);
+  for (i = 0; i < 144; ++i)
+    flt[i] = 8;
+  var i;
+  for (i = 144; i < 256; ++i)
+    flt[i] = 9;
+  var i;
+  for (i = 256; i < 280; ++i)
+    flt[i] = 7;
+  var i;
+  for (i = 280; i < 288; ++i)
+    flt[i] = 8;
+  var i;
+  var fdt = new u8(32);
+  for (i = 0; i < 32; ++i)
+    fdt[i] = 5;
+  var i;
+  var flm = /* @__PURE__ */ hMap(flt, 9, 0);
+  var fdm = /* @__PURE__ */ hMap(fdt, 5, 0);
+  var shft = function(p) {
+    return (p + 7) / 8 | 0;
+  };
+  var slc = function(v, s, e) {
+    if (s == null || s < 0)
+      s = 0;
+    if (e == null || e > v.length)
+      e = v.length;
+    return new u8(v.subarray(s, e));
+  };
+  var ec = [
+    "unexpected EOF",
+    "invalid block type",
+    "invalid length/literal",
+    "invalid distance",
+    "stream finished",
+    "no stream handler",
+    ,
+    // determined by compression function
+    "no callback",
+    "invalid UTF-8 data",
+    "extra field too long",
+    "date not in range 1980-2099",
+    "filename too long",
+    "stream finishing",
+    "invalid zip data"
+    // determined by unknown compression method
+  ];
+  var err = function(ind, msg, nt) {
+    var e = new Error(msg || ec[ind]);
+    e.code = ind;
+    if (Error.captureStackTrace)
+      Error.captureStackTrace(e, err);
+    if (!nt)
+      throw e;
+    return e;
+  };
+  var wbits = function(d, p, v) {
+    v <<= p & 7;
+    var o = p / 8 | 0;
+    d[o] |= v;
+    d[o + 1] |= v >> 8;
+  };
+  var wbits16 = function(d, p, v) {
+    v <<= p & 7;
+    var o = p / 8 | 0;
+    d[o] |= v;
+    d[o + 1] |= v >> 8;
+    d[o + 2] |= v >> 16;
+  };
+  var hTree = function(d, mb) {
+    var t = [];
+    for (var i = 0; i < d.length; ++i) {
+      if (d[i])
+        t.push({ s: i, f: d[i] });
+    }
+    var s = t.length;
+    var t2 = t.slice();
+    if (!s)
+      return { t: et, l: 0 };
+    if (s == 1) {
+      var v = new u8(t[0].s + 1);
+      v[t[0].s] = 1;
+      return { t: v, l: 1 };
+    }
+    t.sort(function(a, b) {
+      return a.f - b.f;
+    });
+    t.push({ s: -1, f: 25001 });
+    var l = t[0], r = t[1], i0 = 0, i1 = 1, i2 = 2;
+    t[0] = { s: -1, f: l.f + r.f, l, r };
+    while (i1 != s - 1) {
+      l = t[t[i0].f < t[i2].f ? i0++ : i2++];
+      r = t[i0 != i1 && t[i0].f < t[i2].f ? i0++ : i2++];
+      t[i1++] = { s: -1, f: l.f + r.f, l, r };
+    }
+    var maxSym = t2[0].s;
+    for (var i = 1; i < s; ++i) {
+      if (t2[i].s > maxSym)
+        maxSym = t2[i].s;
+    }
+    var tr = new u16(maxSym + 1);
+    var mbt = ln(t[i1 - 1], tr, 0);
+    if (mbt > mb) {
+      var i = 0, dt = 0;
+      var lft = mbt - mb, cst = 1 << lft;
+      t2.sort(function(a, b) {
+        return tr[b.s] - tr[a.s] || a.f - b.f;
+      });
+      for (; i < s; ++i) {
+        var i2_1 = t2[i].s;
+        if (tr[i2_1] > mb) {
+          dt += cst - (1 << mbt - tr[i2_1]);
+          tr[i2_1] = mb;
+        } else
+          break;
+      }
+      dt >>= lft;
+      while (dt > 0) {
+        var i2_2 = t2[i].s;
+        if (tr[i2_2] < mb)
+          dt -= 1 << mb - tr[i2_2]++ - 1;
+        else
+          ++i;
+      }
+      for (; i >= 0 && dt; --i) {
+        var i2_3 = t2[i].s;
+        if (tr[i2_3] == mb) {
+          --tr[i2_3];
+          ++dt;
+        }
+      }
+      mbt = mb;
+    }
+    return { t: new u8(tr), l: mbt };
+  };
+  var ln = function(n, l, d) {
+    return n.s == -1 ? Math.max(ln(n.l, l, d + 1), ln(n.r, l, d + 1)) : l[n.s] = d;
+  };
+  var lc = function(c) {
+    var s = c.length;
+    while (s && !c[--s])
+      ;
+    var cl = new u16(++s);
+    var cli = 0, cln = c[0], cls = 1;
+    var w = function(v) {
+      cl[cli++] = v;
+    };
+    for (var i = 1; i <= s; ++i) {
+      if (c[i] == cln && i != s)
+        ++cls;
+      else {
+        if (!cln && cls > 2) {
+          for (; cls > 138; cls -= 138)
+            w(32754);
+          if (cls > 2) {
+            w(cls > 10 ? cls - 11 << 5 | 28690 : cls - 3 << 5 | 12305);
+            cls = 0;
+          }
+        } else if (cls > 3) {
+          w(cln), --cls;
+          for (; cls > 6; cls -= 6)
+            w(8304);
+          if (cls > 2)
+            w(cls - 3 << 5 | 8208), cls = 0;
+        }
+        while (cls--)
+          w(cln);
+        cls = 1;
+        cln = c[i];
+      }
+    }
+    return { c: cl.subarray(0, cli), n: s };
+  };
+  var clen = function(cf, cl) {
+    var l = 0;
+    for (var i = 0; i < cl.length; ++i)
+      l += cf[i] * cl[i];
+    return l;
+  };
+  var wfblk = function(out, pos, dat) {
+    var s = dat.length;
+    var o = shft(pos + 2);
+    out[o] = s & 255;
+    out[o + 1] = s >> 8;
+    out[o + 2] = out[o] ^ 255;
+    out[o + 3] = out[o + 1] ^ 255;
+    for (var i = 0; i < s; ++i)
+      out[o + i + 4] = dat[i];
+    return (o + 4 + s) * 8;
+  };
+  var wblk = function(dat, out, final, syms, lf, df, eb, li, bs, bl, p) {
+    wbits(out, p++, final);
+    ++lf[256];
+    var _a2 = hTree(lf, 15), dlt = _a2.t, mlb = _a2.l;
+    var _b2 = hTree(df, 15), ddt = _b2.t, mdb = _b2.l;
+    var _c = lc(dlt), lclt = _c.c, nlc = _c.n;
+    var _d = lc(ddt), lcdt = _d.c, ndc = _d.n;
+    var lcfreq = new u16(19);
+    for (var i = 0; i < lclt.length; ++i)
+      ++lcfreq[lclt[i] & 31];
+    for (var i = 0; i < lcdt.length; ++i)
+      ++lcfreq[lcdt[i] & 31];
+    var _e = hTree(lcfreq, 7), lct = _e.t, mlcb = _e.l;
+    var nlcc = 19;
+    for (; nlcc > 4 && !lct[clim[nlcc - 1]]; --nlcc)
+      ;
+    var flen = bl + 5 << 3;
+    var ftlen = clen(lf, flt) + clen(df, fdt) + eb;
+    var dtlen = clen(lf, dlt) + clen(df, ddt) + eb + 14 + 3 * nlcc + clen(lcfreq, lct) + 2 * lcfreq[16] + 3 * lcfreq[17] + 7 * lcfreq[18];
+    if (bs >= 0 && flen <= ftlen && flen <= dtlen)
+      return wfblk(out, p, dat.subarray(bs, bs + bl));
+    var lm, ll, dm, dl;
+    wbits(out, p, 1 + (dtlen < ftlen)), p += 2;
+    if (dtlen < ftlen) {
+      lm = hMap(dlt, mlb, 0), ll = dlt, dm = hMap(ddt, mdb, 0), dl = ddt;
+      var llm = hMap(lct, mlcb, 0);
+      wbits(out, p, nlc - 257);
+      wbits(out, p + 5, ndc - 1);
+      wbits(out, p + 10, nlcc - 4);
+      p += 14;
+      for (var i = 0; i < nlcc; ++i)
+        wbits(out, p + 3 * i, lct[clim[i]]);
+      p += 3 * nlcc;
+      var lcts = [lclt, lcdt];
+      for (var it = 0; it < 2; ++it) {
+        var clct = lcts[it];
+        for (var i = 0; i < clct.length; ++i) {
+          var len = clct[i] & 31;
+          wbits(out, p, llm[len]), p += lct[len];
+          if (len > 15)
+            wbits(out, p, clct[i] >> 5 & 127), p += clct[i] >> 12;
+        }
+      }
+    } else {
+      lm = flm, ll = flt, dm = fdm, dl = fdt;
+    }
+    for (var i = 0; i < li; ++i) {
+      var sym = syms[i];
+      if (sym > 255) {
+        var len = sym >> 18 & 31;
+        wbits16(out, p, lm[len + 257]), p += ll[len + 257];
+        if (len > 7)
+          wbits(out, p, sym >> 23 & 31), p += fleb[len];
+        var dst = sym & 31;
+        wbits16(out, p, dm[dst]), p += dl[dst];
+        if (dst > 3)
+          wbits16(out, p, sym >> 5 & 8191), p += fdeb[dst];
+      } else {
+        wbits16(out, p, lm[sym]), p += ll[sym];
+      }
+    }
+    wbits16(out, p, lm[256]);
+    return p + ll[256];
+  };
+  var deo = /* @__PURE__ */ new i32([65540, 131080, 131088, 131104, 262176, 1048704, 1048832, 2114560, 2117632]);
+  var et = /* @__PURE__ */ new u8(0);
+  var dflt = function(dat, lvl, plvl, pre, post, st) {
+    var s = st.z || dat.length;
+    var o = new u8(pre + s + 5 * (1 + Math.ceil(s / 7e3)) + post);
+    var w = o.subarray(pre, o.length - post);
+    var lst = st.l;
+    var pos = (st.r || 0) & 7;
+    if (lvl) {
+      if (pos)
+        w[0] = st.r >> 3;
+      var opt = deo[lvl - 1];
+      var n = opt >> 13, c = opt & 8191;
+      var msk_1 = (1 << plvl) - 1;
+      var prev = st.p || new u16(32768), head = st.h || new u16(msk_1 + 1);
+      var bs1_1 = Math.ceil(plvl / 3), bs2_1 = 2 * bs1_1;
+      var hsh = function(i2) {
+        return (dat[i2] ^ dat[i2 + 1] << bs1_1 ^ dat[i2 + 2] << bs2_1) & msk_1;
+      };
+      var syms = new i32(25e3);
+      var lf = new u16(288), df = new u16(32);
+      var lc_1 = 0, eb = 0, i = st.i || 0, li = 0, wi = st.w || 0, bs = 0;
+      for (; i + 2 < s; ++i) {
+        var hv = hsh(i);
+        var imod = i & 32767, pimod = head[hv];
+        prev[imod] = pimod;
+        head[hv] = imod;
+        if (wi <= i) {
+          var rem = s - i;
+          if ((lc_1 > 7e3 || li > 24576) && (rem > 423 || !lst)) {
+            pos = wblk(dat, w, 0, syms, lf, df, eb, li, bs, i - bs, pos);
+            li = lc_1 = eb = 0, bs = i;
+            for (var j = 0; j < 286; ++j)
+              lf[j] = 0;
+            for (var j = 0; j < 30; ++j)
+              df[j] = 0;
+          }
+          var l = 2, d = 0, ch_1 = c, dif = imod - pimod & 32767;
+          if (rem > 2 && hv == hsh(i - dif)) {
+            var maxn = Math.min(n, rem) - 1;
+            var maxd = Math.min(32767, i);
+            var ml = Math.min(258, rem);
+            while (dif <= maxd && --ch_1 && imod != pimod) {
+              if (dat[i + l] == dat[i + l - dif]) {
+                var nl = 0;
+                for (; nl < ml && dat[i + nl] == dat[i + nl - dif]; ++nl)
+                  ;
+                if (nl > l) {
+                  l = nl, d = dif;
+                  if (nl > maxn)
+                    break;
+                  var mmd = Math.min(dif, nl - 2);
+                  var md = 0;
+                  for (var j = 0; j < mmd; ++j) {
+                    var ti = i - dif + j & 32767;
+                    var pti = prev[ti];
+                    var cd = ti - pti & 32767;
+                    if (cd > md)
+                      md = cd, pimod = ti;
+                  }
+                }
+              }
+              imod = pimod, pimod = prev[imod];
+              dif += imod - pimod & 32767;
+            }
+          }
+          if (d) {
+            syms[li++] = 268435456 | revfl[l] << 18 | revfd[d];
+            var lin = revfl[l] & 31, din = revfd[d] & 31;
+            eb += fleb[lin] + fdeb[din];
+            ++lf[257 + lin];
+            ++df[din];
+            wi = i + l;
+            ++lc_1;
+          } else {
+            syms[li++] = dat[i];
+            ++lf[dat[i]];
+          }
+        }
+      }
+      for (i = Math.max(i, wi); i < s; ++i) {
+        syms[li++] = dat[i];
+        ++lf[dat[i]];
+      }
+      pos = wblk(dat, w, lst, syms, lf, df, eb, li, bs, i - bs, pos);
+      if (!lst) {
+        st.r = pos & 7 | w[pos / 8 | 0] << 3;
+        pos -= 7;
+        st.h = head, st.p = prev, st.i = i, st.w = wi;
+      }
+    } else {
+      for (var i = st.w || 0; i < s + lst; i += 65535) {
+        var e = i + 65535;
+        if (e >= s) {
+          w[pos / 8 | 0] = lst;
+          e = s;
+        }
+        pos = wfblk(w, pos + 1, dat.subarray(i, e));
+      }
+      st.i = s;
+    }
+    return slc(o, 0, pre + shft(pos) + post);
+  };
+  var crct = /* @__PURE__ */ (function() {
+    var t = new Int32Array(256);
+    for (var i = 0; i < 256; ++i) {
+      var c = i, k = 9;
+      while (--k)
+        c = (c & 1 && -306674912) ^ c >>> 1;
+      t[i] = c;
+    }
+    return t;
+  })();
+  var crc = function() {
+    var c = -1;
+    return {
+      p: function(d) {
+        var cr = c;
+        for (var i = 0; i < d.length; ++i)
+          cr = crct[cr & 255 ^ d[i]] ^ cr >>> 8;
+        c = cr;
+      },
+      d: function() {
+        return ~c;
+      }
+    };
+  };
+  var dopt = function(dat, opt, pre, post, st) {
+    if (!st) {
+      st = { l: 1 };
+      if (opt.dictionary) {
+        var dict = opt.dictionary.subarray(-32768);
+        var newDat = new u8(dict.length + dat.length);
+        newDat.set(dict);
+        newDat.set(dat, dict.length);
+        dat = newDat;
+        st.w = dict.length;
+      }
+    }
+    return dflt(dat, opt.level == null ? 6 : opt.level, opt.mem == null ? st.l ? Math.ceil(Math.max(8, Math.min(13, Math.log(dat.length))) * 1.5) : 20 : 12 + opt.mem, pre, post, st);
+  };
+  var mrg = function(a, b) {
+    var o = {};
+    for (var k in a)
+      o[k] = a[k];
+    for (var k in b)
+      o[k] = b[k];
+    return o;
+  };
+  var wbytes = function(d, b, v) {
+    for (; v; ++b)
+      d[b] = v, v >>>= 8;
+  };
+  function deflateSync(data, opts) {
+    return dopt(data, opts || {}, 0, 0);
+  }
+  var fltn = function(d, p, t, o) {
+    for (var k in d) {
+      var val = d[k], n = p + k, op = o;
+      if (Array.isArray(val))
+        op = mrg(o, val[1]), val = val[0];
+      if (ArrayBuffer.isView(val))
+        t[n] = [val, op];
+      else {
+        t[n += "/"] = [new u8(0), op];
+        fltn(val, n, t, o);
+      }
+    }
+  };
+  var te = typeof TextEncoder != "undefined" && /* @__PURE__ */ new TextEncoder();
+  var td = typeof TextDecoder != "undefined" && /* @__PURE__ */ new TextDecoder();
+  var tds = 0;
+  try {
+    td.decode(et, { stream: true });
+    tds = 1;
+  } catch (e) {
+  }
+  function strToU8(str, latin1) {
+    if (latin1) {
+      var ar_1 = new u8(str.length);
+      for (var i = 0; i < str.length; ++i)
+        ar_1[i] = str.charCodeAt(i);
+      return ar_1;
+    }
+    if (te)
+      return te.encode(str);
+    var l = str.length;
+    var ar = new u8(str.length + (str.length >> 1));
+    var ai2 = 0;
+    var w = function(v) {
+      ar[ai2++] = v;
+    };
+    for (var i = 0; i < l; ++i) {
+      if (ai2 + 5 > ar.length) {
+        var n = new u8(ai2 + 8 + (l - i << 1));
+        n.set(ar);
+        ar = n;
+      }
+      var c = str.charCodeAt(i);
+      if (c < 128 || latin1)
+        w(c);
+      else if (c < 2048)
+        w(192 | c >> 6), w(128 | c & 63);
+      else if (c > 55295 && c < 57344)
+        c = 65536 + (c & 1023 << 10) | str.charCodeAt(++i) & 1023, w(240 | c >> 18), w(128 | c >> 12 & 63), w(128 | c >> 6 & 63), w(128 | c & 63);
+      else
+        w(224 | c >> 12), w(128 | c >> 6 & 63), w(128 | c & 63);
+    }
+    return slc(ar, 0, ai2);
+  }
+  var exfl = function(ex) {
+    var le = 0;
+    if (ex) {
+      for (var k in ex) {
+        var l = ex[k].length;
+        if (l > 65535)
+          err(9);
+        le += l + 4;
+      }
+    }
+    return le;
+  };
+  var wzh = function(d, b, f, fn, u, c, ce, co) {
+    var fl2 = fn.length, ex = f.extra, col = co && co.length;
+    var exl = exfl(ex);
+    wbytes(d, b, ce != null ? 33639248 : 67324752), b += 4;
+    if (ce != null)
+      d[b++] = 20, d[b++] = f.os;
+    d[b] = 20, b += 2;
+    d[b++] = f.flag << 1 | (c < 0 && 8), d[b++] = u && 8;
+    d[b++] = f.compression & 255, d[b++] = f.compression >> 8;
+    var dt = new Date(f.mtime == null ? Date.now() : f.mtime), y = dt.getFullYear() - 1980;
+    if (y < 0 || y > 119)
+      err(10);
+    wbytes(d, b, y << 25 | dt.getMonth() + 1 << 21 | dt.getDate() << 16 | dt.getHours() << 11 | dt.getMinutes() << 5 | dt.getSeconds() >> 1), b += 4;
+    if (c != -1) {
+      wbytes(d, b, f.crc);
+      wbytes(d, b + 4, c < 0 ? -c - 2 : c);
+      wbytes(d, b + 8, f.size);
+    }
+    wbytes(d, b + 12, fl2);
+    wbytes(d, b + 14, exl), b += 16;
+    if (ce != null) {
+      wbytes(d, b, col);
+      wbytes(d, b + 6, f.attrs);
+      wbytes(d, b + 10, ce), b += 14;
+    }
+    d.set(fn, b);
+    b += fl2;
+    if (exl) {
+      for (var k in ex) {
+        var exf = ex[k], l = exf.length;
+        wbytes(d, b, +k);
+        wbytes(d, b + 2, l);
+        d.set(exf, b + 4), b += 4 + l;
+      }
+    }
+    if (col)
+      d.set(co, b), b += col;
+    return b;
+  };
+  var wzf = function(o, b, c, d, e) {
+    wbytes(o, b, 101010256);
+    wbytes(o, b + 8, c);
+    wbytes(o, b + 10, c);
+    wbytes(o, b + 12, d);
+    wbytes(o, b + 16, e);
+  };
+  function zipSync(data, opts) {
+    if (!opts)
+      opts = {};
+    var r = {};
+    var files = [];
+    fltn(data, "", r, opts);
+    var o = 0;
+    var tot = 0;
+    for (var fn in r) {
+      var _a2 = r[fn], file = _a2[0], p = _a2[1];
+      var compression = p.level == 0 ? 0 : 8;
+      var f = strToU8(fn), s = f.length;
+      var com = p.comment, m = com && strToU8(com), ms = m && m.length;
+      var exl = exfl(p.extra);
+      if (s > 65535)
+        err(11);
+      var d = compression ? deflateSync(file, p) : file, l = d.length;
+      var c = crc();
+      c.p(file);
+      files.push(mrg(p, {
+        size: file.length,
+        crc: c.d(),
+        c: d,
+        f,
+        m,
+        u: s != fn.length || m && com.length != ms,
+        o,
+        compression
+      }));
+      o += 30 + s + exl + l;
+      tot += 76 + 2 * (s + exl) + (ms || 0) + l;
+    }
+    var out = new u8(tot + 22), oe = o, cdl = tot - o;
+    for (var i = 0; i < files.length; ++i) {
+      var f = files[i];
+      wzh(out, f.o, f, f.f, f.u, f.c.length);
+      var badd = 30 + f.f.length + exfl(f.extra);
+      out.set(f.c, f.o + badd);
+      wzh(out, o, f, f.f, f.u, f.c.length, f.o, f.m), o += 16 + badd + (f.m ? f.m.length : 0);
+    }
+    wzf(out, o, files.length, cdl, oe);
+    return out;
+  }
+
+  // src/ai-plan.ts
+  function aiScene(raw, assets2, config, query, p, required = []) {
+    const cfg2 = settings(config), value = object(raw), summary = text(value.summary, 500);
+    if (Object.keys(value).some((k) => !["summary", "items"].includes(k))) throw new UserError("AI \u0432\u0435\u0440\u043D\u0443\u043B\u0430 \u043D\u0435\u043F\u043E\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u043C\u044B\u0435 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B \u043F\u043B\u0430\u043D\u0430.");
+    if (!summary || !Array.isArray(value.items) || value.items.length < 1 || value.items.length > 12) throw new UserError("AI \u0432\u0435\u0440\u043D\u0443\u043B\u0430 \u043F\u0443\u0441\u0442\u043E\u0439 \u0438\u043B\u0438 \u0441\u043B\u0438\u0448\u043A\u043E\u043C \u0431\u043E\u043B\u044C\u0448\u043E\u0439 \u043F\u043B\u0430\u043D.");
+    const number2 = (v, min, max) => {
+      if (typeof v !== "number" || !Number.isFinite(v) || v < min || v > max) throw new UserError("AI \u0432\u0435\u0440\u043D\u0443\u043B\u0430 \u043D\u0435\u0434\u043E\u043F\u0443\u0441\u0442\u0438\u043C\u044B\u0435 \u043A\u043E\u043E\u0440\u0434\u0438\u043D\u0430\u0442\u044B \u0438\u043B\u0438 \u043F\u043E\u0432\u043E\u0440\u043E\u0442.");
+      return v;
+    };
+    const items = value.items.map((item) => {
+      const v = object(item);
+      if (Object.keys(v).some((k) => !["assetId", "x", "y", "rotation", "z"].includes(k))) throw new UserError("AI \u043F\u043E\u043F\u044B\u0442\u0430\u043B\u0430\u0441\u044C \u0438\u0437\u043C\u0435\u043D\u0438\u0442\u044C \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B \u0438\u0441\u0445\u043E\u0434\u043D\u043E\u0433\u043E \u043E\u0431\u044A\u0435\u043A\u0442\u0430.");
+      const id = text(v.assetId, 120), a = assets2.find((a2) => a2.id === id);
+      if (!a || a.detail !== cfg2.detail) throw new UserError("AI \u0432\u044B\u0431\u0440\u0430\u043B\u0430 \u043D\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043D\u044B\u0439 \u043E\u0431\u044A\u0435\u043A\u0442 \u0438\u043B\u0438 \u0434\u0440\u0443\u0433\u0443\u044E \u0434\u0435\u0442\u0430\u043B\u0438\u0437\u0430\u0446\u0438\u044E.");
+      if (cfg2.appearanceMode !== "mixed" && a.appearance !== cfg2.appearanceMode) throw new UserError("AI \u043D\u0430\u0440\u0443\u0448\u0438\u043B\u0430 \u0432\u044B\u0431\u0440\u0430\u043D\u043D\u044B\u0435 \u0441\u043E\u0441\u0442\u043E\u044F\u043D\u0438\u044F \u043E\u0431\u044A\u0435\u043A\u0442\u043E\u0432.");
+      const z = number2(v.z, 0, 11);
+      if (!Number.isInteger(z)) throw new UserError("AI \u0432\u0435\u0440\u043D\u0443\u043B\u0430 \u043D\u0435\u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u044B\u0439 \u043F\u043E\u0440\u044F\u0434\u043E\u043A \u0441\u043B\u043E\u0451\u0432.");
+      return { assetId: id, x: number2(v.x, -2, 2), y: number2(v.y, -2, 2), rotation: number2(v.rotation, -12, 12), z };
+    });
+    if (new Set(items.map((i) => i.z)).size !== items.length) throw new UserError("AI \u043F\u043E\u0432\u0442\u043E\u0440\u0438\u043B\u0430 \u043D\u043E\u043C\u0435\u0440\u0430 \u0441\u043B\u043E\u0451\u0432.");
+    const counts = /* @__PURE__ */ new Map();
+    for (const i of items) counts.set(i.assetId, (counts.get(i.assetId) ?? 0) + 1);
+    if (required.length) {
+      const expected = /* @__PURE__ */ new Map();
+      for (const c of required) expected.set(c.assetId, (expected.get(c.assetId) ?? 0) + c.count);
+      if (expected.size !== counts.size || [...expected].some(([id, n]) => counts.get(id) !== n)) throw new UserError("AI \u0438\u0437\u043C\u0435\u043D\u0438\u043B\u0430 \u0437\u0430\u043F\u0440\u043E\u0448\u0435\u043D\u043D\u044B\u0439 \u0441\u043E\u0441\u0442\u0430\u0432 \u0438\u043B\u0438 \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043A\u043E\u043C\u043F\u043E\u043D\u0435\u043D\u0442\u043E\u0432.");
+    }
+    if (cfg2.appearanceMode === "mixed" && items.length > 1 && new Set(items.map((i) => assets2.find((a) => a.id === i.assetId).appearance)).size < 2) throw new UserError("AI \u043D\u0435 \u0432\u043A\u043B\u044E\u0447\u0438\u043B\u0430 \u0433\u043B\u0430\u0432\u043D\u044B\u0435 \u0438 \u0444\u043E\u043D\u043E\u0432\u044B\u0435 \u043E\u0431\u044A\u0435\u043A\u0442\u044B \u0432 \u0441\u043C\u0435\u0448\u0430\u043D\u043D\u044B\u0439 \u0440\u0435\u0436\u0438\u043C.");
+    const unit = Math.max(...items.map((i) => assets2.find((a) => a.id === i.assetId).width));
+    const rects = items.map((i) => {
+      const a = assets2.find((a2) => a2.id === i.assetId), b = rotatedBounds(a.width, a.height, i.rotation);
+      return { i, a, x: i.x * unit, y: i.y * unit, w: b.width, h: b.height };
+    });
+    for (const back of rects) for (const front of rects) {
+      if (front.i.z <= back.i.z) continue;
+      if (back.a.appearance === "main" && front.a.appearance === "background") throw new UserError("AI \u043F\u043E\u043C\u0435\u0441\u0442\u0438\u043B\u0430 \u0444\u043E\u043D\u043E\u0432\u044B\u0439 \u043F\u0440\u0435\u0434\u043C\u0435\u0442 \u043F\u0435\u0440\u0435\u0434 \u0433\u043B\u0430\u0432\u043D\u044B\u043C.");
+      const overlap = Math.max(0, Math.min(back.x + back.w / 2, front.x + front.w / 2) - Math.max(back.x - back.w / 2, front.x - front.w / 2)) * Math.max(0, Math.min(back.y + back.h / 2, front.y + front.h / 2) - Math.max(back.y - back.h / 2, front.y - front.h / 2));
+      if (overlap / (back.w * back.h) > (back.a.appearance === "background" ? 0.92 : 0.82)) throw new UserError(`AI \u043F\u043E\u0447\u0442\u0438 \u043F\u043E\u043B\u043D\u043E\u0441\u0442\u044C\u044E \u043F\u0435\u0440\u0435\u043A\u0440\u044B\u043B\u0430 \u043F\u0440\u0435\u0434\u043C\u0435\u0442 \xAB${back.a.name}\xBB. \u0420\u0430\u0437\u0432\u0435\u0434\u0438\u0442\u0435 \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u044B.`);
+    }
+    const left = Math.min(...rects.map((r) => r.x - r.w / 2)), right = Math.max(...rects.map((r) => r.x + r.w / 2)), top = Math.min(...rects.map((r) => r.y - r.h / 2)), bottom = Math.max(...rects.map((r) => r.y + r.h / 2)), margin = Math.min(cfg2.width, cfg2.height) * 0.085;
+    const scale = Math.min((cfg2.width - 2 * margin) / (right - left), (cfg2.height - 2 * margin) / (bottom - top));
+    if (rects.some((r) => Math.min(r.a.width, r.a.height) * scale < 8)) throw new UserError("AI \u0441\u043B\u0438\u0448\u043A\u043E\u043C \u0434\u0430\u043B\u0435\u043A\u043E \u0440\u0430\u0437\u043D\u0435\u0441\u043B\u0430 \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u044B: \u043E\u043D\u0438 \u0441\u0442\u0430\u043D\u0443\u0442 \u0441\u043B\u0438\u0448\u043A\u043E\u043C \u043C\u0435\u043B\u043A\u0438\u043C\u0438.");
+    const placements = rects.map((r, i) => ({ assetId: r.i.assetId, instanceId: `ai-${cfg2.seed}-${i}`, cx: cfg2.width / 2 + (r.x - (left + right) / 2) * scale, cy: cfg2.height / 2 + (r.y - (top + bottom) / 2) * scale, rotation: r.i.rotation, scale, z: r.i.z }));
+    const choices = [...counts].map(([assetId, count]) => ({ assetId, count, reason: summary }));
+    return { plan: { summary, items }, scene: validateScene({ version: 1, settings: cfg2, query, choices, placements, palette: p }, assets2) };
+  }
+
+  // library/backdrops.json
+  var backdrops_default = {
+    version: 1,
+    variants: [
+      {
+        id: "backdrop:violet:S",
+        scheme: "violet",
+        detail: "S",
+        width: 500,
+        height: 500,
+        sourceShapeCount: 10,
+        sourceBounds: {
+          x: 287,
+          y: 176,
+          width: 500,
+          height: 500
+        },
+        svg: '<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="287 176 500 500" fill="none"><defs>\n<clipPath id="clip0_0_1">\n<rect width="500" height="500" fill="white" transform="translate(1056 176)"/>\n</clipPath>\n</defs><rect width="500" height="500" transform="translate(287 176)" fill="#D7CDF5"/><path d="M340.015 650.415C349.103 650.415 356.47 646.406 356.47 641.46C356.47 636.514 349.103 632.505 340.015 632.505C330.927 632.505 323.56 636.514 323.56 641.46C323.56 646.406 330.927 650.415 340.015 650.415Z" fill="#AA9BF0"/><path d="M332.995 650.495C334.775 650.94 336.725 651.215 338.785 651.29C340.845 651.365 343.02 651.25 345.25 650.845C347.47 650.435 349.76 649.77 351.925 648.605C353.005 648.02 354.055 647.31 354.98 646.4C355.895 645.49 356.71 644.35 357.075 642.985C357.305 641.95 357.245 640.8 356.87 639.835C356.51 638.86 355.92 638.075 355.345 637.505C354.175 636.36 353.13 635.935 353.08 636.01C352.995 636.115 353.86 636.825 354.69 638.045C355.1 638.655 355.47 639.4 355.64 640.195C355.82 640.99 355.745 641.825 355.505 642.555C355.23 643.545 354.595 644.445 353.815 645.2C353.03 645.955 352.1 646.58 351.125 647.09C349.165 648.12 347.025 648.73 344.945 649.095C340.76 649.8 336.74 649.535 333.435 648.72C331.785 648.31 330.045 647.705 328.415 646.76C327.6 646.29 326.825 645.72 326.15 645.05C325.49 644.375 324.925 643.59 324.65 642.715C324.37 641.845 324.365 640.895 324.695 640C325.02 639.1 325.635 638.255 326.42 637.53C327.995 636.07 330.12 635.06 332.35 634.37C334.01 633.77 335.92 633.31 337.425 633.03C338.925 632.745 340.015 632.615 340.015 632.49C340.015 632.38 338.925 632.195 337.35 632.18C335.78 632.16 333.725 632.345 331.885 632.805C329.48 633.52 327.145 634.57 325.26 636.27C324.325 637.12 323.52 638.165 323.055 639.4C322.585 640.63 322.57 642.035 322.96 643.25C323.34 644.475 324.075 645.485 324.87 646.31C325.685 647.125 326.58 647.785 327.495 648.32C329.33 649.39 331.215 650.045 332.995 650.49V650.495Z" fill="#7864D7"/><path d="M353.73 642.02C362.818 642.02 370.185 637.885 370.185 632.785C370.185 627.684 362.818 623.55 353.73 623.55C344.642 623.55 337.275 627.684 337.275 632.785C337.275 637.885 344.642 642.02 353.73 642.02Z" fill="white"/><path d="M345.04 290.43C352.968 290.43 359.395 286.931 359.395 282.615C359.395 278.299 352.968 274.8 345.04 274.8C337.112 274.8 330.685 278.299 330.685 282.615C330.685 286.931 337.112 290.43 345.04 290.43Z" fill="#AA9BF0"/><path d="M356.704 307.33L470.593 240.544" stroke-width="2" stroke="#7864D7"/><path d="M312.988 356.785L401.962 304.424" stroke-width="2" stroke="#7864D7"/><path d="M647.106 610.514L736.081 558.153" stroke-width="2" stroke="#7864D7"/><path d="M469.699 256.582L504.459 235.677" stroke-width="2" stroke="#7864D7"/><path d="M570.185 620.967L604.946 600.062" stroke-width="2" stroke="#7864D7"/></svg>',
+        sourceFileKey: "4MCFttsSoP7hgQh29zq5G3",
+        sourceSectionId: "21:25859",
+        sourceHash: "3202ea4c535e6e386592c31d5eeaa34d0ca497c08e91045ea1962318e0f1a057",
+        hash: "56c61f145633755c273de6356af101c3671cf53c7c1d856493be9a45e8f9d5e7"
+      },
+      {
+        id: "backdrop:peach:S",
+        scheme: "peach",
+        detail: "S",
+        width: 500,
+        height: 500,
+        sourceShapeCount: 4,
+        sourceBounds: {
+          x: 1056,
+          y: 176,
+          width: 500,
+          height: 500
+        },
+        svg: '<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="1056 176 500 500" fill="none"><defs>\n<clipPath id="clip0_0_1">\n<rect width="500" height="500" fill="white" transform="translate(1056 176)"/>\n</clipPath>\n</defs><g clip-path="url(#clip0_0_1)">\n<rect width="500" height="500" transform="translate(1056 176)" fill="#FDD7B9"/>\n<path d="M1556.21 698.452C1600.84 628.945 1568.2 557.733 1572.8 545.085L1291.33 715.96L1556.21 698.452Z" fill="#FAC896"/>\n<path d="M1184.84 131.704L1578.58 353.5" stroke="#D27532"/>\n<path d="M1248.26 742.125L1560.9 551.516" stroke="#D27532"/>\n</g></svg>',
+        sourceFileKey: "4MCFttsSoP7hgQh29zq5G3",
+        sourceSectionId: "21:25859",
+        sourceHash: "3202ea4c535e6e386592c31d5eeaa34d0ca497c08e91045ea1962318e0f1a057",
+        hash: "1d3eb973bbd6a02d0c1bd3c663af97cddb2e13bbfc3693e3f6105240f0491bf5"
+      },
+      {
+        id: "backdrop:turquoise:S",
+        scheme: "turquoise",
+        detail: "S",
+        width: 500,
+        height: 500,
+        sourceShapeCount: 10,
+        sourceBounds: {
+          x: 1825,
+          y: 176,
+          width: 500,
+          height: 500
+        },
+        svg: '<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="1825 176 500 500" fill="none"><defs>\n<clipPath id="clip0_0_1">\n<rect width="500" height="500" fill="white" transform="translate(1056 176)"/>\n</clipPath>\n</defs><rect width="500" height="500" transform="translate(1825 176)" fill="#BEEBEB"/><path d="M1878.01 650.415C1887.1 650.415 1894.47 646.406 1894.47 641.46C1894.47 636.514 1887.1 632.505 1878.01 632.505C1868.93 632.505 1861.56 636.514 1861.56 641.46C1861.56 646.406 1868.93 650.415 1878.01 650.415Z" fill="#80DADA"/><path d="M1870.99 650.495C1872.77 650.94 1874.72 651.215 1876.78 651.29C1878.84 651.365 1881.02 651.25 1883.25 650.845C1885.47 650.435 1887.76 649.77 1889.92 648.605C1891 648.02 1892.05 647.31 1892.98 646.4C1893.89 645.49 1894.71 644.35 1895.07 642.985C1895.3 641.95 1895.24 640.8 1894.87 639.835C1894.51 638.86 1893.92 638.075 1893.34 637.505C1892.17 636.36 1891.13 635.935 1891.08 636.01C1890.99 636.115 1891.86 636.825 1892.69 638.045C1893.1 638.655 1893.47 639.4 1893.64 640.195C1893.82 640.99 1893.74 641.825 1893.5 642.555C1893.23 643.545 1892.59 644.445 1891.81 645.2C1891.03 645.955 1890.1 646.58 1889.12 647.09C1887.16 648.12 1885.02 648.73 1882.94 649.095C1878.76 649.8 1874.74 649.535 1871.43 648.72C1869.78 648.31 1868.04 647.705 1866.41 646.76C1865.6 646.29 1864.82 645.72 1864.15 645.05C1863.49 644.375 1862.92 643.59 1862.65 642.715C1862.37 641.845 1862.36 640.895 1862.69 640C1863.02 639.1 1863.63 638.255 1864.42 637.53C1865.99 636.07 1868.12 635.06 1870.35 634.37C1872.01 633.77 1873.92 633.31 1875.42 633.03C1876.92 632.745 1878.01 632.615 1878.01 632.49C1878.01 632.38 1876.92 632.195 1875.35 632.18C1873.78 632.16 1871.72 632.345 1869.88 632.805C1867.48 633.52 1865.14 634.57 1863.26 636.27C1862.32 637.12 1861.52 638.165 1861.05 639.4C1860.58 640.63 1860.57 642.035 1860.96 643.25C1861.34 644.475 1862.07 645.485 1862.87 646.31C1863.68 647.125 1864.58 647.785 1865.49 648.32C1867.33 649.39 1869.21 650.045 1870.99 650.49V650.495Z" fill="#5ABEBE"/><path d="M1891.73 642.02C1900.82 642.02 1908.18 637.885 1908.18 632.785C1908.18 627.684 1900.82 623.55 1891.73 623.55C1882.64 623.55 1875.27 627.684 1875.27 632.785C1875.27 637.885 1882.64 642.02 1891.73 642.02Z" fill="white"/><path d="M1883.04 290.43C1890.97 290.43 1897.39 286.931 1897.39 282.615C1897.39 278.299 1890.97 274.8 1883.04 274.8C1875.11 274.8 1868.68 278.299 1868.68 282.615C1868.68 286.931 1875.11 290.43 1883.04 290.43Z" fill="#80DADA"/><path d="M1894.96 307.762L2008.85 240.975" stroke="#5ABEBE"/><path d="M1850.99 356.785L1939.96 304.424" stroke="#5ABEBE"/><path d="M2185.11 610.514L2274.08 558.153" stroke="#5ABEBE"/><path d="M2007.7 256.582L2042.46 235.677" stroke="#5ABEBE"/><path d="M2108.19 620.967L2142.95 600.062" stroke="#5ABEBE"/></svg>',
+        sourceFileKey: "4MCFttsSoP7hgQh29zq5G3",
+        sourceSectionId: "21:25859",
+        sourceHash: "3202ea4c535e6e386592c31d5eeaa34d0ca497c08e91045ea1962318e0f1a057",
+        hash: "f5c6bfae71489517d0cbf4759c37c571b345270641fc933e81fe7d27af3203ce"
+      },
+      {
+        id: "backdrop:violet:L",
+        scheme: "violet",
+        detail: "L",
+        width: 1e3,
+        height: 1e3,
+        sourceShapeCount: 10,
+        sourceBounds: {
+          x: 248.97500610351562,
+          y: 735,
+          width: 1e3,
+          height: 1e3
+        },
+        svg: '<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="248.97500610351562 735 1000 1000" fill="none"><defs>\n<clipPath id="clip0_0_1">\n<rect width="1000" height="1000" fill="white" transform="translate(1446.69 735)"/>\n</clipPath>\n</defs><rect width="1000" height="1000" transform="translate(248.975 735)" fill="#D7CDF5"/><path d="M355.004 1683.83C373.18 1683.83 387.914 1675.81 387.914 1665.92C387.914 1656.03 373.18 1648.01 355.004 1648.01C336.829 1648.01 322.094 1656.03 322.094 1665.92C322.094 1675.81 336.829 1683.83 355.004 1683.83Z" fill="#AA9BF0"/><path d="M340.964 1683.99C344.524 1684.88 348.424 1685.43 352.544 1685.58C356.664 1685.73 361.014 1685.5 365.474 1684.69C369.914 1683.87 374.494 1682.54 378.824 1680.21C380.984 1679.04 383.084 1677.62 384.934 1675.8C386.764 1673.98 388.394 1671.7 389.124 1668.97C389.584 1666.9 389.464 1664.6 388.714 1662.67C387.994 1660.72 386.814 1659.15 385.664 1658.01C383.324 1655.72 381.234 1654.87 381.134 1655.02C380.964 1655.23 382.694 1656.65 384.354 1659.09C385.174 1660.31 385.914 1661.8 386.254 1663.39C386.614 1664.98 386.464 1666.65 385.984 1668.11C385.434 1670.09 384.164 1671.89 382.604 1673.4C381.034 1674.91 379.174 1676.16 377.224 1677.18C373.304 1679.24 369.024 1680.46 364.864 1681.19C356.494 1682.6 348.454 1682.07 341.844 1680.44C338.544 1679.62 335.064 1678.41 331.804 1676.52C330.174 1675.58 328.624 1674.44 327.274 1673.1C325.954 1671.75 324.824 1670.18 324.274 1668.43C323.714 1666.69 323.704 1664.79 324.364 1663C325.014 1661.2 326.244 1659.51 327.814 1658.06C330.964 1655.14 335.214 1653.12 339.674 1651.74C342.994 1650.54 346.814 1649.62 349.824 1649.06C352.824 1648.49 355.004 1648.23 355.004 1647.98C355.004 1647.76 352.824 1647.39 349.674 1647.36C346.534 1647.32 342.424 1647.69 338.744 1648.61C333.934 1650.04 329.264 1652.14 325.494 1655.54C323.624 1657.24 322.014 1659.33 321.084 1661.8C320.144 1664.26 320.114 1667.07 320.894 1669.5C321.654 1671.95 323.124 1673.97 324.714 1675.62C326.344 1677.25 328.134 1678.57 329.964 1679.64C333.634 1681.78 337.404 1683.09 340.964 1683.98V1683.99Z" fill="#7864D7"/><path d="M382.434 1667.04C400.61 1667.04 415.344 1658.77 415.344 1648.57C415.344 1638.37 400.61 1630.1 382.434 1630.1C364.259 1630.1 349.524 1638.37 349.524 1648.57C349.524 1658.77 364.259 1667.04 382.434 1667.04Z" fill="white"/><path d="M365.055 963.86C380.911 963.86 393.765 956.862 393.765 948.23C393.765 939.597 380.911 932.6 365.055 932.6C349.199 932.6 336.345 939.597 336.345 948.23C336.345 956.862 349.199 963.86 365.055 963.86Z" fill="#AA9BF0"/><path d="M388.889 998.524L616.667 864.95" stroke-width="2" stroke="#7864D7"/><path d="M300.95 1096.57L478.899 991.848" stroke-width="2" stroke="#7864D7"/><path d="M969.188 1604.03L1147.14 1499.31" stroke-width="2" stroke="#7864D7"/><path d="M614.372 896.164L683.892 854.353" stroke-width="2" stroke="#7864D7"/><path d="M815.345 1624.93L884.866 1583.12" stroke-width="2" stroke="#7864D7"/></svg>',
+        sourceFileKey: "4MCFttsSoP7hgQh29zq5G3",
+        sourceSectionId: "21:25788",
+        sourceHash: "ac6cbe435e732f384615f3bd2e010b5c74a7dd35c9f0d847039b0a9ca598d3e1",
+        hash: "a17ffdeb6fa27cca1f3ecf1627e551641549e81d070d658547167b356ad101cc"
+      },
+      {
+        id: "backdrop:peach:L",
+        scheme: "peach",
+        detail: "L",
+        width: 1e3,
+        height: 1e3,
+        sourceShapeCount: 4,
+        sourceBounds: {
+          x: 1446.68994140625,
+          y: 735,
+          width: 1e3,
+          height: 1e3
+        },
+        svg: '<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="1446.68994140625 735 1000 1000" fill="none"><defs>\n<clipPath id="clip0_0_1">\n<rect width="1000" height="1000" fill="white" transform="translate(1446.69 735)"/>\n</clipPath>\n</defs><g clip-path="url(#clip0_0_1)">\n<rect width="1000" height="1000" transform="translate(1446.69 735)" fill="#FDD7B9"/>\n<path d="M2447.11 1779.9C2536.37 1640.89 2471.09 1498.47 2480.29 1473.17L1917.34 1814.92L2447.11 1779.9Z" fill="#FAC896"/>\n<path d="M1704.37 646.408L2491.85 1090" stroke-width="2" stroke="#D27532"/>\n<path d="M1831.21 1867.25L2456.49 1486.03" stroke-width="2" stroke="#D27532"/>\n</g></svg>',
+        sourceFileKey: "4MCFttsSoP7hgQh29zq5G3",
+        sourceSectionId: "21:25788",
+        sourceHash: "ac6cbe435e732f384615f3bd2e010b5c74a7dd35c9f0d847039b0a9ca598d3e1",
+        hash: "f26697f32877e9d01c56b7c9f4f5346814455dba29f4b43f5fe2e72d85f4e2b5"
+      },
+      {
+        id: "backdrop:turquoise:L",
+        scheme: "turquoise",
+        detail: "L",
+        width: 1e3,
+        height: 1e3,
+        sourceShapeCount: 10,
+        sourceBounds: {
+          x: 2644.409912109375,
+          y: 735,
+          width: 1e3,
+          height: 1e3
+        },
+        svg: '<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="2644.409912109375 735 1000 1000" fill="none"><defs>\n<clipPath id="clip0_0_1">\n<rect width="1000" height="1000" fill="white" transform="translate(1446.69 735)"/>\n</clipPath>\n</defs><rect width="1000" height="1000" transform="translate(2644.41 735)" fill="#BEEBEB"/><path d="M2750.44 1683.83C2768.61 1683.83 2783.35 1675.81 2783.35 1665.92C2783.35 1656.03 2768.61 1648.01 2750.44 1648.01C2732.26 1648.01 2717.53 1656.03 2717.53 1665.92C2717.53 1675.81 2732.26 1683.83 2750.44 1683.83Z" fill="#80DADA"/><path d="M2736.4 1683.99C2739.96 1684.88 2743.86 1685.43 2747.98 1685.58C2752.1 1685.73 2756.45 1685.5 2760.91 1684.69C2765.35 1683.87 2769.93 1682.54 2774.26 1680.21C2776.42 1679.04 2778.52 1677.62 2780.37 1675.8C2782.2 1673.98 2783.83 1671.7 2784.56 1668.97C2785.02 1666.9 2784.9 1664.6 2784.15 1662.67C2783.43 1660.72 2782.25 1659.15 2781.1 1658.01C2778.76 1655.72 2776.67 1654.87 2776.57 1655.02C2776.4 1655.23 2778.13 1656.65 2779.79 1659.09C2780.61 1660.31 2781.35 1661.8 2781.69 1663.39C2782.05 1664.98 2781.9 1666.65 2781.42 1668.11C2780.87 1670.09 2779.6 1671.89 2778.04 1673.4C2776.47 1674.91 2774.61 1676.16 2772.66 1677.18C2768.74 1679.24 2764.46 1680.46 2760.3 1681.19C2751.93 1682.6 2743.89 1682.07 2737.28 1680.44C2733.98 1679.62 2730.5 1678.41 2727.24 1676.52C2725.61 1675.58 2724.06 1674.44 2722.71 1673.1C2721.39 1671.75 2720.26 1670.18 2719.71 1668.43C2719.15 1666.69 2719.14 1664.79 2719.8 1663C2720.45 1661.2 2721.68 1659.51 2723.25 1658.06C2726.4 1655.14 2730.65 1653.12 2735.11 1651.74C2738.43 1650.54 2742.25 1649.62 2745.26 1649.06C2748.26 1648.49 2750.44 1648.23 2750.44 1647.98C2750.44 1647.76 2748.26 1647.39 2745.11 1647.36C2741.97 1647.32 2737.86 1647.69 2734.18 1648.61C2729.37 1650.04 2724.7 1652.14 2720.93 1655.54C2719.06 1657.24 2717.45 1659.33 2716.52 1661.8C2715.58 1664.26 2715.55 1667.07 2716.33 1669.5C2717.09 1671.95 2718.56 1673.97 2720.15 1675.62C2721.78 1677.25 2723.57 1678.57 2725.4 1679.64C2729.07 1681.78 2732.84 1683.09 2736.4 1683.98V1683.99Z" fill="#5ABEBE"/><path d="M2777.87 1667.04C2796.04 1667.04 2810.78 1658.77 2810.78 1648.57C2810.78 1638.37 2796.04 1630.1 2777.87 1630.1C2759.69 1630.1 2744.96 1638.37 2744.96 1648.57C2744.96 1658.77 2759.69 1667.04 2777.87 1667.04Z" fill="white"/><path d="M2760.49 963.86C2776.34 963.86 2789.2 956.862 2789.2 948.23C2789.2 939.597 2776.34 932.6 2760.49 932.6C2744.63 932.6 2731.78 939.597 2731.78 948.23C2731.78 956.862 2744.63 963.86 2760.49 963.86Z" fill="#80DADA"/><path d="M2784.32 998.524L3012.1 864.95" stroke-width="2" stroke="#5ABEBE"/><path d="M2696.38 1096.57L2874.33 991.848" stroke-width="2" stroke="#5ABEBE"/><path d="M3364.62 1604.03L3542.57 1499.31" stroke-width="2" stroke="#5ABEBE"/><path d="M3009.8 896.164L3079.32 854.353" stroke-width="2" stroke="#5ABEBE"/><path d="M3210.78 1624.93L3280.3 1583.12" stroke-width="2" stroke="#5ABEBE"/></svg>',
+        sourceFileKey: "4MCFttsSoP7hgQh29zq5G3",
+        sourceSectionId: "21:25788",
+        sourceHash: "ac6cbe435e732f384615f3bd2e010b5c74a7dd35c9f0d847039b0a9ca598d3e1",
+        hash: "c707103503e8ada1b689a473586f85171b2955f680388891cad1b12d0e9157d9"
+      }
+    ]
+  };
+
+  // src/backdrops.ts
+  var BACKDROPS = backdrops_default.variants;
+  function backdropFor(cfg2, p) {
+    const target = scheme(p), key = Object.keys(SCHEMES).find((k) => SCHEMES[k].backgroundColors[0] === target.backgroundColors[0]) ?? "violet";
+    return BACKDROPS.find((b) => b.detail === cfg2.detail && b.scheme === key);
+  }
+  function backdropColors(source, p) {
+    const target = scheme(p), colors = target.backgroundColors, base = SCHEMES[source.scheme].backgroundColors;
+    return { ...Object.fromEntries(base.map((c, i) => [c, colors[i]])), [base[0]]: target.background ?? colors[0], "#FFFFFF": colors[0] };
+  }
+  function backdropBounds(width, height, source) {
+    const scale = Math.max(width / source.width, height / source.height);
+    return { scale, x: (width - source.width * scale) / 2, y: (height - source.height * scale) / 2 };
+  }
+
+  // src/scene-svg.ts
+  function sceneSvg(scene, assets2) {
+    const ns = "http://www.w3.org/2000/svg", doc = document.implementation.createDocument(ns, "svg"), root = doc.documentElement, palette3 = scene.palette ?? SCHEMES.violet;
+    root.setAttribute("xmlns", ns);
+    root.setAttribute("width", String(scene.settings.width));
+    root.setAttribute("height", String(scene.settings.height));
+    root.setAttribute("viewBox", `0 0 ${scene.settings.width} ${scene.settings.height}`);
+    root.setAttribute("overflow", "hidden");
+    function source(svg2, prefix, table) {
+      const element = doc.importNode(validateSvg(svg2).documentElement, true), ids = Array.from(element.querySelectorAll("[id]")).map((n) => n.id);
+      for (const n of [element, ...Array.from(element.querySelectorAll("*"))]) {
+        if (n.id) n.id = prefix + n.id;
+        for (const attr of Array.from(n.attributes)) {
+          let value = attr.value;
+          for (const id of ids) {
+            value = value.split("url(#" + id + ")").join("url(#" + prefix + id + ")");
+            if (value === "#" + id) value = "#" + prefix + id;
+          }
+          n.setAttribute(attr.name, value);
+        }
+        if (!n.closest("mask,clipPath")) for (const key of ["fill", "stroke", "stop-color"]) {
+          const raw = n.getAttribute(key);
+          if (!raw) continue;
+          const color = raw.toLowerCase() === "white" ? "#FFFFFF" : raw.toUpperCase();
+          if (table[color]) n.setAttribute(key, table[color]);
+        }
+      }
+      element.setAttribute("x", "0");
+      element.setAttribute("y", "0");
+      return element;
+    }
+    if (scene.settings.backdrop === "source") {
+      const backdrop = backdropFor(scene.settings, palette3), bounds = backdropBounds(scene.settings.width, scene.settings.height, backdrop), element = source(backdrop.svg, "background-", backdropColors(backdrop, palette3)), group = doc.createElementNS(ns, "g");
+      group.setAttribute("id", "scene-background");
+      group.setAttribute("data-source", backdrop.id);
+      group.setAttribute("transform", "translate(" + bounds.x + " " + bounds.y + ") scale(" + bounds.scale + ")");
+      group.append(element);
+      root.append(group);
+    } else if (palette3.background || scene.settings.backdrop === "solid") {
+      const rect = doc.createElementNS(ns, "rect");
+      rect.setAttribute("id", "scene-background-solid");
+      rect.setAttribute("width", String(scene.settings.width));
+      rect.setAttribute("height", String(scene.settings.height));
+      rect.setAttribute("fill", palette3.background ?? palette3.backgroundColors[0]);
+      root.append(rect);
+    }
+    for (const [index, p] of [...scene.placements].sort((a, b) => a.z - b.z).entries()) {
+      const a = assets2.find((a2) => a2.id === p.assetId);
+      if (!a.thumbnail) throw new Error("\u041D\u0435\u0442 \u0438\u0441\u0445\u043E\u0434\u043D\u043E\u0433\u043E SVG \u0434\u043B\u044F \u043F\u0440\u0435\u0434\u043F\u0440\u043E\u0441\u043C\u043E\u0442\u0440\u0430.");
+      const element = source(a.thumbnail, "object-" + index + "-", roleColorTable(palette3, a.appearance));
+      element.setAttribute("width", String(a.width));
+      element.setAttribute("height", String(a.height));
+      const group = doc.createElementNS(ns, "g");
+      group.setAttribute("id", "object-" + index + "-" + a.familyId);
+      group.setAttribute("transform", "translate(" + p.cx + " " + p.cy + ") rotate(" + p.rotation + ") scale(" + p.scale + ") translate(" + -a.width / 2 + " " + -a.height / 2 + ")");
+      group.appendChild(element);
+      root.appendChild(group);
+    }
+    const svg = new XMLSerializer().serializeToString(root);
+    validateSvg(svg);
+    return svg;
+  }
+
+  // src/ai-ui.ts
+  function initAI(read, send2, status2, busy2) {
+    const $2 = (id) => document.getElementById(id);
+    const input2 = (id) => $2(id);
+    let configured = false, vision = false, pending = null, controller = null;
+    const signature = (data) => JSON.stringify([data.query, data.mode, data.settings, data.palette]);
+    async function request(path, body) {
+      const token = input2("ai-token").value.trim();
+      if (token.length < 24) throw new Error("\u0412\u0441\u0442\u0430\u0432\u044C\u0442\u0435 \u043A\u043E\u0434 AI_CONNECTION_TOKEN \u0438\u0437 .env.local.");
+      const response = await fetch(`http://localhost:4174${path}`, { method: body ? "POST" : "GET", headers: { Authorization: `Bearer ${token}`, ...body ? { "Content-Type": "application/json" } : {} }, ...body ? { body: JSON.stringify(body) } : {}, signal: controller ? AbortSignal.any([controller.signal, AbortSignal.timeout(7e4)]) : AbortSignal.timeout(7e4) });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error ?? "\u041E\u0448\u0438\u0431\u043A\u0430 \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u044F \u043A AI-\u0441\u0435\u0440\u0432\u0435\u0440\u0443.");
+      return result;
+    }
+    const image = async (svg) => {
+      const node = new Image();
+      node.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+      await node.decode();
+      return node;
+    };
+    async function png(svg) {
+      const node = await image(svg), canvas = document.createElement("canvas"), ratio = Math.min(1, 900 / Math.max(node.naturalWidth, node.naturalHeight));
+      canvas.width = Math.max(1, Math.round(node.naturalWidth * ratio));
+      canvas.height = Math.max(1, Math.round(node.naturalHeight * ratio));
+      const ctx = canvas.getContext("2d");
+      ctx.fillStyle = "white";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(node, 0, 0, canvas.width, canvas.height);
+      return canvas.toDataURL("image/png");
+    }
+    async function catalogue(data) {
+      const required = data.mode === "components" ? resolveVariants(direct(data.query, eligibleAssets(data.assets, data.settings)), data.assets, data.settings) : [];
+      const list = data.assets.filter((a) => a.detail === data.settings.detail && (data.settings.appearanceMode === "mixed" || a.appearance === data.settings.appearanceMode || required.some((c) => c.assetId === a.id))), canvas = document.createElement("canvas");
+      canvas.width = 1100;
+      canvas.height = Math.ceil(list.length / 5) * 190;
+      const ctx = canvas.getContext("2d");
+      ctx.fillStyle = "white";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      for (const [i, a] of list.entries()) {
+        if (!a.thumbnail) continue;
+        const node = await image(a.thumbnail), scale = Math.min(190 / node.naturalWidth, 140 / node.naturalHeight), x = i % 5 * 220, y = Math.floor(i / 5) * 190;
+        ctx.drawImage(node, x + (220 - node.naturalWidth * scale) / 2, y + 5, node.naturalWidth * scale, node.naturalHeight * scale);
+        ctx.fillStyle = "#202a25";
+        ctx.font = "13px sans-serif";
+        ctx.fillText(a.id, x + 6, y + 160);
+        ctx.fillText(`${Math.round(a.width)} \xD7 ${Math.round(a.height)}`, x + 6, y + 178);
+      }
+      return canvas.toDataURL("image/png");
+    }
+    const run2 = (fn) => {
+      void (async () => {
+        controller = new AbortController();
+        busy2(true);
+        $2("ai-cancel").disabled = false;
+        try {
+          await fn();
+        } catch (error) {
+          status2(error instanceof DOMException && error.name === "AbortError" ? "AI-\u0437\u0430\u043F\u0440\u043E\u0441 \u043E\u0442\u043C\u0435\u043D\u0451\u043D." : error instanceof TypeError ? "\u041B\u043E\u043A\u0430\u043B\u044C\u043D\u044B\u0439 AI-\u0441\u0435\u0440\u0432\u0435\u0440 \u043D\u0435\u0434\u043E\u0441\u0442\u0443\u043F\u0435\u043D. \u0417\u0430\u043F\u0443\u0441\u0442\u0438\u0442\u0435 npm run ai." : error instanceof Error ? error.message : "\u041E\u0448\u0438\u0431\u043A\u0430 AI-\u043F\u043B\u0430\u043D\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u044F.", "error");
+        } finally {
+          controller = null;
+          busy2(false);
+          $2("ai-cancel").disabled = true;
+        }
+      })();
+    };
+    $2("ai-connect").onclick = () => run2(async () => {
+      const result = await request("/health");
+      configured = result.configured;
+      vision = result.vision;
+      input2("ai-images").disabled = !vision;
+      if (!vision) input2("ai-images").checked = false;
+      $2("ai-connection").textContent = `${result.provider} \xB7 ${result.model} \xB7 ${configured ? "\u043A\u043B\u044E\u0447 \u0443\u043A\u0430\u0437\u0430\u043D, API \u0435\u0449\u0451 \u043D\u0435 \u043F\u0440\u043E\u0432\u0435\u0440\u0435\u043D" : "\u043A\u043B\u044E\u0447 \u043D\u0435 \u0443\u043A\u0430\u0437\u0430\u043D"}`;
+      send2({ type: "ai-config", token: input2("ai-token").value.trim() });
+      status2(configured ? "\u0421\u0435\u0440\u0432\u0435\u0440 \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0451\u043D. \u041C\u043E\u0436\u043D\u043E \u0437\u0430\u043F\u0440\u043E\u0441\u0438\u0442\u044C AI-\u043F\u043B\u0430\u043D." : "\u0421\u0435\u0440\u0432\u0435\u0440 \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0451\u043D. \u0414\u043E\u0431\u0430\u0432\u044C\u0442\u0435 API-\u043A\u043B\u044E\u0447 \u0432 .env.local, \u043F\u0435\u0440\u0435\u0437\u0430\u043F\u0443\u0441\u0442\u0438\u0442\u0435 \u0441\u0435\u0440\u0432\u0435\u0440 \u0438 \u043F\u0440\u043E\u0432\u0435\u0440\u044C\u0442\u0435 \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u0438\u0435 \u0441\u043D\u043E\u0432\u0430.");
+    });
+    async function generate(refine = false) {
+      if (!configured) throw new Error("\u0421\u043D\u0430\u0447\u0430\u043B\u0430 \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0438\u0442\u0435 \u043B\u043E\u043A\u0430\u043B\u044C\u043D\u044B\u0439 \u0441\u0435\u0440\u0432\u0435\u0440 \u0441 \u0443\u043A\u0430\u0437\u0430\u043D\u043D\u044B\u043C API-\u043A\u043B\u044E\u0447\u043E\u043C.");
+      if (refine && pending && signature(read()) !== signature(pending.data)) throw new Error("\u041F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B \u0438\u0437\u043C\u0435\u043D\u0438\u043B\u0438\u0441\u044C. \u0417\u0430\u043F\u0440\u043E\u0441\u0438\u0442\u0435 \u043D\u043E\u0432\u044B\u0439 AI-\u043F\u043B\u0430\u043D.");
+      const data = refine && pending ? pending.data : read();
+      if (!data.query.trim()) throw new Error("\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043C\u0435\u0442\u0430\u0444\u043E\u0440\u0443 \u0438\u043B\u0438 \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u044F \u043A\u043E\u043C\u043F\u043E\u043D\u0435\u043D\u0442\u043E\u0432.");
+      if (!refine) {
+        pending = null;
+        $2("ai-result").hidden = true;
+      }
+      const images = [];
+      if (vision && input2("ai-images").checked) {
+        images.push(await catalogue(data));
+        if (refine && pending) images.push(await png(pending.svg));
+      }
+      status2("AI \u043F\u0440\u0435\u0434\u043B\u0430\u0433\u0430\u0435\u0442 \u0440\u0430\u0441\u043F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435 \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u043E\u0432\u2026");
+      const result = await request("/plan", { query: data.query, mode: data.mode, settings: data.settings, palette: data.palette, catalog: data.assets.map((a) => ({ id: a.id, name: a.name, tags: a.tags, synonyms: a.synonyms, metaphors: a.metaphors })), images, ...refine && pending ? { previousPlan: pending.plan, feedback: input2("ai-feedback").value } : {} });
+      const required = data.mode === "components" ? resolveVariants(direct(data.query, eligibleAssets(data.assets, data.settings)), data.assets, data.settings) : [];
+      const checked = aiScene(result.plan, data.assets, result.settings, data.query, data.palette, required), svg = sceneSvg(checked.scene, data.assets);
+      pending = { data, settings: checked.scene.settings, plan: checked.plan, svg };
+      $2("ai-preview").src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+      $2("ai-summary").textContent = checked.plan.summary;
+      $2("ai-result").hidden = false;
+      $2("ai-apply").disabled = false;
+      $2("ai-refine").disabled = false;
+      status2("AI-\u043F\u043B\u0430\u043D \u043F\u0440\u043E\u0432\u0435\u0440\u0435\u043D. \u041F\u043E\u0441\u043C\u043E\u0442\u0440\u0438\u0442\u0435 \u043F\u0440\u0435\u0434\u043F\u0440\u043E\u0441\u043C\u043E\u0442\u0440 \u0438 \u0434\u043E\u0431\u0430\u0432\u044C\u0442\u0435 \u0441\u0446\u0435\u043D\u0443 \u0432 Figma.", "success");
+    }
+    $2("ai-generate").onclick = () => run2(() => generate());
+    $2("ai-refine").onclick = () => run2(() => generate(true));
+    $2("ai-cancel").onclick = () => controller?.abort();
+    $2("ai-apply").onclick = () => {
+      if (pending) {
+        if (signature(read()) !== signature(pending.data)) {
+          status2("\u041F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B \u0438\u0437\u043C\u0435\u043D\u0438\u043B\u0438\u0441\u044C. \u0417\u0430\u043F\u0440\u043E\u0441\u0438\u0442\u0435 \u043D\u043E\u0432\u044B\u0439 AI-\u043F\u043B\u0430\u043D.", "error");
+          return;
+        }
+        send2({ type: "apply-ai-scene", plan: pending.plan, settings: pending.settings, requestSettings: pending.data.settings, mode: pending.data.mode, query: pending.data.query, palette: pending.data.palette });
+      }
+    };
+    return { restore: (token) => {
+      input2("ai-token").value = token;
+    }, controls: (disabled, hasAssets) => {
+      for (const id of ["ai-connect", "ai-generate", "ai-refine", "ai-apply"]) $2(id).disabled = disabled || id === "ai-generate" && !hasAssets || (id === "ai-refine" || id === "ai-apply") && !pending;
+    } };
+  }
+
+  // src/ui.ts
+  var $ = (id) => document.getElementById(id);
+  var input = (id) => $(id);
+  var assets = [];
+  var mode = "metaphor";
+  var hasScene = false;
+  var busy = false;
+  var lastSvg = "";
+  var custom = null;
+  var examplesReady = false;
+  var aiBusy = false;
+  var connected = parent !== window;
+  var presets = SCHEMES;
+  var status = (message, kind = "") => {
+    $("status").textContent = message;
+    $("status").className = kind;
+  };
+  function send(message) {
+    if (!connected) {
+      status("\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442 Figma \u043D\u0435 \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0451\u043D. \u0417\u0430\u043F\u0443\u0441\u0442\u0438\u0442\u0435 \u043F\u043B\u0430\u0433\u0438\u043D \u0432 Figma.", "error");
+      return;
+    }
+    if (busy) {
+      status("\u0414\u043E\u0436\u0434\u0438\u0442\u0435\u0441\u044C \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043D\u0438\u044F \u0442\u0435\u043A\u0443\u0449\u0435\u0439 \u043E\u043F\u0435\u0440\u0430\u0446\u0438\u0438.");
+      return;
+    }
+    parent.postMessage({ pluginMessage: message }, "*");
+  }
+  function run(action) {
+    void Promise.resolve().then(action).catch((e) => status(e instanceof Error ? e.message : String(e), "error"));
+  }
+  function cfg() {
+    return settings({ width: Number(input("width").value), height: Number(input("height").value), seed: Number(input("seed").value), layout: input("layout").value, detail: input("detail").value, appearanceMode: input("appearance-mode").value, backdrop: input("backdrop").value });
+  }
+  function currentPalette() {
+    const key = input("palette").value, p = key === "custom" ? custom : presets[key];
+    if (!p) return null;
+    if (input("backdrop").value !== "none") return p;
+    const { background, ...transparent } = p;
+    return transparent;
+  }
+  function drawPalette() {
+    const p = currentPalette(), container = $("swatches");
+    container.replaceChildren();
+    if (!p) {
+      const span = document.createElement("span");
+      span.className = "hint";
+      span.textContent = "\u0426\u0432\u0435\u0442\u0430 \u043E\u0431\u044A\u0435\u043A\u0442\u043E\u0432 \u0441\u043E\u0445\u0440\u0430\u043D\u044F\u0442\u0441\u044F";
+      container.append(span);
+      return;
+    }
+    for (const color of p.colors) {
+      const span = document.createElement("span");
+      span.className = "swatch";
+      span.style.backgroundColor = color;
+      span.title = color;
+      span.setAttribute("aria-label", color);
+      container.append(span);
+    }
+  }
+  function tab(name) {
+    $("compose-panel").hidden = name !== "compose";
+    $("library-panel").hidden = name !== "library";
+    document.querySelectorAll("[data-tab]").forEach((b) => {
+      const selected = b.dataset.tab === name;
+      b.classList.toggle("active", selected);
+      b.setAttribute("aria-pressed", String(selected));
+    });
+  }
+  function controls() {
+    ai.controls(busy || aiBusy, assets.length > 0);
+    document.querySelectorAll("button").forEach((b) => {
+      if (b.id === "export-examples") {
+        b.disabled = busy || aiBusy || !examplesReady;
+        return;
+      }
+      if (b.dataset.instanceAction) {
+        b.disabled = busy || aiBusy;
+        return;
+      }
+      const action = ["check-scene-rules", "create-examples", "retry-acceptance", "acceptance", "compose", "variant", "apply-plan", "add-selection", "add-section", "export-svg", "show-svg", "export-bundle", "save-scene", "reflow", "preview-palette", "apply-palette", "restore-palette", "export-catalog"].includes(b.id);
+      if (action) b.disabled = busy || aiBusy || b.hasAttribute("data-scene") && !hasScene || (b.id === "compose" || b.id === "apply-plan") && !assets.length;
+    });
+    $("empty").hidden = assets.length > 0;
+  }
+  function renderAssets() {
+    const filter = normalize(input("filter").value), list = $("asset-list");
+    list.replaceChildren();
+    const filtered = eligibleAssets(assets, cfg()).filter((a) => normalize([a.name, ...a.tags, ...a.metaphors, ...a.synonyms].join(" ")).includes(filter));
+    for (const a of filtered) {
+      const row = document.createElement("div");
+      row.className = "asset";
+      if (a.thumbnail) {
+        const img = document.createElement("img");
+        img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(a.thumbnail);
+        img.alt = "";
+        row.append(img);
+      }
+      const description = document.createElement("div");
+      description.className = "asset-copy";
+      const name = document.createElement("strong");
+      name.textContent = a.name;
+      const tags = document.createElement("small");
+      tags.textContent = a.tags.length ? a.tags.join(" \xB7 ") : "\u0414\u043E\u0431\u0430\u0432\u044C\u0442\u0435 \u0442\u0435\u0433\u0438 \u0434\u043B\u044F \u0441\u043C\u044B\u0441\u043B\u043E\u0432\u043E\u0433\u043E \u043F\u043E\u0438\u0441\u043A\u0430";
+      const id = document.createElement("button");
+      id.textContent = `${a.detail ?? "\u0442\u0435\u0441\u0442"} \xB7 ${a.appearance === "background" ? "\u0444\u043E\u043D\u043E\u0432\u044B\u0439" : "\u0433\u043B\u0430\u0432\u043D\u044B\u0439"} \xB7 \u0434\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u0432 \u0437\u0430\u043F\u0440\u043E\u0441`;
+      id.title = "\u0414\u043E\u0431\u0430\u0432\u0438\u0442\u044C \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u0430";
+      id.onclick = () => {
+        setMode("components");
+        input("query").value += (input("query").value ? ", " : "") + a.name;
+        tab("compose");
+      };
+      description.append(name, tags, id);
+      const edit = document.createElement("button");
+      edit.textContent = "\u041E\u043F\u0438\u0441\u0430\u0442\u044C";
+      edit.className = "secondary";
+      edit.onclick = () => editAsset(a);
+      row.append(description, edit);
+      list.append(row);
+    }
+    $("library-empty").hidden = filtered.length > 0;
+    $("library-empty").textContent = assets.length ? "\u041D\u0435\u0442 \u0441\u043E\u0432\u043F\u0430\u0434\u0435\u043D\u0438\u0439. \u0418\u0437\u043C\u0435\u043D\u0438\u0442\u0435 \u043F\u043E\u0438\u0441\u043A." : "\u0411\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0430 \u0434\u043E\u0441\u0442\u0443\u043F\u043D\u0430 \u043F\u043E\u0441\u043B\u0435 \u0437\u0430\u043F\u0443\u0441\u043A\u0430 \u043F\u043B\u0430\u0433\u0438\u043D\u0430 \u0432 Figma.";
+  }
+  function editAsset(a) {
+    $("asset-form").hidden = false;
+    for (const key of ["id", "name", "synonyms", "tags", "metaphors", "role"]) input(`edit-${key}`).value = Array.isArray(a[key]) ? a[key].join(", ") : String(a[key]);
+    $("provenance").textContent = `\u0418\u0441\u0442\u043E\u0447\u043D\u0438\u043A: ${a.source.illustrationName} \xB7 \u0443\u0437\u0435\u043B ${a.source.nodeId} \xB7 ${a.width.toFixed(0)} \xD7 ${a.height.toFixed(0)} px \xB7 ${a.source.capturedAt}`;
+    $("asset-form").scrollIntoView({ behavior: "auto", block: "start" });
+    input("edit-name").focus();
+  }
+  function setMode(value) {
+    mode = value;
+    document.querySelectorAll("[data-mode]").forEach((b) => {
+      const selected = b.dataset.mode === value;
+      b.classList.toggle("selected", selected);
+      b.setAttribute("aria-pressed", String(selected));
+    });
+    $("query-label").textContent = value === "metaphor" ? "\u041C\u0435\u0442\u0430\u0444\u043E\u0440\u0430 \u0438\u043B\u0438 \u0437\u0430\u0433\u043E\u043B\u043E\u0432\u043E\u043A" : "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u044F \u043A\u043E\u043C\u043F\u043E\u043D\u0435\u043D\u0442\u043E\u0432 \u0447\u0435\u0440\u0435\u0437 \u0437\u0430\u043F\u044F\u0442\u0443\u044E";
+    input("query").placeholder = value === "metaphor" ? "\u041D\u0430\u043F\u0440\u0438\u043C\u0435\u0440, \xAB\u0432\u043C\u0435\u0441\u0442\u0435 \u043A \u043D\u043E\u0432\u044B\u043C \u0432\u0435\u0440\u0448\u0438\u043D\u0430\u043C\xBB" : "\u041D\u0430\u043F\u0440\u0438\u043C\u0435\u0440, \u043A\u043D\u0438\u0433\u0430, \u043B\u0430\u043C\u043F\u0430, \u043C\u043E\u043D\u0435\u0442\u0430 \xD7 2";
+    $("search-hint").textContent = value === "metaphor" ? "\u041B\u043E\u043A\u0430\u043B\u044C\u043D\u044B\u0439 \u0441\u043C\u044B\u0441\u043B\u043E\u0432\u043E\u0439 \u043F\u043E\u0438\u0441\u043A \u043F\u043E \u0438\u043C\u0435\u043D\u0430\u043C, \u0442\u0435\u0433\u0430\u043C \u0438 \u043C\u0435\u0442\u0430\u0444\u043E\u0440\u0430\u043C. \u0411\u0435\u0437 \u0432\u043D\u0435\u0448\u043D\u0435\u0439 AI-\u043C\u043E\u0434\u0435\u043B\u0438." : "\u0418\u043C\u0435\u043D\u0430 \u0438 \u0441\u0438\u043D\u043E\u043D\u0438\u043C\u044B \u0438\u0437 \u0431\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0438. \u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E: \u043D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 \xD7 2. \u041D\u0435\u043E\u0434\u043D\u043E\u0437\u043D\u0430\u0447\u043D\u043E\u0441\u0442\u0438 \u043F\u043E\u043A\u0430\u0437\u044B\u0432\u0430\u044E\u0442\u0441\u044F \u044F\u0432\u043D\u043E.";
+  }
+  function download(data, filename, mime) {
+    const url = URL.createObjectURL(new Blob([data], { type: mime }));
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 15e3);
+  }
+  function compose() {
+    send({ type: "compose", query: input("query").value, mode, settings: cfg(), palette: currentPalette() });
+  }
+  function showRules(relations) {
+    $("scene-rules").hidden = !relations.length;
+    $("scene-rule-list").replaceChildren(...relations.map((r) => {
+      const li = document.createElement("li");
+      li.textContent = r.message;
+      if (!r.ok) li.className = "rule-warning";
+      return li;
+    }));
+  }
+  var ai = initAI(() => ({ assets, settings: cfg(), query: input("query").value, mode, palette: currentPalette() ?? SCHEMES.violet }), send, status, (value) => {
+    aiBusy = value;
+    controls();
+  });
+  document.querySelectorAll("[data-tab]").forEach((b) => b.onclick = () => tab(b.dataset.tab));
+  document.querySelectorAll("[data-mode]").forEach((b) => b.onclick = () => setMode(b.dataset.mode));
+  document.querySelectorAll("[data-format]").forEach((b) => b.onclick = () => {
+    const [width, height] = b.dataset.format.split(",");
+    input("width").value = width;
+    input("height").value = height;
+    document.querySelectorAll("[data-format]").forEach((btn) => {
+      btn.classList.toggle("selected", btn === b);
+      btn.setAttribute("aria-pressed", String(btn === b));
+    });
+  });
+  for (const id of ["width", "height"]) input(id).oninput = () => document.querySelectorAll("[data-format]").forEach((b) => {
+    b.classList.remove("selected");
+    b.setAttribute("aria-pressed", "false");
+  });
+  $("compose").onclick = () => run(compose);
+  $("check-scene-rules").onclick = () => send({ type: "check-scene-rules" });
+  $("variant").onclick = () => run(() => {
+    input("seed").value = String((cfg().seed + 1) % 2147483648);
+    compose();
+  });
+  $("reflow").onclick = () => run(() => send({ type: "reflow", settings: cfg() }));
+  $("apply-plan").onclick = () => run(() => {
+    const query = input("plan").value;
+    JSON.parse(query);
+    send({ type: "compose", mode: "plan", query, settings: cfg(), palette: currentPalette() });
+  });
+  $("go-library").onclick = () => tab("library");
+  $("add-selection").onclick = () => send({ type: "add-selection" });
+  $("add-section").onclick = () => send({ type: "add-section" });
+  input("filter").oninput = renderAssets;
+  $("asset-form").onsubmit = (e) => {
+    e.preventDefault();
+    send({ type: "update-asset", id: input("edit-id").value, fields: Object.fromEntries(["name", "synonyms", "tags", "metaphors", "role"].map((key) => [key, input(`edit-${key}`).value])) });
+  };
+  $("close-edit").onclick = () => {
+    $("asset-form").hidden = true;
+  };
+  input("palette").onchange = drawPalette;
+  $("palette-file-button").onclick = () => input("palette-file").click();
+  input("palette-file").onchange = () => run(async () => {
+    const file = input("palette-file").files?.[0];
+    if (!file) return;
+    if (file.size > 1e5) throw new Error("\u0424\u0430\u0439\u043B \u043F\u0430\u043B\u0438\u0442\u0440\u044B \u0441\u043B\u0438\u0448\u043A\u043E\u043C \u0431\u043E\u043B\u044C\u0448\u043E\u0439.");
+    const parsed = scheme(JSON.parse(await file.text()));
+    custom = parsed;
+    let option = document.querySelector("option[value=custom]");
+    if (!option) {
+      option = document.createElement("option");
+      option.value = "custom";
+      $("palette").append(option);
+    }
+    option.textContent = parsed.name;
+    input("palette").value = "custom";
+    drawPalette();
+    status("\u041F\u0430\u043B\u0438\u0442\u0440\u0430 \u0437\u0430\u0433\u0440\u0443\u0436\u0435\u043D\u0430. \u041C\u043E\u0436\u043D\u043E \u043F\u043E\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C \u0438 \u043F\u0440\u0438\u043C\u0435\u043D\u0438\u0442\u044C.", "success");
+    input("palette-file").value = "";
+  });
+  $("preview-palette").onclick = () => send({ type: "palette", palette: currentPalette(), backdrop: input("backdrop").value, preview: true });
+  $("apply-palette").onclick = () => send({ type: "palette", palette: currentPalette(), backdrop: input("backdrop").value });
+  $("restore-palette").onclick = () => {
+    input("palette").value = "violet";
+    drawPalette();
+    send({ type: "palette", palette: currentPalette(), backdrop: input("backdrop").value });
+  };
+  $("export-svg").onclick = () => send({ type: "export-svg" });
+  $("show-svg").onclick = () => send({ type: "show-svg" });
+  $("export-bundle").onclick = () => send({ type: "export-bundle" });
+  $("close-plugin").onclick = () => send({ type: "close" });
+  $("acceptance").onclick = () => send({ type: "acceptance" });
+  $("retry-acceptance").onclick = () => send({ type: "retry-acceptance" });
+  $("create-examples").onclick = () => send({ type: "create-examples" });
+  $("export-examples").onclick = () => send({ type: "export-bundle", examplesOnly: true });
+  input("detail").onchange = renderAssets;
+  input("appearance-mode").onchange = renderAssets;
+  $("select-svg").onclick = () => {
+    const area = $("raw-svg");
+    area.focus();
+    area.select();
+  };
+  $("save-scene").onclick = () => send({ type: "save-scene" });
+  $("export-catalog").onclick = () => send({ type: "export-catalog" });
+  $("load-scene-button").onclick = () => input("scene-file").click();
+  input("scene-file").onchange = () => run(async () => {
+    const file = input("scene-file").files?.[0];
+    if (!file) return;
+    if (file.size > 1e6) throw new Error("\u0424\u0430\u0439\u043B \u0441\u0446\u0435\u043D\u044B \u0441\u043B\u0438\u0448\u043A\u043E\u043C \u0431\u043E\u043B\u044C\u0448\u043E\u0439.");
+    send({ type: "load-scene", scene: JSON.parse(await file.text()) });
+    input("scene-file").value = "";
+  });
+  $("reimport").onclick = () => run(() => {
+    validateSvg(lastSvg);
+    send({ type: "reimport", svg: lastSvg });
+  });
+  window.onmessage = (event) => {
+    if (!connected) return;
+    const message = event.data?.pluginMessage;
+    if (!message || typeof message.type !== "string") return;
+    run(() => {
+      switch (message.type) {
+        case "ai-settings":
+          if (typeof message.token === "string") ai.restore(message.token);
+          break;
+        case "state": {
+          if (Array.isArray(message.scene?.placements)) {
+            const catalogue = Array.isArray(message.assets) ? message.assets : assets;
+            showRules(inspectSceneRules(message.scene.placements, catalogue));
+          } else $("scene-rules").hidden = true;
+          if (Array.isArray(message.assets)) {
+            assets = message.assets;
+            renderAssets();
+          }
+          hasScene = message.hasScene;
+          $("count").textContent = String(new Set(assets.map((a) => a.familyId ?? a.id)).size);
+          $("selection-count").textContent = String(message.selection);
+          $("source-count").textContent = `${message.illustrations} \u0438\u043B\u043B\u044E\u0441\u0442\u0440\u0430\u0446\u0438\u0439`;
+          controls();
+          if (message.instances?.length) {
+            $("chosen").hidden = false;
+            const list = $("choices");
+            list.replaceChildren();
+            for (const [index, instance] of message.instances.entries()) {
+              const asset = assets.find((a) => a.id === instance.assetId);
+              if (!asset) continue;
+              const row = document.createElement("li");
+              row.textContent = `${asset.name} \xB7 ${asset.detail ?? "\u0442\u0435\u0441\u0442"} \xB7 ${asset.appearance === "background" ? "\u0444\u043E\u043D\u043E\u0432\u044B\u0439" : "\u0433\u043B\u0430\u0432\u043D\u044B\u0439"}`;
+              const reason = document.createElement("small");
+              reason.textContent = message.scene?.choices?.find((c) => c.assetId === asset.id)?.reason ?? "";
+              row.append(reason);
+              if (asset.familyId) {
+                const toggle = document.createElement("button");
+                toggle.className = "text-button";
+                toggle.dataset.instanceAction = "true";
+                toggle.disabled = busy;
+                toggle.setAttribute("aria-label", asset.name + ", \u044D\u043A\u0437\u0435\u043C\u043F\u043B\u044F\u0440 " + (index + 1) + ": " + (asset.appearance === "background" ? "\u0441\u0434\u0435\u043B\u0430\u0442\u044C \u0433\u043B\u0430\u0432\u043D\u044B\u043C" : "\u0441\u0434\u0435\u043B\u0430\u0442\u044C \u0444\u043E\u043D\u043E\u0432\u044B\u043C"));
+                toggle.textContent = asset.appearance === "background" ? "\u0421\u0434\u0435\u043B\u0430\u0442\u044C \u0433\u043B\u0430\u0432\u043D\u044B\u043C" : "\u0421\u0434\u0435\u043B\u0430\u0442\u044C \u0444\u043E\u043D\u043E\u0432\u044B\u043C";
+                toggle.onclick = () => send({ type: "set-state", id: instance.id, appearance: asset.appearance === "background" ? "main" : "background" });
+                row.append(toggle);
+              }
+              list.append(row);
+            }
+          }
+          break;
+        }
+        case "busy":
+          busy = message.value;
+          controls();
+          if (busy) status("\u0412\u044B\u043F\u043E\u043B\u043D\u044F\u044E\u2026");
+          else if ($("status").textContent === "\u0412\u044B\u043F\u043E\u043B\u043D\u044F\u044E\u2026") status("\u0413\u043E\u0442\u043E\u0432\u043E \u043A \u0440\u0430\u0431\u043E\u0442\u0435");
+          break;
+        case "scene-rules":
+          if (Array.isArray(message.relations)) showRules(message.relations);
+          break;
+        case "success":
+          status(message.message, "success");
+          break;
+        case "progress":
+          status(message.message);
+          break;
+        case "examples-ready":
+          examplesReady = true;
+          controls();
+          break;
+        case "acceptance-report":
+          $("acceptance-report").hidden = false;
+          $("acceptance-report").textContent = JSON.stringify(message.report, null, 2);
+          examplesReady = message.report.variantsPassed === 40 && message.report.passed === 54 && ["originalsUnchanged", "colorGuard", "relativeGuard", "sceneScale", "manualOperations"].every((k) => message.report[k] === true);
+          controls();
+          break;
+        case "error":
+          status(message.message, "error");
+          break;
+        case "composed": {
+          $("chosen").hidden = false;
+          const list = $("choices");
+          list.replaceChildren();
+          for (const choice of message.choices) {
+            const li = document.createElement("li");
+            li.textContent = `${assets.find((a) => a.id === choice.assetId)?.name ?? choice.assetId} \xD7 ${choice.count}`;
+            const small = document.createElement("small");
+            small.textContent = choice.reason;
+            li.append(small);
+            list.append(li);
+          }
+          break;
+        }
+        case "preview":
+          validateSvg(message.svg);
+          $("palette-preview").hidden = false;
+          $("preview-image").src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(message.svg);
+          break;
+        case "download-svg":
+          validateSvg(message.svg);
+          lastSvg = message.svg;
+          download(lastSvg, message.filename, "image/svg+xml");
+          $("reimport").disabled = false;
+          status("SVG \u043F\u0440\u043E\u0432\u0435\u0440\u0435\u043D: \u0431\u0435\u0437 \u0440\u0430\u0441\u0442\u0440\u0430, \u0432\u043D\u0435\u0448\u043D\u0438\u0445 \u0440\u0435\u0441\u0443\u0440\u0441\u043E\u0432 \u0438 \u043E\u0431\u043E\u0440\u0432\u0430\u043D\u043D\u044B\u0445 \u0441\u0441\u044B\u043B\u043E\u043A.", "success");
+          break;
+        case "show-svg":
+          validateSvg(message.svg);
+          lastSvg = message.svg;
+          $("svg-code").hidden = false;
+          $("svg-code").open = true;
+          input("raw-svg").value = lastSvg;
+          $("reimport").disabled = false;
+          $("svg-code").scrollIntoView({ block: "start" });
+          status("SVG \u043F\u0440\u043E\u0432\u0435\u0440\u0435\u043D. \u041C\u043E\u0436\u043D\u043E \u0432\u044B\u0434\u0435\u043B\u0438\u0442\u044C \u043A\u043E\u0434 \u0438 \u0441\u043A\u043E\u043F\u0438\u0440\u043E\u0432\u0430\u0442\u044C.", "success");
+          break;
+        case "download-json":
+          download(JSON.stringify(message.data, null, 2), message.filename, "application/json");
+          break;
+        case "download-bundle": {
+          const files = {};
+          const manifest = [];
+          for (const [index, item] of message.scenes.entries()) {
+            validateSvg(item.svg);
+            const prefix = String(index + 1).padStart(2, "0");
+            files[`${prefix}.svg`] = strToU8(item.svg);
+            files[`${prefix}.scene.json`] = strToU8(JSON.stringify(item.scene, null, 2));
+            manifest.push({ name: item.name, svg: `${prefix}.svg`, scene: `${prefix}.scene.json`, query: item.scene.query, settings: item.scene.settings, palette: item.scene.palette });
+          }
+          files["manifest.json"] = strToU8(JSON.stringify(manifest, null, 2));
+          files["catalog.metadata.json"] = strToU8(JSON.stringify(message.catalog, null, 2));
+          files["README.txt"] = strToU8("SVG \u2014 \u0430\u0432\u0442\u043E\u043D\u043E\u043C\u043D\u044B\u0435 \u0432\u0435\u043A\u0442\u043E\u0440\u043D\u044B\u0435 \u043A\u043E\u043C\u043F\u043E\u0437\u0438\u0446\u0438\u0438. JSON \u2014 \u043F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B \u0438 \u043F\u0440\u043E\u0438\u0441\u0445\u043E\u0436\u0434\u0435\u043D\u0438\u0435. \u0414\u043B\u044F \u0432\u043E\u0441\u0441\u0442\u0430\u043D\u043E\u0432\u043B\u0435\u043D\u0438\u044F JSON-\u0441\u0446\u0435\u043D \u043D\u0443\u0436\u043D\u0430 \u0431\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0430 \u0432 \u0442\u043E\u043C \u0436\u0435 Figma-\u0444\u0430\u0439\u043B\u0435. \u0422\u0435\u0445\u043D\u0438\u0447\u0435\u0441\u043A\u0438\u0435 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u044B TEST ONLY \u0438\u0441\u043A\u043B\u044E\u0447\u0435\u043D\u044B.");
+          const zipped = zipSync(files, { level: 6 });
+          download(new Uint8Array(zipped).buffer, "compositions.zip", "application/zip");
+          status(`\u0410\u0440\u0445\u0438\u0432 \u043F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u043B\u0435\u043D: ${manifest.length} \u043A\u043E\u043C\u043F\u043E\u0437\u0438\u0446\u0438\u0439, SVG \u043F\u0440\u043E\u0432\u0435\u0440\u0435\u043D\u044B.`, "success");
+          break;
+        }
+        case "native-test-report": {
+          const report = document.createElement("section");
+          report.style.cssText = "padding:16px;border:1px solid #c7ceca;margin:12px 0;background:white";
+          const heading = document.createElement("h2");
+          heading.textContent = `Figma API \xB7 ${message.report.passed}/${message.report.total} \u043F\u0440\u043E\u0432\u0435\u0440\u043E\u043A`;
+          report.append(heading);
+          const note = document.createElement("p");
+          note.className = "hint";
+          note.textContent = "\u0422\u043E\u043B\u044C\u043A\u043E \u0442\u0435\u0445\u043D\u0438\u0447\u0435\u0441\u043A\u0438\u0435 \u0444\u0438\u043A\u0441\u0442\u0443\u0440\u044B. \u042D\u0442\u043E \u043D\u0435 \u0431\u0438\u0431\u043B\u0438\u043E\u0442\u0435\u043A\u0430 \u0438\u0441\u0445\u043E\u0434\u043D\u044B\u0445 20 \u0438\u043B\u043B\u044E\u0441\u0442\u0440\u0430\u0446\u0438\u0439.";
+          report.append(note);
+          for (const result of message.report.results) {
+            const row = document.createElement("p");
+            row.className = "hint";
+            row.textContent = `${result.ok ? "PASS" : "FAIL"} \xB7 ${result.name}${result.detail ? " \u2014 " + result.detail : ""}`;
+            report.append(row);
+          }
+          const button = document.createElement("button");
+          button.textContent = "\u0421\u043A\u0430\u0447\u0430\u0442\u044C \u043E\u0442\u0447\u0451\u0442 \u043F\u0440\u043E\u0432\u0435\u0440\u043E\u043A";
+          button.className = "secondary";
+          button.onclick = () => download(JSON.stringify(message.report, null, 2), "native-test-report.json", "application/json");
+          report.append(button);
+          for (const item of message.exported) {
+            validateSvg(item.svg);
+            const b = document.createElement("button");
+            b.textContent = item.name;
+            b.className = "text-button";
+            b.onclick = () => download(item.svg, item.name, "image/svg+xml");
+            report.append(b);
+          }
+          document.querySelector("main").prepend(report);
+          break;
+        }
+      }
+    });
+  };
+  if (!connected) {
+    $("preview-notice").hidden = false;
+    status("\u041F\u0430\u043D\u0435\u043B\u044C \u043E\u0442\u043A\u0440\u044B\u0442\u0430 \u043E\u0442\u0434\u0435\u043B\u044C\u043D\u043E \u043E\u0442 Figma.");
+  } else send({ type: "init" });
+  drawPalette();
+  controls();
+})();
+</script></body></html>

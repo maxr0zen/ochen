@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Сочетание — векторные композиции</title><style>/* INJECT_CSS */</style></head>
+<body><div class="app">
+  <header><div class="brand"><svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><rect x="2" y="2" width="14" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="17" cy="17" r="7" fill="var(--surface)" stroke="currentColor" stroke-width="1.5"/></svg><div><strong>Сочетание</strong><span>Иллюстрации из исходной библиотеки</span></div></div><span class="version">v0.6</span></header>
+  <div id="preview-notice" class="notice" hidden>Предпросмотр панели. Документ Figma не подключён. Откройте плагин в Figma для сборки и экспорта.</div>
+  <nav aria-label="Разделы"><button class="tab active" data-tab="compose" aria-pressed="true">Композиция</button><button class="tab" data-tab="library" aria-pressed="false">Библиотека <span id="count">0</span></button></nav>
+  <main>
+    <section id="compose-panel">
+      <div class="section-head"><h1>Собрать иллюстрацию</h1><span class="step">01 / замысел</span></div>
+      <div class="segmented" role="group" aria-label="Режим сборки"><button data-mode="metaphor" class="selected" aria-pressed="true">По метафоре</button><button data-mode="components" aria-pressed="false">Из компонентов</button></div>
+      <label for="query" id="query-label">Метафора или заголовок</label><textarea id="query" rows="3" maxlength="2000" placeholder="Например, «вместе к новым вершинам»"></textarea>
+      <p class="hint" id="search-hint">Локальный смысловой поиск по именам, тегам и метафорам. Без внешней AI-модели.</p>
+      <details class="advanced" id="ai-panel"><summary>AI-композиция · Gemini / Groq</summary>
+       <p class="hint">AI предлагает расположение. Исходные SVG и общий масштаб проверяет конструктор. Нужен локальный сервер: <code>npm run ai</code>.</p>
+       <label for="ai-token">Код подключения из .env.local</label><input id="ai-token" type="password" autocomplete="off" spellcheck="false" placeholder="AI_CONNECTION_TOKEN — не API-ключ">
+       <button id="ai-connect" class="secondary">Проверить подключение AI</button><p id="ai-connection" class="hint">Сервер ещё не подключён</p>
+       <label class="hint ai-option"><input id="ai-images" type="checkbox"> Отправлять миниатюры предметов и предпросмотр в Gemini</label>
+       <p class="hint">Названия, теги и размеры отправляются выбранному провайдеру. Миниатюры — только при включённой опции. SVG-контуры модель не редактирует.</p>
+       <div class="actions compact"><button id="ai-generate" class="secondary">Предложить AI-композицию</button><button id="ai-cancel" class="text-button" disabled>Отменить AI-запрос</button></div>
+       <figure id="ai-result" hidden><img id="ai-preview" alt="Предпросмотр AI-композиции" style="display:block;width:100%;max-height:400px;object-fit:contain;background:white"><figcaption id="ai-summary" class="hint"></figcaption>
+        <label for="ai-feedback">Что изменить в расположении?</label><textarea id="ai-feedback" rows="2" maxlength="1000" placeholder="Например: приблизить монеты к книге, оставить больше воздуха справа"></textarea>
+        <div class="actions compact"><button id="ai-refine" class="secondary" disabled>Улучшить AI-план</button><button id="ai-apply" class="primary" disabled>Добавить AI-сцену в Figma</button></div>
+       </figure>
+      </details>
+      <div class="grid two"><label>Детализация объектов<select id="detail"><option value="S">S · меньше деталей</option><option value="L">L · больше деталей</option></select></label><label>Состояния объектов<select id="appearance-mode"><option value="mixed">Главные и фоновые</option><option value="main">Только главные</option><option value="background">Только фоновые</option></select></label></div>
+      <p class="hint">Размер S/L выбирает исходные варианты, а не масштаб. Относительные размеры предметов сохраняются. Состояние каждого экземпляра можно изменить после сборки.</p>
+      <div class="section-head divider"><h2>Холст и композиция</h2><span class="step">02 / форма</span></div>
+      <div class="formats" role="group" aria-label="Формат холста"><button data-format="1080,1080" class="selected" aria-pressed="true"><i class="format-icon square"></i>Квадрат</button><button data-format="1600,900" aria-pressed="false"><i class="format-icon landscape"></i>Альбом</button><button data-format="900,1600" aria-pressed="false"><i class="format-icon portrait"></i>Портрет</button></div>
+      <div class="grid three"><label>Ширина, px<input id="width" type="number" min="128" max="8192" value="1080" required></label><label>Высота, px<input id="height" type="number" min="128" max="8192" value="1080" required></label><label>Вариант / seed<input id="seed" type="number" min="0" max="2147483647" value="42" required></label></div>
+      <label for="layout">Схема размещения</label><select id="layout"><option value="focus">Акцент и окружение</option><option value="balanced">Сбалансированная группа</option><option value="diagonal">Диагональный ритм</option></select>
+      <div class="section-head divider"><h2>Палитра</h2><span class="step">03 / цвет</span></div>
+      <label>Фон холста<select id="backdrop"><option value="source">Исходный векторный фон</option><option value="solid">Только заливка из схемы</option><option value="none">Без фона · прозрачный</option></select></label>
+      <p class="hint">Исходный фон автоматически выбирается по S/L и палитре, помещается под предметами и обрезается по холсту без растяжения.</p>
+      <div class="palette-row"><select id="palette" aria-label="Цветовая палитра"><option value="violet">Схема 1 · сиреневая</option><option value="peach">Схема 2 · персиковая</option><option value="turquoise">Схема 3 · бирюзовая</option></select><button id="palette-file-button" class="secondary">Загрузить JSON</button><input hidden id="palette-file" type="file" accept=".json,application/json"></div>
+      <p class="hint">Первые четыре образца — фоновые цвета, следующие — цвета главных объектов. Фоновые цвета разрешены в главных объектах; обратное запрещено.</p>
+      <div class="swatches" id="swatches"><span class="hint">Цвета объектов сохранятся</span></div>
+      <div class="actions compact"><button id="preview-palette" data-scene class="secondary" disabled>Предпросмотр</button><button id="apply-palette" data-scene class="secondary" disabled>Применить</button><button id="restore-palette" data-scene class="text-button" disabled>Сбросить</button></div>
+      <figure id="palette-preview" hidden><img id="preview-image" alt="Предпросмотр выбранной палитры"><figcaption>Предпросмотр: холст пока не изменён.</figcaption></figure>
+      <div class="build-row"><button id="compose" class="primary" disabled>Собрать композицию <span aria-hidden="true">↗</span></button><button id="variant" data-scene class="secondary" disabled title="Собрать ещё один вариант">Ещё вариант</button></div>
+      <button id="reflow" data-scene class="text-button" disabled>Пересобрать в новом формате рядом</button>
+      <div id="empty" class="empty"><strong>Подготовка исходной библиотеки</strong><p>После запуска в Figma автоматически появятся 40 исходных вариантов S/L. Выберите предметы по названию или метафоре.</p><button class="secondary" id="go-library">Открыть библиотеку</button></div>
+      <div id="chosen" hidden><h2>Выбранные объекты</h2><ul id="choices"></ul><section id="scene-rules" hidden><h3>Связи предметов</h3><ul id="scene-rule-list"></ul><button id="check-scene-rules" data-scene class="text-button" disabled>Проверить связи на холсте</button><p class="hint">После ручных правок проверьте связи на холсте или пересоберите композицию, чтобы применить правила снова.</p></section></div>
+      <details class="advanced"><summary>Структурированный план</summary><p class="hint">Вставьте план от внешней модели. Используйте только assetId из библиотеки. Новые объекты не принимаются.</p><textarea id="plan" rows="4" aria-label="JSON-план" placeholder='{"choices":[{"assetId":"…","count":1,"reason":"…"}]}'></textarea><button id="apply-plan" class="secondary">Собрать из JSON</button></details>
+    </section>
+    <section id="library-panel" hidden>
+      <div class="section-head"><h1>Ваши объекты</h1><span class="step" id="source-count">0 источников</span></div>
+      <p class="intro">Утверждённая библиотека: 10 предметов × S/L × главное/фоновое состояние. Все 40 вариантов копируются из исходных SVG; посторонние объекты не добавляются. Здесь показана выбранная детализация.</p>
+      <button hidden id="add-selection">Добавить выделенное <span id="selection-count">0</span></button>
+      <button hidden id="add-section">Добавить объекты из выбранного раздела</button>
+      <p class="hint">Копии сохраняются на отдельной странице этого Figma-файла. Геометрия и пропорции сохраняются.</p>
+      <label for="filter">Найти в библиотеке</label><input id="filter" type="search" placeholder="Имя, тег или метафора">
+      <div id="asset-list" class="asset-list"></div><p id="library-empty" class="empty">Библиотека подготовится автоматически после запуска плагина в Figma.</p>
+      <button id="export-catalog" class="text-button">Скачать метаданные каталога</button>
+      <form id="asset-form" hidden><div class="section-head divider"><h2>Описание объекта</h2><button id="close-edit" type="button" class="text-button">Закрыть</button></div><input id="edit-id" type="hidden"><label>Название<input id="edit-name" maxlength="160" required></label><label>Синонимы через запятую<input id="edit-synonyms" maxlength="2000"></label><label>Теги через запятую<input id="edit-tags" maxlength="2000" placeholder="команда, люди, сотрудничество"></label><label>Подходящие метафоры<textarea id="edit-metaphors" rows="2" maxlength="2000" placeholder="работа вместе, общая цель"></textarea></label><label>Приоритет композиции<select id="edit-role"><option value="hero">Акцент</option><option value="support">Поддерживающий</option><option value="detail">Деталь</option></select></label><p id="provenance" class="hint"></p><button class="primary" type="submit">Сохранить описание</button></form>
+    </section>
+  </main>
+  <footer><div class="export-row"><button id="export-svg" data-scene class="primary" disabled>Скачать SVG</button><button id="save-scene" data-scene class="secondary" disabled>Сохранить сцену</button><button id="load-scene-button" class="text-button">Открыть</button><input id="scene-file" type="file" accept=".json,application/json" hidden></div><div class="footnote">Правки, дублирование и слои — на холсте Figma.<button id="reimport" class="text-button" disabled>Проверить SVG в Figma</button><button id="show-svg" data-scene class="text-button" disabled>SVG для копирования</button><button id="export-bundle" data-scene class="text-button" disabled>Скачать все композиции (ZIP)</button></div><details id="svg-code" hidden><summary>Код проверенного SVG</summary><label for="raw-svg">SVG для копирования</label><textarea id="raw-svg" readonly rows="5"></textarea><button id="select-svg" class="secondary">Выделить весь SVG</button></details><div id="status" role="status" aria-live="polite">Готово к работе</div></footer>
+<button id="close-plugin" class="text-button">Закрыть конструктор</button>
+<details class="advanced"><summary>Проверка библиотеки и примеры</summary><p class="hint">Проверяет исходные варианты во всех форматах и схемах, сохраняет оригиналы и собирает три примера.</p><button id="acceptance" class="secondary">Проверить библиотеку</button><button id="retry-acceptance" class="secondary">Повторить проверки с ошибками</button><button id="create-examples" class="secondary">Собрать три примера</button><button id="export-examples" class="secondary" disabled>Скачать три примера</button><pre id="acceptance-report" hidden></pre></details>
+</div><script>/* INJECT_JS */</script></body></html>

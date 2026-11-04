@@ -1,0 +1,172 @@
+[
+  {
+    "name": "книга, монета × 2, лампа",
+    "svg": "01.svg",
+    "scene": "01.scene.json",
+    "settings": {
+      "width": 1080,
+      "height": 1080,
+      "seed": 42,
+      "layout": "focus",
+      "detail": "S",
+      "appearanceMode": "main",
+      "backdrop": "source"
+    },
+    "palette": {
+      "name": "Схема 1 · сиреневая",
+      "colors": [
+        "#D7CDF5",
+        "#AA9BF0",
+        "#7864D7",
+        "#181817",
+        "#F9ECB0",
+        "#F9A3AA",
+        "#FFE3E1",
+        "#FFFFFF"
+      ],
+      "backgroundColors": [
+        "#D7CDF5",
+        "#AA9BF0",
+        "#7864D7",
+        "#181817"
+      ],
+      "objectColors": [
+        "#F9ECB0",
+        "#F9A3AA",
+        "#FFE3E1",
+        "#FFFFFF"
+      ]
+    },
+    "rules": [
+      {
+        "kind": "illuminates",
+        "sourceId": "42-1-lamp:S:main",
+        "targetId": "42-0-book:S:main",
+        "ok": true,
+        "angle": 8.537736462515939e-7,
+        "message": "Лампа → Книга: цель находится перед плафоном, в направлении света."
+      },
+      {
+        "kind": "coins",
+        "sourceId": "42-2-coin:S:main",
+        "targetId": "42-0-book:S:main",
+        "ok": true,
+        "message": "Монеты → Книга: сгруппированы рядом с предметом."
+      },
+      {
+        "kind": "coins",
+        "sourceId": "42-3-coin:S:main",
+        "targetId": "42-0-book:S:main",
+        "ok": true,
+        "message": "Монеты → Книга: сгруппированы рядом с предметом."
+      }
+    ],
+    "renderedBy": "approved-source-svg / shared plugin composition engine"
+  },
+  {
+    "name": "Идеи для команды",
+    "svg": "02.svg",
+    "scene": "02.scene.json",
+    "settings": {
+      "width": 1200,
+      "height": 900,
+      "seed": 42,
+      "layout": "focus",
+      "detail": "L",
+      "appearanceMode": "mixed",
+      "backdrop": "source"
+    },
+    "palette": {
+      "name": "Схема 2 · персиковая",
+      "colors": [
+        "#FDD7B9",
+        "#FAC896",
+        "#D27532",
+        "#181817",
+        "#F9ECB0",
+        "#80DADA",
+        "#BEEBEB",
+        "#FFFFFF"
+      ],
+      "backgroundColors": [
+        "#FDD7B9",
+        "#FAC896",
+        "#D27532",
+        "#181817"
+      ],
+      "objectColors": [
+        "#F9ECB0",
+        "#80DADA",
+        "#BEEBEB",
+        "#FFFFFF"
+      ]
+    },
+    "rules": [
+      {
+        "kind": "illuminates",
+        "sourceId": "42-0-lamp:L:main",
+        "targetId": "42-3-puzzle:L:background",
+        "ok": true,
+        "angle": 8.537736462515939e-7,
+        "message": "Лампа → Пазлы: цель находится перед плафоном, в направлении света."
+      },
+      {
+        "kind": "writing",
+        "sourceId": "42-1-pen:L:main",
+        "targetId": "42-3-puzzle:L:background",
+        "ok": true,
+        "message": "Ручка → Пазлы: наконечник направлен на рабочую поверхность."
+      }
+    ],
+    "renderedBy": "approved-source-svg / shared plugin composition engine"
+  },
+  {
+    "name": "книга (фон), наушники (главный), телефон (главный)",
+    "svg": "03.svg",
+    "scene": "03.scene.json",
+    "settings": {
+      "width": 900,
+      "height": 1200,
+      "seed": 42,
+      "layout": "diagonal",
+      "detail": "S",
+      "appearanceMode": "mixed",
+      "backdrop": "source"
+    },
+    "palette": {
+      "name": "Схема 3 · бирюзовая",
+      "colors": [
+        "#BEEBEB",
+        "#80DADA",
+        "#5ABEBE",
+        "#181817",
+        "#FFD4F2",
+        "#6D7BFC",
+        "#B6C6FE",
+        "#FFFFFF"
+      ],
+      "backgroundColors": [
+        "#BEEBEB",
+        "#80DADA",
+        "#5ABEBE",
+        "#181817"
+      ],
+      "objectColors": [
+        "#FFD4F2",
+        "#6D7BFC",
+        "#B6C6FE",
+        "#FFFFFF"
+      ]
+    },
+    "rules": [
+      {
+        "kind": "audio",
+        "sourceId": "42-2-phone:S:main",
+        "targetId": "42-1-headphones:S:main",
+        "ok": true,
+        "message": "Телефон и наушники расположены как связанная пара."
+      }
+    ],
+    "renderedBy": "approved-source-svg / shared plugin composition engine"
+  }
+]

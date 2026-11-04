@@ -1,0 +1,1294 @@
+{
+  "version": 2,
+  "source": "Figma / Библиотека компонентов / Размер S и Размер L",
+  "variants": [
+    {
+      "family": "book",
+      "name": "Книга",
+      "tags": [
+        "чтение",
+        "знания",
+        "обучение",
+        "образование",
+        "исследование"
+      ],
+      "detail": "S",
+      "state": "main",
+      "width": 728.9458618164062,
+      "height": 494.331787109375,
+      "sourceShapeCount": 51,
+      "paints": [
+        "white",
+        "#181817",
+        "#F9A3AA",
+        "#F9ECB0"
+      ],
+      "sourceBounds": {
+        "x": 268.3890686035156,
+        "y": 2060.389892578125,
+        "width": 722.9458618164062,
+        "height": 488.331787109375
+      },
+      "sourceSectionId": "21:25859",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "3202ea4c535e6e386592c31d5eeaa34d0ca497c08e91045ea1962318e0f1a057",
+      "file": "assets/book-S-main.svg",
+      "hash": "980e6601d22a0a8f9932bdbc161408a65ee4bda1b4e4378d728ee58d701bc500"
+    },
+    {
+      "family": "phone",
+      "name": "Телефон",
+      "tags": [
+        "связь",
+        "общение",
+        "коммуникация",
+        "контакт",
+        "цифровой"
+      ],
+      "detail": "S",
+      "state": "main",
+      "width": 404.26171875,
+      "height": 236.836181640625,
+      "sourceShapeCount": 96,
+      "paints": [
+        "#181817",
+        "white",
+        "#F9ECB0",
+        "#7864D7",
+        "#D7CDF5"
+      ],
+      "sourceBounds": {
+        "x": 1294.2322998046875,
+        "y": 2253.163818359375,
+        "width": 398.26171875,
+        "height": 230.836181640625
+      },
+      "sourceSectionId": "21:25859",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "3202ea4c535e6e386592c31d5eeaa34d0ca497c08e91045ea1962318e0f1a057",
+      "file": "assets/phone-S-main.svg",
+      "hash": "772644bf0f2d2aeb0f5eaa261533d439ebba0045df9eac28c55bccda1378f570"
+    },
+    {
+      "family": "puzzle",
+      "name": "Пазлы",
+      "tags": [
+        "команда",
+        "сотрудничество",
+        "вместе",
+        "партнерство",
+        "решение"
+      ],
+      "detail": "S",
+      "state": "main",
+      "width": 278.0819091796875,
+      "height": 162.763427734375,
+      "sourceShapeCount": 57,
+      "paints": [
+        "#181817",
+        "#F9ECB0",
+        "white",
+        "#F9A3AA",
+        "#D7CDF5"
+      ],
+      "sourceBounds": {
+        "x": 1925.3387451171875,
+        "y": 2284.119873046875,
+        "width": 272.0819091796875,
+        "height": 156.763427734375
+      },
+      "sourceSectionId": "21:25859",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "3202ea4c535e6e386592c31d5eeaa34d0ca497c08e91045ea1962318e0f1a057",
+      "file": "assets/puzzle-S-main.svg",
+      "hash": "d345f83fba64136bc15d67ca53002fe6d6039924e817321da09ba25c161ed1ff"
+    },
+    {
+      "family": "coin",
+      "name": "Монета",
+      "tags": [
+        "деньги",
+        "финансы",
+        "оплата",
+        "инвестиции",
+        "бюджет"
+      ],
+      "detail": "S",
+      "state": "main",
+      "width": 158.395263671875,
+      "height": 106.19775390625,
+      "sourceShapeCount": 130,
+      "paints": [
+        "white",
+        "#F9ECB0",
+        "#181817"
+      ],
+      "sourceBounds": {
+        "x": 2498.226318359375,
+        "y": 2339.80224609375,
+        "width": 152.395263671875,
+        "height": 100.19775390625
+      },
+      "sourceSectionId": "21:25859",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "3202ea4c535e6e386592c31d5eeaa34d0ca497c08e91045ea1962318e0f1a057",
+      "file": "assets/coin-S-main.svg",
+      "hash": "cacf764a1082778d7ca805deeb649bc15799a7d546cde6334d24cc5032ec2c8f"
+    },
+    {
+      "family": "headphones",
+      "name": "Наушники",
+      "tags": [
+        "музыка",
+        "общение",
+        "слушать",
+        "поддержка",
+        "коммуникация"
+      ],
+      "detail": "S",
+      "state": "main",
+      "width": 450.0747985839844,
+      "height": 351.769775390625,
+      "sourceShapeCount": 79,
+      "paints": [
+        "#181817",
+        "white",
+        "#D7CDF5"
+      ],
+      "sourceBounds": {
+        "x": 374.8586730957031,
+        "y": 2935.97998046875,
+        "width": 444.0747985839844,
+        "height": 345.769775390625
+      },
+      "sourceSectionId": "21:25859",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "3202ea4c535e6e386592c31d5eeaa34d0ca497c08e91045ea1962318e0f1a057",
+      "file": "assets/headphones-S-main.svg",
+      "hash": "0a9d99c57f1be00a5a923de08b5595fb80a9714854f673ca3dc0fed59ec412f3"
+    },
+    {
+      "family": "lamp",
+      "name": "Лампа",
+      "tags": [
+        "идея",
+        "идеи",
+        "вдохновение",
+        "творчество",
+        "решение",
+        "свет"
+      ],
+      "detail": "S",
+      "state": "main",
+      "width": 478.9739990234375,
+      "height": 570.4892578125,
+      "sourceShapeCount": 27,
+      "paints": [
+        "#181817",
+        "white",
+        "#D7CDF5",
+        "#F9ECB0",
+        "#F9A3AA"
+      ],
+      "sourceBounds": {
+        "x": 1192.0023193359375,
+        "y": 2818.26806640625,
+        "width": 472.9739990234375,
+        "height": 564.4892578125
+      },
+      "sourceSectionId": "21:25859",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "3202ea4c535e6e386592c31d5eeaa34d0ca497c08e91045ea1962318e0f1a057",
+      "file": "assets/lamp-S-main.svg",
+      "hash": "3b3e3a108e44e11f87b6677e87b2a89054d08c2602fa3f2be18f35a45e0edd50"
+    },
+    {
+      "family": "flowers",
+      "name": "Цветы",
+      "tags": [
+        "рост",
+        "забота",
+        "развитие",
+        "благодарность",
+        "вдохновение"
+      ],
+      "detail": "S",
+      "state": "main",
+      "width": 329.2685546875,
+      "height": 414.945556640625,
+      "sourceShapeCount": 131,
+      "paints": [
+        "#181817",
+        "white",
+        "#F9ECB0",
+        "#AA9BF0",
+        "#F9A3AA"
+      ],
+      "sourceBounds": {
+        "x": 1918.908935546875,
+        "y": 2948.5849609375,
+        "width": 323.2685546875,
+        "height": 408.945556640625
+      },
+      "sourceSectionId": "21:25859",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "3202ea4c535e6e386592c31d5eeaa34d0ca497c08e91045ea1962318e0f1a057",
+      "file": "assets/flowers-S-main.svg",
+      "hash": "e6131a1d0dfaef2c039604aee1687f7bbc074785cc82a3b5af50bb8369bff453"
+    },
+    {
+      "family": "wallet",
+      "name": "Кошелёк",
+      "tags": [
+        "деньги",
+        "финансы",
+        "сбережения",
+        "бюджет",
+        "капитал"
+      ],
+      "detail": "S",
+      "state": "main",
+      "width": 321.207275390625,
+      "height": 204.154296875,
+      "sourceShapeCount": 83,
+      "paints": [
+        "#D7CDF5",
+        "#181817",
+        "#F9ECB0",
+        "white"
+      ],
+      "sourceBounds": {
+        "x": 2399.498779296875,
+        "y": 3187.6455078125,
+        "width": 315.207275390625,
+        "height": 198.154296875
+      },
+      "sourceSectionId": "21:25859",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "3202ea4c535e6e386592c31d5eeaa34d0ca497c08e91045ea1962318e0f1a057",
+      "file": "assets/wallet-S-main.svg",
+      "hash": "c777997396d423e8e1a7be1116db1dd666ba97eddeda8c0e5bce573d77a5372d"
+    },
+    {
+      "family": "folder",
+      "name": "Папка",
+      "tags": [
+        "документы",
+        "порядок",
+        "работа",
+        "организация",
+        "управление"
+      ],
+      "detail": "S",
+      "state": "main",
+      "width": 626.3092651367188,
+      "height": 335.293701171875,
+      "sourceShapeCount": 20,
+      "paints": [
+        "#F9ECB0",
+        "#181817",
+        "white"
+      ],
+      "sourceBounds": {
+        "x": 261.2703857421875,
+        "y": 3741.491455078125,
+        "width": 620.3092651367188,
+        "height": 329.293701171875
+      },
+      "sourceSectionId": "21:25859",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "3202ea4c535e6e386592c31d5eeaa34d0ca497c08e91045ea1962318e0f1a057",
+      "file": "assets/folder-S-main.svg",
+      "hash": "6a1259cae13d472cec9ef6e065371bf4088bcf68768e2ba597836612056063e6"
+    },
+    {
+      "family": "pen",
+      "name": "Ручка",
+      "tags": [
+        "письмо",
+        "творчество",
+        "идея",
+        "план",
+        "договор"
+      ],
+      "detail": "S",
+      "state": "main",
+      "width": 260.2088623046875,
+      "height": 148.70361328125,
+      "sourceShapeCount": 24,
+      "paints": [
+        "#181817",
+        "white",
+        "#F9A3AA"
+      ],
+      "sourceBounds": {
+        "x": 1298.057861328125,
+        "y": 3857.5361328125,
+        "width": 254.2088623046875,
+        "height": 142.70361328125
+      },
+      "sourceSectionId": "21:25859",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "3202ea4c535e6e386592c31d5eeaa34d0ca497c08e91045ea1962318e0f1a057",
+      "file": "assets/pen-S-main.svg",
+      "hash": "e4792815cf8f4bd2a673bd57e4b404c39afb2997aec19bb2766fc3c38b6f45fa"
+    },
+    {
+      "family": "book",
+      "name": "Книга",
+      "tags": [
+        "чтение",
+        "знания",
+        "обучение",
+        "образование",
+        "исследование"
+      ],
+      "detail": "S",
+      "state": "background",
+      "width": 728.9458618164062,
+      "height": 494.32666015625,
+      "sourceShapeCount": 54,
+      "paints": [
+        "#D7CDF5",
+        "#7864D7"
+      ],
+      "sourceBounds": {
+        "x": 268.3890686035156,
+        "y": 5161.7998046875,
+        "width": 722.9458618164062,
+        "height": 488.32666015625
+      },
+      "sourceSectionId": "21:25859",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "3202ea4c535e6e386592c31d5eeaa34d0ca497c08e91045ea1962318e0f1a057",
+      "file": "assets/book-S-background.svg",
+      "hash": "48953c7df43d0f440ddc1f87ffab540d814af9656f7336dd9fb31b6762208b1e"
+    },
+    {
+      "family": "phone",
+      "name": "Телефон",
+      "tags": [
+        "связь",
+        "общение",
+        "коммуникация",
+        "контакт",
+        "цифровой"
+      ],
+      "detail": "S",
+      "state": "background",
+      "width": 404.26171875,
+      "height": 236.83642578125,
+      "sourceShapeCount": 155,
+      "paints": [
+        "#7864D7",
+        "#D7CDF5"
+      ],
+      "sourceBounds": {
+        "x": 1294.2322998046875,
+        "y": 5354.57373046875,
+        "width": 398.26171875,
+        "height": 230.83642578125
+      },
+      "sourceSectionId": "21:25859",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "3202ea4c535e6e386592c31d5eeaa34d0ca497c08e91045ea1962318e0f1a057",
+      "file": "assets/phone-S-background.svg",
+      "hash": "8b032ef4c7536ea4bc59c35260308a30d33c92ee5874b1d27abb526d8ac2a274"
+    },
+    {
+      "family": "puzzle",
+      "name": "Пазлы",
+      "tags": [
+        "команда",
+        "сотрудничество",
+        "вместе",
+        "партнерство",
+        "решение"
+      ],
+      "detail": "S",
+      "state": "background",
+      "width": 278.0819091796875,
+      "height": 162.76806640625,
+      "sourceShapeCount": 57,
+      "paints": [
+        "#7864D7",
+        "#D7CDF5"
+      ],
+      "sourceBounds": {
+        "x": 1925.3387451171875,
+        "y": 5385.52001953125,
+        "width": 272.0819091796875,
+        "height": 156.76806640625
+      },
+      "sourceSectionId": "21:25859",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "3202ea4c535e6e386592c31d5eeaa34d0ca497c08e91045ea1962318e0f1a057",
+      "file": "assets/puzzle-S-background.svg",
+      "hash": "a84ff44697958d698df0a535f6674ee135d2a4bcf1436185a4cff7e637fc6299"
+    },
+    {
+      "family": "coin",
+      "name": "Монета",
+      "tags": [
+        "деньги",
+        "финансы",
+        "оплата",
+        "инвестиции",
+        "бюджет"
+      ],
+      "detail": "S",
+      "state": "background",
+      "width": 158.392578125,
+      "height": 106.2060546875,
+      "sourceShapeCount": 136,
+      "paints": [
+        "#D7CDF5",
+        "#7864D7"
+      ],
+      "sourceBounds": {
+        "x": 2498.22900390625,
+        "y": 5441.2041015625,
+        "width": 152.392578125,
+        "height": 100.2060546875
+      },
+      "sourceSectionId": "21:25859",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "3202ea4c535e6e386592c31d5eeaa34d0ca497c08e91045ea1962318e0f1a057",
+      "file": "assets/coin-S-background.svg",
+      "hash": "f841b9464e8281a68edfd21b5f0ff3340d36b9aeb3c1822d81aa8acc7daceaf9"
+    },
+    {
+      "family": "headphones",
+      "name": "Наушники",
+      "tags": [
+        "музыка",
+        "общение",
+        "слушать",
+        "поддержка",
+        "коммуникация"
+      ],
+      "detail": "S",
+      "state": "background",
+      "width": 450.0747985839844,
+      "height": 351.76953125,
+      "sourceShapeCount": 84,
+      "paints": [
+        "#7864D7",
+        "#D7CDF5"
+      ],
+      "sourceBounds": {
+        "x": 374.8586730957031,
+        "y": 6037.39013671875,
+        "width": 444.0747985839844,
+        "height": 345.76953125
+      },
+      "sourceSectionId": "21:25859",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "3202ea4c535e6e386592c31d5eeaa34d0ca497c08e91045ea1962318e0f1a057",
+      "file": "assets/headphones-S-background.svg",
+      "hash": "48419dd29a1abc9d0c80316230dc3507eeb5563f2a3a806d457f58e5561c402c"
+    },
+    {
+      "family": "lamp",
+      "name": "Лампа",
+      "tags": [
+        "идея",
+        "идеи",
+        "вдохновение",
+        "творчество",
+        "решение",
+        "свет"
+      ],
+      "detail": "S",
+      "state": "background",
+      "width": 478.9739990234375,
+      "height": 570.494140625,
+      "sourceShapeCount": 27,
+      "paints": [
+        "#7864D7",
+        "#D7CDF5"
+      ],
+      "sourceBounds": {
+        "x": 1192.0023193359375,
+        "y": 5919.67333984375,
+        "width": 472.9739990234375,
+        "height": 564.494140625
+      },
+      "sourceSectionId": "21:25859",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "3202ea4c535e6e386592c31d5eeaa34d0ca497c08e91045ea1962318e0f1a057",
+      "file": "assets/lamp-S-background.svg",
+      "hash": "e6c646b99d1092aa819417c27685243874593b3acf60dd84fdd8a6c447279b46"
+    },
+    {
+      "family": "flowers",
+      "name": "Цветы",
+      "tags": [
+        "рост",
+        "забота",
+        "развитие",
+        "благодарность",
+        "вдохновение"
+      ],
+      "detail": "S",
+      "state": "background",
+      "width": 329.2677001953125,
+      "height": 414.94677734375,
+      "sourceShapeCount": 131,
+      "paints": [
+        "#7864D7",
+        "#D7CDF5"
+      ],
+      "sourceBounds": {
+        "x": 1891.2689208984375,
+        "y": 6051.9794921875,
+        "width": 323.2677001953125,
+        "height": 408.94677734375
+      },
+      "sourceSectionId": "21:25859",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "3202ea4c535e6e386592c31d5eeaa34d0ca497c08e91045ea1962318e0f1a057",
+      "file": "assets/flowers-S-background.svg",
+      "hash": "ab7f14e80505d1d0115e1c45dc05589fe9b218199f6e0645e64ef7c0a6773586"
+    },
+    {
+      "family": "wallet",
+      "name": "Кошелёк",
+      "tags": [
+        "деньги",
+        "финансы",
+        "сбережения",
+        "бюджет",
+        "капитал"
+      ],
+      "detail": "S",
+      "state": "background",
+      "width": 321.207275390625,
+      "height": 204.15625,
+      "sourceShapeCount": 86,
+      "paints": [
+        "#D7CDF5",
+        "#7864D7"
+      ],
+      "sourceBounds": {
+        "x": 2399.498779296875,
+        "y": 6289.0537109375,
+        "width": 315.207275390625,
+        "height": 198.15625
+      },
+      "sourceSectionId": "21:25859",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "3202ea4c535e6e386592c31d5eeaa34d0ca497c08e91045ea1962318e0f1a057",
+      "file": "assets/wallet-S-background.svg",
+      "hash": "32b62778942347b246d5338893894528f0b52d738961ab2baac8badd62a61ba1"
+    },
+    {
+      "family": "folder",
+      "name": "Папка",
+      "tags": [
+        "документы",
+        "порядок",
+        "работа",
+        "организация",
+        "управление"
+      ],
+      "detail": "S",
+      "state": "background",
+      "width": 626.3092651367188,
+      "height": 335.2978515625,
+      "sourceShapeCount": 22,
+      "paints": [
+        "#D7CDF5",
+        "#7864D7"
+      ],
+      "sourceBounds": {
+        "x": 261.2703857421875,
+        "y": 6842.8974609375,
+        "width": 620.3092651367188,
+        "height": 329.2978515625
+      },
+      "sourceSectionId": "21:25859",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "3202ea4c535e6e386592c31d5eeaa34d0ca497c08e91045ea1962318e0f1a057",
+      "file": "assets/folder-S-background.svg",
+      "hash": "ac00ffa299251c6139c46fba28bb7f1b35fbe141b13d7526631faa020b61fa4d"
+    },
+    {
+      "family": "pen",
+      "name": "Ручка",
+      "tags": [
+        "письмо",
+        "творчество",
+        "идея",
+        "план",
+        "договор"
+      ],
+      "detail": "S",
+      "state": "background",
+      "width": 260.2088623046875,
+      "height": 148.701171875,
+      "sourceShapeCount": 24,
+      "paints": [
+        "#7864D7",
+        "#D7CDF5"
+      ],
+      "sourceBounds": {
+        "x": 1298.057861328125,
+        "y": 6958.9404296875,
+        "width": 254.2088623046875,
+        "height": 142.701171875
+      },
+      "sourceSectionId": "21:25859",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "3202ea4c535e6e386592c31d5eeaa34d0ca497c08e91045ea1962318e0f1a057",
+      "file": "assets/pen-S-background.svg",
+      "hash": "91c183c9022537a2027c7390ba178fdf8be3532493f61d239638c2556d58e4cc"
+    },
+    {
+      "family": "book",
+      "name": "Книга",
+      "tags": [
+        "чтение",
+        "знания",
+        "обучение",
+        "образование",
+        "исследование"
+      ],
+      "detail": "L",
+      "state": "main",
+      "width": 1451.893798828125,
+      "height": 982.66748046875,
+      "sourceShapeCount": 53,
+      "paints": [
+        "#181817",
+        "#F9A3AA",
+        "#FFE3E1",
+        "#F9ECB0",
+        "white"
+      ],
+      "sourceBounds": {
+        "x": 391.64410400390625,
+        "y": 3467.3701171875,
+        "width": 1445.893798828125,
+        "height": 976.66748046875
+      },
+      "sourceSectionId": "21:25788",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "ac6cbe435e732f384615f3bd2e010b5c74a7dd35c9f0d847039b0a9ca598d3e1",
+      "file": "assets/book-L-main.svg",
+      "hash": "7ac07ee00d406b0cc212f82cd054ecbcefc04cbb1d4885756f6cd66a273d90e3"
+    },
+    {
+      "family": "phone",
+      "name": "Телефон",
+      "tags": [
+        "связь",
+        "общение",
+        "коммуникация",
+        "контакт",
+        "цифровой"
+      ],
+      "detail": "L",
+      "state": "main",
+      "width": 802.5301513671875,
+      "height": 467.671630859375,
+      "sourceShapeCount": 155,
+      "paints": [
+        "#181817",
+        "white",
+        "#F9ECB0",
+        "#D7CDF5",
+        "#7864D7"
+      ],
+      "sourceBounds": {
+        "x": 2038.5780029296875,
+        "y": 3718.638427734375,
+        "width": 796.5301513671875,
+        "height": 461.671630859375
+      },
+      "sourceSectionId": "21:25788",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "ac6cbe435e732f384615f3bd2e010b5c74a7dd35c9f0d847039b0a9ca598d3e1",
+      "file": "assets/phone-L-main.svg",
+      "hash": "3032bede12db032e41e9570ace6333356980fcf0eaf0fecc59c37662a7ead7e7"
+    },
+    {
+      "family": "puzzle",
+      "name": "Пазлы",
+      "tags": [
+        "команда",
+        "сотрудничество",
+        "вместе",
+        "партнерство",
+        "решение"
+      ],
+      "detail": "L",
+      "state": "main",
+      "width": 550.164306640625,
+      "height": 319.53564453125,
+      "sourceShapeCount": 57,
+      "paints": [
+        "#181817",
+        "#F9ECB0",
+        "white",
+        "#F9A3AA"
+      ],
+      "sourceBounds": {
+        "x": 3100.244140625,
+        "y": 3827.73974609375,
+        "width": 544.164306640625,
+        "height": 313.53564453125
+      },
+      "sourceSectionId": "21:25788",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "ac6cbe435e732f384615f3bd2e010b5c74a7dd35c9f0d847039b0a9ca598d3e1",
+      "file": "assets/puzzle-L-main.svg",
+      "hash": "6a17c6c5ec85f7642ddca7e6f1a826e9998fe2980a240eafa617468f00eeacc1"
+    },
+    {
+      "family": "coin",
+      "name": "Монета",
+      "tags": [
+        "деньги",
+        "финансы",
+        "оплата",
+        "инвестиции",
+        "бюджет"
+      ],
+      "detail": "L",
+      "state": "main",
+      "width": 292.676025390625,
+      "height": 194.501708984375,
+      "sourceShapeCount": 136,
+      "paints": [
+        "white",
+        "#F9ECB0",
+        "#181817"
+      ],
+      "sourceBounds": {
+        "x": 4005.301513671875,
+        "y": 3945.818115234375,
+        "width": 286.676025390625,
+        "height": 188.501708984375
+      },
+      "sourceSectionId": "21:25788",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "ac6cbe435e732f384615f3bd2e010b5c74a7dd35c9f0d847039b0a9ca598d3e1",
+      "file": "assets/coin-L-main.svg",
+      "hash": "1cd3893454fd1b8cfdeae0478007a2108c84bb1aaca86b60718b171a47d1ecc2"
+    },
+    {
+      "family": "headphones",
+      "name": "Наушники",
+      "tags": [
+        "музыка",
+        "общение",
+        "слушать",
+        "поддержка",
+        "коммуникация"
+      ],
+      "detail": "L",
+      "state": "main",
+      "width": 894.1518859863281,
+      "height": 697.5390625,
+      "sourceShapeCount": 84,
+      "paints": [
+        "#181817",
+        "white",
+        "#F9ECB0",
+        "#D7CDF5"
+      ],
+      "sourceBounds": {
+        "x": 470.0229187011719,
+        "y": 4803.08984375,
+        "width": 888.1518859863281,
+        "height": 691.5390625
+      },
+      "sourceSectionId": "21:25788",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "ac6cbe435e732f384615f3bd2e010b5c74a7dd35c9f0d847039b0a9ca598d3e1",
+      "file": "assets/headphones-L-main.svg",
+      "hash": "a59a975d39706cf9f51213593fc901be854abf8d175b8a0ea5294d42cc6b63e8"
+    },
+    {
+      "family": "lamp",
+      "name": "Лампа",
+      "tags": [
+        "идея",
+        "идеи",
+        "вдохновение",
+        "творчество",
+        "решение",
+        "свет"
+      ],
+      "detail": "L",
+      "state": "main",
+      "width": 951.9449462890625,
+      "height": 1134.98828125,
+      "sourceShapeCount": 27,
+      "paints": [
+        "#181817",
+        "white",
+        "#D7CDF5",
+        "#F9ECB0",
+        "#F9A3AA"
+      ],
+      "sourceBounds": {
+        "x": 1822.2296142578125,
+        "y": 4438.75244140625,
+        "width": 945.9449462890625,
+        "height": 1128.98828125
+      },
+      "sourceSectionId": "21:25788",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "ac6cbe435e732f384615f3bd2e010b5c74a7dd35c9f0d847039b0a9ca598d3e1",
+      "file": "assets/lamp-L-main.svg",
+      "hash": "262ab9c7fcdd5a1f9ee3d2eaa6008d00c2f96969647cfa987183deafadd6159e"
+    },
+    {
+      "family": "flowers",
+      "name": "Цветы",
+      "tags": [
+        "рост",
+        "забота",
+        "развитие",
+        "благодарность",
+        "вдохновение"
+      ],
+      "detail": "L",
+      "state": "main",
+      "width": 596.57421875,
+      "height": 753.10546875,
+      "sourceShapeCount": 131,
+      "paints": [
+        "#181817",
+        "white",
+        "#F9ECB0",
+        "#AA9BF0",
+        "#F9A3AA"
+      ],
+      "sourceBounds": {
+        "x": 3036.0185546875,
+        "y": 4712.71826171875,
+        "width": 590.57421875,
+        "height": 747.10546875
+      },
+      "sourceSectionId": "21:25788",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "ac6cbe435e732f384615f3bd2e010b5c74a7dd35c9f0d847039b0a9ca598d3e1",
+      "file": "assets/flowers-L-main.svg",
+      "hash": "932553da32182f219826fe8e36eeacbe1977cf5505b52b7b61aee20edec1e5bb"
+    },
+    {
+      "family": "wallet",
+      "name": "Кошелёк",
+      "tags": [
+        "деньги",
+        "финансы",
+        "сбережения",
+        "бюджет",
+        "капитал"
+      ],
+      "detail": "L",
+      "state": "main",
+      "width": 636.41943359375,
+      "height": 402.3076171875,
+      "sourceShapeCount": 86,
+      "paints": [
+        "#D7CDF5",
+        "#181817",
+        "#F9ECB0",
+        "white"
+      ],
+      "sourceBounds": {
+        "x": 3868.25830078125,
+        "y": 5095.109375,
+        "width": 630.41943359375,
+        "height": 396.3076171875
+      },
+      "sourceSectionId": "21:25788",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "ac6cbe435e732f384615f3bd2e010b5c74a7dd35c9f0d847039b0a9ca598d3e1",
+      "file": "assets/wallet-L-main.svg",
+      "hash": "7b595311737d061903a5a8806295adf792b2f5cc53df596c9e4520daab82e019"
+    },
+    {
+      "family": "folder",
+      "name": "Папка",
+      "tags": [
+        "документы",
+        "порядок",
+        "работа",
+        "организация",
+        "управление"
+      ],
+      "detail": "L",
+      "state": "main",
+      "width": 1246.6175537109375,
+      "height": 664.58349609375,
+      "sourceShapeCount": 22,
+      "paints": [
+        "#F9ECB0",
+        "#181817",
+        "white",
+        "#F9A3AA"
+      ],
+      "sourceBounds": {
+        "x": 365.2723693847656,
+        "y": 5920.177734375,
+        "width": 1240.6175537109375,
+        "height": 658.58349609375
+      },
+      "sourceSectionId": "21:25788",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "ac6cbe435e732f384615f3bd2e010b5c74a7dd35c9f0d847039b0a9ca598d3e1",
+      "file": "assets/folder-L-main.svg",
+      "hash": "d2e138daeac49ab2fd61467c73f393d2d30a5ac85ccd206284775398b259a41d"
+    },
+    {
+      "family": "pen",
+      "name": "Ручка",
+      "tags": [
+        "письмо",
+        "творчество",
+        "идея",
+        "план",
+        "договор"
+      ],
+      "detail": "L",
+      "state": "main",
+      "width": 514.4281005859375,
+      "height": 291.40185546875,
+      "sourceShapeCount": 24,
+      "paints": [
+        "#181817",
+        "#D7CDF5",
+        "white",
+        "#F9A3AA",
+        "#F9ECB0"
+      ],
+      "sourceBounds": {
+        "x": 1795.7952880859375,
+        "y": 6127.6298828125,
+        "width": 508.4281005859375,
+        "height": 285.40185546875
+      },
+      "sourceSectionId": "21:25788",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "ac6cbe435e732f384615f3bd2e010b5c74a7dd35c9f0d847039b0a9ca598d3e1",
+      "file": "assets/pen-L-main.svg",
+      "hash": "fece73ef6d9e1ddd986af083f0b99c933a21812379204946823f1810b95b8cba"
+    },
+    {
+      "family": "book",
+      "name": "Книга",
+      "tags": [
+        "чтение",
+        "знания",
+        "обучение",
+        "образование",
+        "исследование"
+      ],
+      "detail": "L",
+      "state": "background",
+      "width": 1451.893798828125,
+      "height": 982.66162109375,
+      "sourceShapeCount": 53,
+      "paints": [
+        "#7864D7",
+        "#D7CDF5"
+      ],
+      "sourceBounds": {
+        "x": 391.64410400390625,
+        "y": 7491.56005859375,
+        "width": 1445.893798828125,
+        "height": 976.66162109375
+      },
+      "sourceSectionId": "21:25788",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "ac6cbe435e732f384615f3bd2e010b5c74a7dd35c9f0d847039b0a9ca598d3e1",
+      "file": "assets/book-L-background.svg",
+      "hash": "652d91056e459cc459725ea8319be46309ecc17076c5e266d01c8d88d5b3ef70"
+    },
+    {
+      "family": "phone",
+      "name": "Телефон",
+      "tags": [
+        "связь",
+        "общение",
+        "коммуникация",
+        "контакт",
+        "цифровой"
+      ],
+      "detail": "L",
+      "state": "background",
+      "width": 802.5301513671875,
+      "height": 467.6669921875,
+      "sourceShapeCount": 155,
+      "paints": [
+        "#7864D7",
+        "#D7CDF5"
+      ],
+      "sourceBounds": {
+        "x": 2038.5780029296875,
+        "y": 7742.8232421875,
+        "width": 796.5301513671875,
+        "height": 461.6669921875
+      },
+      "sourceSectionId": "21:25788",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "ac6cbe435e732f384615f3bd2e010b5c74a7dd35c9f0d847039b0a9ca598d3e1",
+      "file": "assets/phone-L-background.svg",
+      "hash": "bd84cb9d59acb1f5ec784b830d075d932261bfc4926c6e28be41f1825fc13438"
+    },
+    {
+      "family": "puzzle",
+      "name": "Пазлы",
+      "tags": [
+        "команда",
+        "сотрудничество",
+        "вместе",
+        "партнерство",
+        "решение"
+      ],
+      "detail": "L",
+      "state": "background",
+      "width": 550.164306640625,
+      "height": 319.53173828125,
+      "sourceShapeCount": 57,
+      "paints": [
+        "#7864D7",
+        "#D7CDF5"
+      ],
+      "sourceBounds": {
+        "x": 3100.244140625,
+        "y": 7851.9296875,
+        "width": 544.164306640625,
+        "height": 313.53173828125
+      },
+      "sourceSectionId": "21:25788",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "ac6cbe435e732f384615f3bd2e010b5c74a7dd35c9f0d847039b0a9ca598d3e1",
+      "file": "assets/puzzle-L-background.svg",
+      "hash": "706f4815940b257aaaa9f09bd0d3dab8e690f6cadd1cc544d70d2b97a064e5aa"
+    },
+    {
+      "family": "coin",
+      "name": "Монета",
+      "tags": [
+        "деньги",
+        "финансы",
+        "оплата",
+        "инвестиции",
+        "бюджет"
+      ],
+      "detail": "L",
+      "state": "background",
+      "width": 292.676025390625,
+      "height": 194.5,
+      "sourceShapeCount": 136,
+      "paints": [
+        "#D7CDF5",
+        "#7864D7"
+      ],
+      "sourceBounds": {
+        "x": 4005.301513671875,
+        "y": 7970,
+        "width": 286.676025390625,
+        "height": 188.5
+      },
+      "sourceSectionId": "21:25788",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "ac6cbe435e732f384615f3bd2e010b5c74a7dd35c9f0d847039b0a9ca598d3e1",
+      "file": "assets/coin-L-background.svg",
+      "hash": "9f61f09ef06e84bb130efc14f6bbf53b66b810e3d98d81639fa1fa42fa405623"
+    },
+    {
+      "family": "headphones",
+      "name": "Наушники",
+      "tags": [
+        "музыка",
+        "общение",
+        "слушать",
+        "поддержка",
+        "коммуникация"
+      ],
+      "detail": "L",
+      "state": "background",
+      "width": 894.1518859863281,
+      "height": 697.5439453125,
+      "sourceShapeCount": 84,
+      "paints": [
+        "#7864D7",
+        "#D7CDF5"
+      ],
+      "sourceBounds": {
+        "x": 470.0229187011719,
+        "y": 8827.26953125,
+        "width": 888.1518859863281,
+        "height": 691.5439453125
+      },
+      "sourceSectionId": "21:25788",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "ac6cbe435e732f384615f3bd2e010b5c74a7dd35c9f0d847039b0a9ca598d3e1",
+      "file": "assets/headphones-L-background.svg",
+      "hash": "d2a290ecb81404a933804f30277123e04acba5916d0adcfb26e6edb2b03f7e41"
+    },
+    {
+      "family": "lamp",
+      "name": "Лампа",
+      "tags": [
+        "идея",
+        "идеи",
+        "вдохновение",
+        "творчество",
+        "решение",
+        "свет"
+      ],
+      "detail": "L",
+      "state": "background",
+      "width": 951.9449462890625,
+      "height": 1134.9833984375,
+      "sourceShapeCount": 27,
+      "paints": [
+        "#7864D7",
+        "#D7CDF5"
+      ],
+      "sourceBounds": {
+        "x": 1822.2296142578125,
+        "y": 8462.94140625,
+        "width": 945.9449462890625,
+        "height": 1128.9833984375
+      },
+      "sourceSectionId": "21:25788",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "ac6cbe435e732f384615f3bd2e010b5c74a7dd35c9f0d847039b0a9ca598d3e1",
+      "file": "assets/lamp-L-background.svg",
+      "hash": "6ef07367c6655fc188391e46add9f0760c9ea71acf5fe1d89270b0cf9ed2da33"
+    },
+    {
+      "family": "flowers",
+      "name": "Цветы",
+      "tags": [
+        "рост",
+        "забота",
+        "развитие",
+        "благодарность",
+        "вдохновение"
+      ],
+      "detail": "L",
+      "state": "background",
+      "width": 596.568603515625,
+      "height": 753.1064453125,
+      "sourceShapeCount": 131,
+      "paints": [
+        "#7864D7",
+        "#D7CDF5"
+      ],
+      "sourceBounds": {
+        "x": 3060.9150390625,
+        "y": 8797.6025390625,
+        "width": 590.568603515625,
+        "height": 747.1064453125
+      },
+      "sourceSectionId": "21:25788",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "ac6cbe435e732f384615f3bd2e010b5c74a7dd35c9f0d847039b0a9ca598d3e1",
+      "file": "assets/flowers-L-background.svg",
+      "hash": "0dcc69f525829d2f8d48124d5b321861d8953160cb993c04333ebb1f27609734"
+    },
+    {
+      "family": "wallet",
+      "name": "Кошелёк",
+      "tags": [
+        "деньги",
+        "финансы",
+        "сбережения",
+        "бюджет",
+        "капитал"
+      ],
+      "detail": "L",
+      "state": "background",
+      "width": 636.41943359375,
+      "height": 402.3154296875,
+      "sourceShapeCount": 86,
+      "paints": [
+        "#D7CDF5",
+        "#7864D7"
+      ],
+      "sourceBounds": {
+        "x": 3868.25830078125,
+        "y": 9119.2890625,
+        "width": 630.41943359375,
+        "height": 396.3154296875
+      },
+      "sourceSectionId": "21:25788",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "ac6cbe435e732f384615f3bd2e010b5c74a7dd35c9f0d847039b0a9ca598d3e1",
+      "file": "assets/wallet-L-background.svg",
+      "hash": "2693df72f710207051627d8f4c33fcaa69cdf30dfa30d15154b879283e3df96d"
+    },
+    {
+      "family": "folder",
+      "name": "Папка",
+      "tags": [
+        "документы",
+        "порядок",
+        "работа",
+        "организация",
+        "управление"
+      ],
+      "detail": "L",
+      "state": "background",
+      "width": 1246.6175537109375,
+      "height": 664.6142578125,
+      "sourceShapeCount": 22,
+      "paints": [
+        "#D7CDF5",
+        "#7864D7"
+      ],
+      "sourceBounds": {
+        "x": 365.2723693847656,
+        "y": 9944.359375,
+        "width": 1240.6175537109375,
+        "height": 658.6142578125
+      },
+      "sourceSectionId": "21:25788",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "ac6cbe435e732f384615f3bd2e010b5c74a7dd35c9f0d847039b0a9ca598d3e1",
+      "file": "assets/folder-L-background.svg",
+      "hash": "ed1705826dc471d4a0490a27563b39625d68e664e3efcc35c30a057b1f906ecb"
+    },
+    {
+      "family": "pen",
+      "name": "Ручка",
+      "tags": [
+        "письмо",
+        "творчество",
+        "идея",
+        "план",
+        "договор"
+      ],
+      "detail": "L",
+      "state": "background",
+      "width": 514.4281005859375,
+      "height": 291.35546875,
+      "sourceShapeCount": 24,
+      "paints": [
+        "#7864D7",
+        "#D7CDF5"
+      ],
+      "sourceBounds": {
+        "x": 1795.7952880859375,
+        "y": 10151.8408203125,
+        "width": 508.4281005859375,
+        "height": 285.35546875
+      },
+      "sourceSectionId": "21:25788",
+      "sourceFileKey": "4MCFttsSoP7hgQh29zq5G3",
+      "sourceHash": "ac6cbe435e732f384615f3bd2e010b5c74a7dd35c9f0d847039b0a9ca598d3e1",
+      "file": "assets/pen-L-background.svg",
+      "hash": "b69c871cbc2e6d7793bf77bcd7746776a8de8841122c4605a9bfde87ad9a2be7"
+    }
+  ]
+}

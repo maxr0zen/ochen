@@ -1,0 +1,61 @@
+[
+  {
+    "file": "01.svg",
+    "rules": [
+      {
+        "kind": "illuminates",
+        "sourceId": "42-1-lamp:S:main",
+        "targetId": "42-0-book:S:main",
+        "ok": true,
+        "angle": 8.537736462515939e-7,
+        "message": "Лампа → Книга: цель находится перед плафоном, в направлении света."
+      },
+      {
+        "kind": "coins",
+        "sourceId": "42-2-coin:S:main",
+        "targetId": "42-0-book:S:main",
+        "ok": true,
+        "message": "Монеты → Книга: сгруппированы рядом с предметом."
+      },
+      {
+        "kind": "coins",
+        "sourceId": "42-3-coin:S:main",
+        "targetId": "42-0-book:S:main",
+        "ok": true,
+        "message": "Монеты → Книга: сгруппированы рядом с предметом."
+      }
+    ]
+  },
+  {
+    "file": "02.svg",
+    "rules": [
+      {
+        "kind": "illuminates",
+        "sourceId": "42-0-lamp:L:main",
+        "targetId": "42-3-puzzle:L:background",
+        "ok": true,
+        "angle": 8.537736462515939e-7,
+        "message": "Лампа → Пазлы: цель находится перед плафоном, в направлении света."
+      },
+      {
+        "kind": "writing",
+        "sourceId": "42-1-pen:L:main",
+        "targetId": "42-3-puzzle:L:background",
+        "ok": true,
+        "message": "Ручка → Пазлы: наконечник направлен на рабочую поверхность."
+      }
+    ]
+  },
+  {
+    "file": "03.svg",
+    "rules": [
+      {
+        "kind": "audio",
+        "sourceId": "42-2-phone:S:main",
+        "targetId": "42-1-headphones:S:main",
+        "ok": true,
+        "message": "Телефон и наушники расположены как связанная пара."
+      }
+    ]
+  }
+]

@@ -1,0 +1,24 @@
+node_modules/
+test-results/
+playwright-report/
+.taste-skill/
+.env*
+!.env.example
+figma-registration/
+.figma-registration.json
+delivery/
+
+# Generated local verification artifacts
+/output/*
+!/output/native-v2-acceptance.json
+!/output/native-v2-roundtrip.txt
+!/output/library/
+!/output/exports/
+!/output/composition-v3/
+/output/library/*
+!/output/library/validation.json
+/output/exports/*
+!/output/exports/validation.json
+/output/composition-v3/*
+!/output/composition-v3/geometry-validation.json
+!/output/composition-v3/rules-validation.json

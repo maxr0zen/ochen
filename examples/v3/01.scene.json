@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "settings": {
+    "width": 1080,
+    "height": 1080,
+    "seed": 42,
+    "layout": "focus",
+    "detail": "S",
+    "appearanceMode": "main",
+    "backdrop": "source"
+  },
+  "query": "книга, монета × 2, лампа",
+  "choices": [
+    {
+      "assetId": "book:S:main",
+      "count": 1,
+      "reason": "Компонент: Книга"
+    },
+    {
+      "assetId": "coin:S:main",
+      "count": 2,
+      "reason": "Компонент: Монета"
+    },
+    {
+      "assetId": "lamp:S:main",
+      "count": 1,
+      "reason": "Компонент: Лампа"
+    }
+  ],
+  "placements": [
+    {
+      "assetId": "book:S:main",
+      "instanceId": "42-0-book:S:main",
+      "cx": 627.9869387116191,
+      "cy": 622.1810602558675,
+      "scale": 0.6759111254535726,
+      "rotation": 0,
+      "z": 1
+    },
+    {
+      "assetId": "lamp:S:main",
+      "instanceId": "42-1-lamp:S:main",
+      "cx": 262.63592737146496,
+      "cy": 483.55678061145596,
+      "scale": 0.6759111254535726,
+      "rotation": 0,
+      "z": 0
+    },
+    {
+      "assetId": "coin:S:main",
+      "instanceId": "42-2-coin:S:main",
+      "cx": 825.0679858536398,
+      "cy": 729.100853719091,
+      "scale": 0.6759111254535726,
+      "rotation": 0,
+      "z": 3
+    },
+    {
+      "assetId": "coin:S:main",
+      "instanceId": "42-3-coin:S:main",
+      "cx": 925.7054395325138,
+      "cy": 718.3338172145787,
+      "scale": 0.6759111254535726,
+      "rotation": 0,
+      "z": 2
+    }
+  ],
+  "palette": {
+    "name": "Схема 1 · сиреневая",
+    "colors": [
+      "#D7CDF5",
+      "#AA9BF0",
+      "#7864D7",
+      "#181817",
+      "#F9ECB0",
+      "#F9A3AA",
+      "#FFE3E1",
+      "#FFFFFF"
+    ],
+    "backgroundColors": [
+      "#D7CDF5",
+      "#AA9BF0",
+      "#7864D7",
+      "#181817"
+    ],
+    "objectColors": [
+      "#F9ECB0",
+      "#F9A3AA",
+      "#FFE3E1",
+      "#FFFFFF"
+    ]
+  }
+}
