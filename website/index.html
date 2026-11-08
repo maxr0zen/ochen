@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f3ef">
+  <meta name="description" content="Собирайте и редактируйте векторные иллюстрации из готовых предметов. Сохраните результат в SVG.">
+  <title>Сочетание — конструктор иллюстраций</title>
+  <link rel="stylesheet" href="./web-dist/app.css">
+  <script defer src="./web-dist/app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#editor" aria-label="Сочетание, к конструктору"><span class="brand-symbol" aria-hidden="true">с.</span>сочетание</a>
+    <nav aria-label="Основная навигация"><a href="#editor">Конструктор</a><a href="#examples">Примеры</a><a href="https://github.com/maxr0zen/ochen" target="_blank" rel="noreferrer">Исходный код ↗</a></nav>
+    <span class="header-note">Из готовых предметов — ваша история</span>
+  </header>
+
+  <main>
+    <section class="workspace" id="editor" aria-labelledby="editor-title">
+      <div class="workspace-heading"><div><p class="eyebrow">ВЕКТОРНАЯ МАСТЕРСКАЯ</p><h1 id="editor-title">Соберите свою иллюстрацию<span>.</span></h1></div><div class="top-actions"><button id="undo" class="icon-button" title="Отменить (Ctrl+Z)" aria-label="Отменить" disabled>↶</button><button id="redo" class="icon-button" title="Повторить (Ctrl+Shift+Z)" aria-label="Повторить" disabled>↷</button><button id="export-svg" class="primary">Скачать SVG <span aria-hidden="true">↗</span></button></div></div>
+      <div class="editor-grid">
+        <aside class="settings-panel" aria-label="Настройки композиции">
+          <div class="panel-heading"><span class="step">01</span><h2>Что соберём?</h2></div>
+          <div class="segmented" role="group" aria-label="Способ подбора"><button data-mode="components" aria-pressed="true">Предметы</button><button data-mode="metaphor" aria-pressed="false">Метафора</button></div>
+          <label id="query-label" for="query">Названия через запятую</label>
+          <textarea id="query" rows="3" maxlength="2000">книга, монета × 2, лампа</textarea>
+          <p class="hint" id="query-hint">Можно указать количество, например «монета × 2».</p>
+          <div class="generate-actions"><button id="generate" class="primary">Собрать композицию</button><button id="variant" class="subtle" title="Другая расстановка тех же предметов">Ещё вариант ↻</button></div>
+          <div class="panel-heading divider"><span class="step">02</span><h2>Формат и цвет</h2></div>
+          <div class="field-row"><label>Холст<select id="format"><option value="1080,1080">Квадрат · 1:1</option><option value="1200,900">Альбом · 4:3</option><option value="1600,900">Широкий · 16:9</option><option value="900,1200">Портрет · 3:4</option><option value="900,1600">История · 9:16</option><option value="custom" hidden>Свой формат</option></select></label><label>Детали<select id="detail"><option value="S">S · простые</option><option value="L">L · подробные</option></select></label></div>
+          <label>Композиция<select id="layout"><option value="focus">Смысловой центр</option><option value="diagonal">По диагонали</option><option value="balanced">Равновесие</option></select></label>
+          <label>Предметы в сцене<select id="appearance"><option value="main">Цветные главные</option><option value="mixed">Главные и фоновые</option><option value="background">Монохромные фоновые</option></select></label>
+          <fieldset class="palette-field"><legend>Цветовая схема</legend><div class="palette-options"><button data-palette="violet" class="palette-chip violet" aria-pressed="true" title="Сиреневая" aria-label="Сиреневая палитра"></button><button data-palette="peach" class="palette-chip peach" aria-pressed="false" title="Персиковая" aria-label="Персиковая палитра"></button><button data-palette="turquoise" class="palette-chip turquoise" aria-pressed="false" title="Бирюзовая" aria-label="Бирюзовая палитра"></button><button id="import-palette" class="palette-import" title="Загрузить палитру JSON" aria-label="Загрузить палитру JSON">＋</button></div><span id="palette-name" class="hint">Сиреневая</span><input hidden id="palette-file" type="file" accept=".json,application/json"></fieldset>
+          <label>Фон холста<select id="backdrop"><option value="source">Исходный с декором</option><option value="solid">Заливка из схемы</option><option value="none">Прозрачный</option></select></label>
+          <p class="hint">Смена формата или детализации пересобирает расположение.</p>
+        </aside>
+
+        <div class="canvas-panel">
+          <div class="canvas-toolbar"><span><span class="live-dot"></span> <span id="canvas-size">1080 × 1080</span></span><button id="clear" class="text-button">Очистить холст</button></div>
+          <div class="canvas-well"><div id="stage" tabindex="0" aria-label="Редактор композиции. Выберите предмет и перетащите. Стрелки перемещают выбранный предмет." role="group"></div><div id="empty" hidden><span class="empty-mark">＋</span><h3>Сцена начинается с предмета</h3><p>Выберите его в библиотеке ниже<br>или задайте композицию слева.</p></div></div>
+          <div class="canvas-footer"><span id="object-count">4 предмета</span><span>Перетаскивайте предметы на холсте</span><span class="vector-tag">SVG · вектор</span></div>
+          <p id="status" class="status" role="status" aria-live="polite">Готово к работе</p>
+          <noscript><p>Для работы конструктора включите JavaScript. Готовые примеры находятся ниже.</p></noscript>
+        </div>
+
+        <aside class="inspector-panel" aria-label="Выбранный предмет и слои">
+          <div class="panel-heading"><span class="step">03</span><h2>Редактирование</h2></div>
+          <div id="selection-empty" class="selection-empty"><span aria-hidden="true">↖</span><p>Выберите предмет на холсте или в списке слоёв.</p></div>
+          <div id="selection" hidden>
+            <div class="selected-heading"><img id="selected-preview" alt="" width="60" height="60"><div><strong id="selected-name"></strong><span id="selected-detail" class="hint"></span></div></div>
+            <label>Состояние<select id="object-state"><option value="main">Главный · цветной</option><option value="background">Фоновый · монохром</option></select></label>
+            <label>Поворот <span id="rotation-value">0°</span><input id="rotation" type="range" min="-180" max="180" step="1" value="0"></label>
+            <div class="field-row object-actions"><button id="duplicate" class="subtle">Дублировать</button><button id="delete" class="subtle danger">Удалить</button></div>
+            <div class="field-row"><button id="backward" class="subtle">Слой ниже ↓</button><button id="forward" class="subtle">Слой выше ↑</button></div>
+            <button id="source-svg" class="text-button">Скачать исходник предмета ↗</button>
+          </div>
+          <div class="layers-heading divider"><h3>Слои</h3><span id="layer-count">4</span></div><ol id="layers" class="layers"></ol><p class="hint layer-hint">Верхний предмет в списке лежит поверх остальных. Декор фона закреплён под сценой.</p>
+          <details class="rules"><summary>Связи предметов</summary><ul id="relations"></ul></details>
+          <div class="scene-files"><button id="save-scene" class="text-button">Сохранить проект</button><button id="open-scene" class="text-button">Открыть проект</button><input hidden id="scene-file" type="file" accept=".json,application/json"></div>
+        </aside>
+      </div>
+      <section class="library-section" aria-labelledby="library-title"><div class="section-line"><div><p class="eyebrow">БИБЛИОТЕКА ИСХОДНИКОВ</p><h2 id="library-title">Добавьте ещё одну деталь</h2></div><p>Нажмите на предмет, чтобы добавить его на холст.</p></div><div id="library" class="library-grid"></div></section>
+    </section>
+
+    <section class="examples-section" id="examples" aria-labelledby="examples-title"><div class="section-line"><div><p class="eyebrow">СОБРАНО АЛГОРИТМОМ</p><h2 id="examples-title">Три истории из одной библиотеки</h2></div><p>Откройте пример и измените его под свою задачу.</p></div><div class="example-grid">
+      <article class="example-card"><img src="./examples/v3/01.preview.png" alt="Лампа, открытая книга и две монеты на сиреневом фоне" loading="lazy" width="1080" height="1080"><div class="example-body"><span class="eyebrow">01 / ИЗ ПРЕДМЕТОВ</span><h3>Знания — в дело</h3><p>Лампа направлена на книгу, монеты сгруппированы рядом.</p><div class="example-meta">1080 × 1080 · S · сиреневая</div><button data-example="0" class="subtle">Открыть в редакторе ↗</button><a href="./examples/v3/01.svg" download>SVG ↓</a></div></article>
+      <article class="example-card"><img src="./examples/v3/02.preview.png" alt="Лампа, цветы, ручка и пазлы на персиковом фоне" loading="lazy" width="1200" height="900"><div class="example-body"><span class="eyebrow">02 / ПО МЕТАФОРЕ</span><h3>Идеи для команды</h3><p>Главные предметы задают сюжет, монохромные создают окружение.</p><div class="example-meta">1200 × 900 · L · персиковая</div><button data-example="1" class="subtle">Открыть в редакторе ↗</button><a href="./examples/v3/02.svg" download>SVG ↓</a></div></article>
+      <article class="example-card"><img src="./examples/v3/03.preview.png" alt="Телефон и наушники над фоновой книгой на бирюзовом фоне" loading="lazy" width="900" height="1200"><div class="example-body"><span class="eyebrow">03 / ФОНОВЫЕ ПРЕДМЕТЫ</span><h3>Учиться где удобно</h3><p>Книга объединяет телефон и наушники в одну композицию.</p><div class="example-meta">900 × 1200 · S · бирюзовая</div><button data-example="2" class="subtle">Открыть в редакторе ↗</button><a href="./examples/v3/03.svg" download>SVG ↓</a></div></article>
+    </div></section>
+    <section class="how-section"><div><p class="eyebrow">КАК ЭТО УСТРОЕНО</p><h2>Готовые предметы.<br>Новые сочетания.</h2></div><div><p>Конструктор подбирает предметы по названиям или смыслу запроса. Правила помогают лампе смотреть на книгу, ручке — попадать на рабочую поверхность, а монетам — оставаться рядом.</p><p>В библиотеке 10 предметов, два уровня детализации и главные и фоновые варианты. Исходные пути, пропорции и цветовые роли сохраняются при сборке и экспорте.</p><a href="https://github.com/maxr0zen/ochen" target="_blank" rel="noreferrer">Посмотреть исходники проекта ↗</a></div></section>
+  </main>
+  <footer class="site-footer"><span class="brand">сочетание<span class="brand-dot">.</span></span><p>Конструктор векторных историй</p><a href="#editor">К холсту ↑</a></footer>
+</body>
+</html>
