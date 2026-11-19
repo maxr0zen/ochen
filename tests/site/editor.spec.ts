@@ -3,6 +3,8 @@ import type {Page} from '@playwright/test';
 import {readFile, mkdir} from 'node:fs/promises';
 
 async function savedScene(page: Page) {
+  const project = page.locator('.project-fold');
+  if (await project.getAttribute('open') === null) await project.locator('summary').click();
   const pending = page.waitForEvent('download');
   await page.locator('#save-scene').click();
   const file = await pending;
@@ -20,6 +22,8 @@ test('local generator supports both query modes, backgrounds and vector export w
   await page.locator('#generate').click();
   await expect(page.locator('#status')).toContainText('Собрано предметов');
   await expect(page.locator('#stage [data-instance-id]')).toHaveCount(4);
+  await expect(page.locator('#appearance')).toBeHidden();
+  await page.locator('.format-settings > summary').click();
   await page.locator('#appearance').selectOption('mixed');
   const scene = await savedScene(page);
   expect(new Set(scene.placements.map((p: any) => p.assetId.split(':')[2])).size).toBe(2);
@@ -40,6 +44,8 @@ test('local generator supports both query modes, backgrounds and vector export w
 
 test('dragging changes one placement, persists and exports source geometry; history and editing work', async ({page}) => {
   await page.goto('/');
+  await expect(page.locator('#selection')).toBeHidden();
+  await page.getByText('Добавить предмет', {exact:true}).click();
   await page.getByTitle('Добавить: Монета', {exact:true}).click();
   const before = await savedScene(page), coin = before.placements.at(-1);
   await page.locator('#stage').scrollIntoViewIfNeeded();
@@ -54,6 +60,7 @@ test('dragging changes one placement, persists and exports source geometry; hist
   await page.locator('#redo').click();
   expect((await savedScene(page)).placements).toEqual(after.placements);
   await page.reload(); expect((await savedScene(page)).placements).toEqual(after.placements);
+  await page.locator('.layer-fold > summary').click();
   await page.locator('#layers button').first().click();
   await page.locator('#duplicate').click(); await expect(page.locator('#stage [data-instance-id]')).toHaveCount(6);
   await page.locator('#object-state').selectOption('background');
@@ -62,6 +69,7 @@ test('dragging changes one placement, persists and exports source geometry; hist
   await expect(page.locator('#stage [data-instance-id]')).toHaveCount(5);
   await page.locator('#clear').click(); await expect(page.locator('#empty')).toBeVisible();
   await expect(page.locator('#export-svg')).toBeDisabled();
+  await page.getByText('Добавить предмет', {exact:true}).click();
   await page.getByTitle('Добавить: Книга', {exact:true}).click();
   await expect(page.locator('#stage [data-instance-id]')).toHaveCount(1);
 });
@@ -93,4 +101,85 @@ test('examples, saved projects and palette imports work and layouts fit desktop 
     await page.screenshot({path:`output/site/site-${width}.png`,fullPage:true});
   }
   expect(errors).toEqual([]);
+});
+
+test('suggestions and numeric placement edits work with scene history', async ({page}) => {
+  await page.goto('/');
+  await page.getByRole('button', {name:'Книга, лампа', exact:true}).click();
+  await expect(page.locator('#query')).toHaveValue('Книга, лампа');
+  await page.locator('#generate').click();
+  await expect(page.locator('#stage [data-instance-id]')).toHaveCount(2);
+  await expect(page.locator('#selection')).toBeHidden();
+  await page.getByText('Добавить предмет', {exact:true}).click();
+  await page.getByTitle('Добавить: Монета', {exact:true}).click();
+  await page.getByText('Размер и положение', {exact:true}).click();
+  const input = page.locator('#center-x');
+  const before = Number(await input.inputValue());
+  await input.fill(String(before + 15));
+  await input.press('Enter');
+  await expect(input).toHaveValue(String(before + 15));
+  await page.locator('#undo').click();
+  await expect(input).toHaveValue(String(before));
+  await page.locator('#variant').click();
+  await expect(page.locator('#stage [data-instance-id]')).toHaveCount(3);
+  await page.locator('[data-mode=metaphor]').click();
+  await page.getByRole('button', {name:'Семейный бюджет', exact:true}).click();
+  await page.locator('#generate').click();
+  await expect(page.locator('#status')).toContainText('Собрано предметов');
+});
+
+test('scale and rotate a single object with canvas handles and round-trip its transforms', async ({page}) => {
+  await page.goto('/');
+  await expect(page.locator('#selection')).toBeHidden();
+  await page.getByText('Добавить предмет', {exact:true}).click();
+  await page.getByTitle('Добавить: Монета', {exact:true}).click();
+  const before = await savedScene(page);
+  const start = before.placements.at(-1);
+  const corner = page.locator('[data-handle=scale]').last();
+  await corner.scrollIntoViewIfNeeded();
+  async function centre(locator: typeof corner) {
+    const box = (await locator.boundingBox())!;
+    return {x:box.x + box.width/2, y:box.y + box.height/2};
+  }
+  const at = await centre(corner);
+  await page.mouse.move(at.x, at.y);
+  await page.mouse.down();
+  await page.mouse.move(at.x + 22, at.y + 16, {steps:4});
+  await page.mouse.up();
+  const resized = await savedScene(page);
+  expect(resized.placements.at(-1).scale).toBeGreaterThan(start.scale);
+  expect(resized.placements.slice(0,-1)).toEqual(before.placements.slice(0,-1));
+  const knob = page.locator('[data-handle=rotate]');
+  await knob.scrollIntoViewIfNeeded();
+  const turn = await centre(knob);
+  await page.mouse.move(turn.x,turn.y);
+  await page.mouse.down();
+  await page.keyboard.down('Shift');
+  await page.mouse.move(turn.x+55,turn.y+20,{steps:5});
+  await page.mouse.up();
+  await page.keyboard.up('Shift');
+  const rotated = await savedScene(page);
+  expect(rotated.placements.at(-1).rotation).not.toBe(start.rotation);
+  expect(rotated.placements.at(-1).rotation % 15).toBe(0);
+  await page.locator('#undo').click();
+  expect((await savedScene(page)).placements).toEqual(resized.placements);
+  await page.locator('#redo').click();
+  await page.reload();
+  expect((await savedScene(page)).placements).toEqual(rotated.placements);
+  const pending = page.waitForEvent('download');
+  await page.locator('#export-svg').click();
+  const svg = await readFile((await (await pending).path())!, 'utf8');
+  expect(svg).toContain(`scale(${rotated.placements.at(-1).scale})`);
+  expect(svg).not.toContain('data-handle');
+  await page.setViewportSize({width:390,height:844});
+  await page.locator('.layer-fold > summary').click();
+  await page.locator('#layers button').first().click();
+  await corner.scrollIntoViewIfNeeded();
+  const finger = await centre(corner);
+  const touch = await page.context().newCDPSession(page);
+  await touch.send('Emulation.setTouchEmulationEnabled',{enabled:true});
+  await touch.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[finger]});
+  await touch.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:finger.x+18,y:finger.y+10}]});
+  await touch.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+  expect((await savedScene(page)).placements.at(-1).scale).toBeGreaterThan(rotated.placements.at(-1).scale);
 });

@@ -28,7 +28,7 @@ let colors = clone(SCHEMES.violet);
 type Snapshot = {scene: Scene | null; selected: string | null; config: Settings; colors: Palette; mode: InputMode; query: string};
 const undoStack: Snapshot[] = [];
 const redoStack: Snapshot[] = [];
-let drag: {pointer: number; id: string; x: number; y: number; cx: number; cy: number; before: Snapshot; moved: boolean} | null = null;
+let drag: {pointer: number; id: string; action: 'move' | 'scale' | 'rotate'; x: number; y: number; original: Placement; before: Snapshot; moved: boolean} | null = null;
 
 function notify(message: string, error = false) {
   element('status').textContent = message;
@@ -48,7 +48,7 @@ function persist() {
   catch { /* Editing and export remain available when browser storage is full. */ }
 }
 function checked(value: unknown): Scene {
-  const next = validateScene(value, assets);
+  const next = validateScene(value, assets, {allowIndividualScale:true});
   next.palette = scheme(next.palette ?? SCHEMES.violet);
   if (next.settings.backdrop === 'none') delete next.palette.background;
   return next;
@@ -100,9 +100,8 @@ function makeScene(cfg: Settings): Scene {
   const choices = resolveVariants(requested, assets, cfg);
   return checked({version:1, query, settings:cfg, palette:colors, choices, placements:compose(choices, assets, cfg)});
 }
-function generate(another = false) {
+function generate() {
   const cfg = readConfig();
-  if (another) cfg.seed = (cfg.seed + 1) % 2147483648;
   const next = makeScene(cfg);
   commit(next, null, `Собрано предметов — ${next.placements.length}. Их можно перемещать на холсте.`);
 }
@@ -127,6 +126,19 @@ function setMode(next: InputMode) {
   mode = next;
   document.querySelectorAll('[data-mode]').forEach(button => button.setAttribute('aria-pressed', String((button as HTMLElement).dataset.mode === mode)));
   element('query-label').textContent = mode === 'components' ? 'Названия через запятую' : 'Метафора или заголовок';
+  const phrases = mode === 'components'
+    ? ['Книга, лампа', 'Кошелёк, монета × 2']
+    : ['Идеи для команды', 'Семейный бюджет'];
+  const suggestions = phrases.map(phrase => {
+    const button = document.createElement('button');
+    button.textContent = phrase;
+    button.onclick = () => {
+      field('query').value = phrase;
+      field('query').focus();
+    };
+    return button;
+  });
+  element('suggestions').replaceChildren(...suggestions);
   element('query-hint').textContent = mode === 'components' ? 'Можно указать количество, например «монета × 2».' : 'Подбор по смыслу. Попробуйте «Идеи для команды».';
 }
 
@@ -134,25 +146,63 @@ function renderSelection() {
   stage.querySelector('#editor-selection')?.remove();
   const p = currentPlacement();
   if (!p || !scene) return;
-  const a = assetOf(p), angle = p.rotation * Math.PI / 180;
-  const corners = [[-a.width / 2, -a.height / 2], [a.width / 2, -a.height / 2], [a.width / 2, a.height / 2], [-a.width / 2, a.height / 2]];
-  const points = corners.map(([x,y]) => `${p.cx + (x * Math.cos(angle) - y * Math.sin(angle)) * p.scale},${p.cy + (x * Math.sin(angle) + y * Math.cos(angle)) * p.scale}`).join(' ');
-  const outline = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
-  outline.id = 'editor-selection'; outline.setAttribute('points', points); outline.setAttribute('fill', 'none');
-  outline.setAttribute('stroke', '#365b3a'); outline.setAttribute('stroke-width', '1.5');
-  outline.setAttribute('vector-effect', 'non-scaling-stroke'); outline.setAttribute('pointer-events', 'none');
-  stage.querySelector('svg')!.append(outline);
+  const svg = stage.querySelector('svg')!;
+  const pixels = svg.getScreenCTM()?.a;
+  if (!pixels) return;
+  const asset = assetOf(p);
+  const halfWidth = asset.width * p.scale / 2, halfHeight = asset.height * p.scale / 2;
+  const ns = 'http://www.w3.org/2000/svg';
+  const frame = document.createElementNS(ns, 'g');
+  frame.id = 'editor-selection';
+  frame.setAttribute('transform', `translate(${p.cx} ${p.cy}) rotate(${p.rotation})`);
+  function shape(tag: string, attrs: Record<string, string | number>) {
+    const node = document.createElementNS(ns, tag);
+    for (const [key, value] of Object.entries(attrs)) node.setAttribute(key, String(value));
+    frame.append(node);
+    return node;
+  }
+  shape('rect', {x:-halfWidth, y:-halfHeight, width:halfWidth*2, height:halfHeight*2});
+  function handle(action: 'scale' | 'rotate', x: number, y: number, cursor: string) {
+    const radius = (action === 'rotate' ? 5 : 4) / pixels!;
+    if (action === 'rotate') shape('circle', {cx:x, cy:y, r:radius, class:'knob'});
+    else shape('rect', {x:x-radius, y:y-radius, width:2*radius, height:2*radius, class:'knob'});
+    const hit = shape('circle', {cx:x, cy:y, r:13/pixels!, 'data-handle':action});
+    hit.style.cursor = cursor;
+    const title = document.createElementNS(ns, 'title');
+    title.textContent = action === 'rotate' ? 'Повернуть предмет' : 'Изменить размер от центра';
+    hit.append(title);
+  }
+  for (const signX of [-1, 1]) for (const signY of [-1, 1]) {
+    const diagonal = Math.atan2(signY*halfHeight, signX*halfWidth) + p.rotation*Math.PI/180;
+    const cursors = ['ew-resize','nwse-resize','ns-resize','nesw-resize'];
+    handle('scale', signX*halfWidth, signY*halfHeight, cursors[(Math.round(diagonal/(Math.PI/4))+8)%4]);
+  }
+  const angle = p.rotation * Math.PI / 180;
+  const offset = halfHeight + 26/pixels;
+  const fits = (y: number) => {
+    const xOnSheet = p.cx - Math.sin(angle)*y, yOnSheet = p.cy + Math.cos(angle)*y;
+    const pad = 6/pixels;
+    return xOnSheet >= pad && xOnSheet <= config.width-pad && yOnSheet >= pad && yOnSheet <= config.height-pad;
+  };
+  const rotationY = fits(-offset) ? -offset : fits(offset) ? offset : -Math.max(0, halfHeight - 18/pixels);
+  shape('line', {x1:0, y1:rotationY > 0 ? halfHeight : -halfHeight, x2:0, y2:rotationY});
+  handle('rotate', 0, rotationY, 'grab');
+  svg.append(frame);
 }
 function renderInspector() {
   const p = currentPlacement();
   element('selection').hidden = !p;
-  element('selection-empty').hidden = !!p;
+  element('delete').hidden = !p;
+
   if (p) {
     const a = assetOf(p);
     element('selected-name').textContent = a.name;
     element('selected-detail').textContent = `${a.detail} · исходный предмет`;
     element<HTMLImageElement>('selected-preview').src = previewSource(a);
     field('object-state').value = a.appearance!;
+    field('center-x').value = String(Number(p.cx.toFixed(2)));
+    field('center-y').value = String(Number(p.cy.toFixed(2)));
+    field('object-width').value = String(Number((a.width * p.scale).toFixed(1)));
     field('rotation').value = String(p.rotation);
     element('rotation-value').textContent = `${Math.round(p.rotation)}°`;
   }
@@ -198,7 +248,7 @@ function renderLibrary() {
 function render() {
   const [w, h] = [config.width, config.height];
   stage.style.aspectRatio = `${w} / ${h}`;
-  stage.style.width = `${Math.min(100, w / h * 100)}%`;
+  stage.style.setProperty('--canvas-ratio', String(w / h));
   element('canvas-size').textContent = `${w} × ${h}`;
   element('object-count').textContent = `Предметов — ${scene?.placements.length ?? 0}`;
   element('empty').hidden = !!scene; stage.style.visibility = scene ? 'visible' : 'hidden';
@@ -215,6 +265,7 @@ function render() {
     button.setAttribute('aria-pressed', String(SCHEMES[button.dataset.palette!].colors.join() === colors.colors.join()));
   }
   element('palette-name').textContent = colors.name.replace(/^Схема \d · /, '');
+  element('format-summary').textContent = `${config.detail} · ${element('palette-name').textContent}`;
   element<HTMLButtonElement>('undo').disabled = !undoStack.length;
   element<HTMLButtonElement>('redo').disabled = !redoStack.length;
   for (const id of ['export-svg','save-scene','variant']) element<HTMLButtonElement>(id).disabled = !scene;
@@ -265,12 +316,14 @@ function svgPoint(event: PointerEvent) {
   return new DOMPoint(event.clientX, event.clientY).matrixTransform(matrix.inverse());
 }
 stage.addEventListener('pointerdown', event => {
-  if (event.button !== 0 || !scene) return;
+  if (event.button !== 0 || !scene || drag) return;
+  const handle = (event.target as Element).closest('[data-handle]')?.getAttribute('data-handle');
+  const action = handle === 'scale' || handle === 'rotate' ? handle : 'move';
   const group = (event.target as Element).closest('[data-instance-id]');
-  if (!group) { selected = null; renderInspector(); renderSelection(); return; }
-  selected = group.getAttribute('data-instance-id');
+  if (!group && action === 'move') { selected = null; renderInspector(); renderSelection(); return; }
+  if (group) selected = group.getAttribute('data-instance-id');
   const p = currentPlacement()!, point = svgPoint(event);
-  drag = {pointer:event.pointerId, id:p.instanceId, x:point.x, y:point.y, cx:p.cx, cy:p.cy, before:snapshot(), moved:false};
+  drag = {pointer:event.pointerId, id:p.instanceId, x:point.x, y:point.y, action, original:{...p}, before:snapshot(), moved:false};
   stage.setPointerCapture(event.pointerId); stage.focus({preventScroll:true});
   renderInspector(); renderSelection(); event.preventDefault();
 });
@@ -279,7 +332,24 @@ stage.addEventListener('pointermove', event => {
   const point = svgPoint(event), p = scene.placements.find(p => p.instanceId === drag!.id)!;
   if (Math.hypot(point.x - drag.x, point.y - drag.y) < 1 && !drag.moved) return;
   drag.moved = true; stage.classList.add('dragging');
-  p.cx = drag.cx + point.x - drag.x; p.cy = drag.cy + point.y - drag.y; constrain(p, scene.settings);
+  const start = drag.original;
+  p.cx = start.cx; p.cy = start.cy;
+  const dx = point.x - start.cx, dy = point.y - start.cy;
+  const initialX = drag.x - start.cx, initialY = drag.y - start.cy;
+  if (drag.action === 'move') {
+    p.cx += point.x - drag.x; p.cy += point.y - drag.y;
+  } else if (drag.action === 'scale') {
+    const distance = Math.max(0.001, Math.hypot(initialX, initialY));
+    resizePlacement(p, start.scale * Math.hypot(dx, dy) / distance, scene.settings);
+  } else {
+    const delta = Math.atan2(dy, dx) - Math.atan2(initialY, initialX);
+    const degrees = start.rotation + delta * 180 / Math.PI;
+    p.rotation = ((Math.round(degrees / (event.shiftKey ? 15 : 1)) * (event.shiftKey ? 15 : 1) + 720 + 180) % 360) - 180;
+  }
+  constrain(p, scene.settings);
+  field('object-width').value = String(Number((assetOf(p).width*p.scale).toFixed(1)));
+  field('rotation').value = String(p.rotation);
+  element('rotation-value').textContent = `${Math.round(p.rotation)}°`;
   const group = [...stage.querySelectorAll('[data-instance-id]')].find(n => n.getAttribute('data-instance-id') === p.instanceId);
   group?.setAttribute('transform', transform(p)); renderSelection();
 });
@@ -290,12 +360,24 @@ function endDrag(cancel = false) {
   if (cancel) { restore(current.before); return; }
   if (current.moved) { remember(current.before); persist(); render(); notify('Положение предмета сохранено.'); }
 }
-stage.addEventListener('pointerup', () => endDrag());
-stage.addEventListener('pointercancel', () => endDrag(true));
-stage.addEventListener('lostpointercapture', () => endDrag());
+stage.addEventListener('pointerup', event => { if (drag?.pointer === event.pointerId) endDrag(); });
+stage.addEventListener('pointercancel', event => { if (drag?.pointer === event.pointerId) endDrag(true); });
+stage.addEventListener('lostpointercapture', event => { if (drag?.pointer === event.pointerId) endDrag(true); });
+stage.addEventListener('keydown', event => {
+  if (drag) {
+    if (event.key === 'Escape') endDrag(true);
+    event.preventDefault(); event.stopPropagation();
+  }
+});
+new ResizeObserver(renderSelection).observe(stage);
 
 element('generate').onclick = () => run(() => generate());
-element('variant').onclick = () => run(() => generate(true));
+element('variant').onclick = () => run(() => {
+  if (!scene) return;
+  const cfg = {...scene.settings, seed:(scene.settings.seed + 1) % 2147483648};
+  const placements = compose(scene.choices, assets, cfg);
+  commit({...scene, settings:cfg, placements}, null, 'Новая расстановка тех же предметов.');
+});
 element('clear').onclick = () => { if (scene) commit(null, null, 'Холст очищен. Добавьте предмет из библиотеки.'); };
 element('undo').onclick = () => { const previous = undoStack.pop(); if (previous) { redoStack.push(snapshot()); restore(previous); } };
 element('redo').onclick = () => { const next = redoStack.pop(); if (next) { undoStack.push(snapshot()); restore(next); } };
@@ -316,9 +398,38 @@ function applyColors(next: Palette) {
 }
 for (const button of document.querySelectorAll<HTMLButtonElement>('[data-palette]')) button.onclick = () => applyColors(clone(SCHEMES[button.dataset.palette!]));
 element('duplicate').onclick = () => run(duplicateSelected);
-element('delete').onclick = removeSelected;
+element('delete').onclick = () => {
+  removeSelected();
+  if (scene) stage.focus({preventScroll:true});
+  else element('undo').focus({preventScroll:true});
+};
 element('forward').onclick = () => reorder(1);
 element('backward').onclick = () => reorder(-1);
+for (const [id, axis] of [['center-x', 'cx'], ['center-y', 'cy']] as const) {
+  field(id).onchange = () => run(() => {
+    const coordinate = field(id).valueAsNumber;
+    if (!Number.isFinite(coordinate)) { renderInspector(); return; }
+    change(draft => {
+      const placement = draft.placements.find(item => item.instanceId === selected)!;
+      placement[axis] = coordinate;
+      constrain(placement, draft.settings);
+    }, 'Координаты центра обновлены.');
+  });
+}
+function resizePlacement(p: Placement, requested: number, cfg: Settings) {
+  const a = assetOf(p), bounds = rotatedBounds(a.width, a.height, p.rotation);
+  const maximum = Math.min(1000, cfg.width / bounds.width, cfg.height / bounds.height);
+  p.scale = Math.max(0.01, Math.min(maximum, requested));
+}
+field('object-width').onchange = () => run(() => {
+  const width = field('object-width').valueAsNumber;
+  if (!Number.isFinite(width) || width <= 0) { renderInspector(); return; }
+  change(draft => {
+    const p = draft.placements.find(item => item.instanceId === selected)!;
+    resizePlacement(p, width / assetOf(p).width, draft.settings);
+    constrain(p, draft.settings);
+  }, 'Размер предмета изменён.');
+});
 field('rotation').oninput = () => { element('rotation-value').textContent = `${field('rotation').value}°`; };
 field('rotation').onchange = () => change(draft => {
   const p = draft.placements.find(p => p.instanceId === selected)!; p.rotation = Number(field('rotation').value); constrain(p, draft.settings);
@@ -383,4 +494,6 @@ try {
     if (typeof data.query === 'string' && data.query.length <= 2000) field('query').value = data.query;
   } else scene = makeScene(config);
 } catch { scene = makeScene(config); }
+setMode(mode);
 render();
+

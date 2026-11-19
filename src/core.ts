@@ -180,7 +180,7 @@ export function colorTable(originals: string[], p: Palette): Record<string,strin
   const target=[...p.colors].sort((a,b)=>colorLuminance(a)-colorLuminance(b));
   return Object.fromEntries(colors.map((c,i)=>[c,p.map?.[c]??target[Math.round((colors.length===1?0.5:i/(colors.length-1))*(target.length-1))]]));
 }
-export function validateScene(value: unknown, assets: Asset[]): Scene {
+export function validateScene(value: unknown, assets: Asset[], {allowIndividualScale = false} = {}): Scene {
   const v=object(value); if(v.version!==1) throw new UserError('Неподдерживаемая версия сцены.');
   const cfg=settings(v.settings),choices=validateChoices({choices:v.choices},assets);
   if(!Array.isArray(v.placements)||!v.placements.length||v.placements.length>12) throw new UserError('Некорректные экземпляры сцены.');
@@ -192,7 +192,7 @@ export function validateScene(value: unknown, assets: Asset[]): Scene {
     return {assetId,instanceId,cx:number(p.cx,-100000,100000),cy:number(p.cy,-100000,100000),scale:number(p.scale,0.01,1000),rotation:number(p.rotation,-360,360),z:number(p.z,0,100)};
   });
   const common=placements[0].scale;
-  if(placements.some(p=>Math.abs(p.scale-common)>common*.002))throw new UserError('Масштаб объектов различается. Пропорции между объектами должны сохраняться. Пересоберите сцену.');
+  if(!allowIndividualScale && placements.some(p=>Math.abs(p.scale-common)>common*.002))throw new UserError('Масштаб объектов различается. Пропорции между объектами должны сохраняться. Пересоберите сцену.');
   if(placements.some(p=>{const a=assets.find(a=>a.id===p.assetId)!;return a.detail&&a.detail!==cfg.detail;}))throw new UserError('Сцена содержит объекты другой детализации.');
   const declared=new Map<string,number>(),actual=new Map<string,number>();
   for(const c of choices)declared.set(c.assetId,(declared.get(c.assetId)??0)+c.count);
