@@ -181,3 +181,33 @@ button:active:not(:disabled) { transform: translateY(1px); }
   .canvas-toolbar:has(.delete-selection:not([hidden])) > span { flex-basis: 100%; }
   .delete-selection { min-height: 44px; margin-left: 0; margin-right: auto; }
 }
+
+/* Object tools stay beside the drawing; expanding the catalogue scrolls the rail. */
+.object-panel { min-width: 0; padding: 6px 16px 16px; background: var(--paper); border-left: 1px solid var(--line); }
+.object-panel > .fold { padding: 0; margin: 0; }
+.object-panel > .fold + .fold { border-top: 1px solid var(--line); }
+.object-panel .library-grid { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 4px; margin: 6px 0 12px; }
+.object-panel .library-item img { height: 40px; }
+.role-picker { display: flex; padding: 3px; background: #eeeee7; border-radius: 5px; }
+.role-picker button { flex: 1; border-radius: 3px; min-height: 32px; background: transparent; font-size: 12px; }
+.role-picker [aria-pressed=true] { background: var(--paper); box-shadow: 0 1px 3px #26332821; font-weight: 600; }
+.object-panel #selection { display: grid; grid-template-columns: minmax(0,1fr); padding: 14px 0; gap: 10px; }
+.object-panel .selected-heading { justify-self: start; }
+.object-panel .role-action { background: #e4ecdf; color: #284530; min-height: 38px; border-radius: 4px; font-weight: 600; font-size: 13px; }
+.object-panel .object-actions { grid-template-columns: 1fr; }
+.object-panel .rules { margin: 6px 0 14px; }
+@media(min-width:961px) {
+  .editor-grid { grid-template-columns: clamp(220px,19vw,294px) minmax(0,1fr) clamp(228px,19vw,286px); align-items: stretch; }
+  .object-panel { max-height: calc(clamp(340px,62vh,640px) + 108px); overflow-y: auto; scrollbar-gutter: stable; }
+}
+@media(min-width:721px) and (max-width:960px) {
+  .editor-grid { grid-template-columns: minmax(0,1fr) 238px; }
+  .canvas-panel { grid-column: 1; grid-row: 1; }
+  .object-panel { grid-column: 2; grid-row: 1; }
+  .settings-panel { grid-column: 1/-1; grid-row: 2; }
+}
+@media(max-width:720px) {
+  .canvas-panel { order: -2; }
+  .object-panel { order: -1; border-left: 0; border-bottom: 1px solid var(--line); }
+  .object-panel .library-grid { grid-template-columns: repeat(5,minmax(0,1fr)); }
+}

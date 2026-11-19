@@ -197,9 +197,9 @@ function renderInspector() {
   if (p) {
     const a = assetOf(p);
     element('selected-name').textContent = a.name;
-    element('selected-detail').textContent = `${a.detail} · исходный предмет`;
+    element('selected-detail').textContent = `${a.detail} · ${a.appearance === 'background' ? 'Фоновый' : 'Обычный'}`;
     element<HTMLImageElement>('selected-preview').src = previewSource(a);
-    field('object-state').value = a.appearance!;
+    element('object-state').textContent = a.appearance === 'background' ? 'Сделать обычным' : 'Сделать фоновым';
     field('center-x').value = String(Number(p.cx.toFixed(2)));
     field('center-y').value = String(Number(p.cy.toFixed(2)));
     field('object-width').value = String(Number((a.width * p.scale).toFixed(1)));
@@ -230,9 +230,18 @@ function renderInspector() {
     element('relations').append(li);
   }
 }
+let chosenLibraryRole: 'main' | 'background' | null = null;
 function renderLibrary() {
+  const role = chosenLibraryRole ?? (config.appearanceMode === 'background' ? 'background' : 'main');
+  for (const button of document.querySelectorAll<HTMLButtonElement>('[data-library-role]')) {
+    button.setAttribute('aria-pressed', String(button.dataset.libraryRole === role));
+    button.onclick = () => {
+      chosenLibraryRole = button.dataset.libraryRole === 'background' ? 'background' : 'main';
+      renderLibrary();
+    };
+  }
   const container = element('library'); container.replaceChildren();
-  for (const a of assets.filter(a => a.detail === config.detail && a.appearance === 'main')) {
+  for (const a of assets.filter(a => a.detail === config.detail && a.appearance === role)) {
     const button = document.createElement('button'); button.className = 'library-item'; button.title = `Добавить: ${a.name}`;
     const img = document.createElement('img'); img.src = previewSource(a); img.alt = ''; img.draggable = false;
     const name = document.createElement('span'); name.textContent = a.name;
@@ -271,19 +280,18 @@ function render() {
   for (const id of ['export-svg','save-scene','variant']) element<HTMLButtonElement>(id).disabled = !scene;
   renderInspector(); renderLibrary(); renderSelection();
 }
-function addAsset(a: Asset) {
+function addAsset(target: Asset) {
   if ((scene?.placements.length ?? 0) >= 12) throw Error('На холсте может быть до 12 предметов. Удалите один, чтобы добавить новый.');
   const cfg = scene?.settings ?? config;
-  const target = variant(a, assets, cfg.detail!, cfg.appearanceMode === 'background' ? 'background' : 'main');
   if (!scene) {
     const choices = [{assetId:target.id, count:1, reason:'Добавлен из библиотеки'}];
     const placements = compose(choices, assets, cfg);
-    commit({version:1, query:target.name, settings:cfg, choices, placements, palette:colors}, placements[0].instanceId, 'Предмет добавлен. Перетащите его в нужное место.');
+    commit({version:1, query:target.name, settings:{...cfg, appearanceMode:target.appearance}, choices, placements, palette:colors}, placements[0].instanceId, 'Предмет добавлен. Перетащите его в нужное место.');
     return;
   }
   const next = clone(scene), id = `manual-${crypto.randomUUID()}`;
   const p: Placement = {assetId:target.id, instanceId:id, cx:cfg.width / 2, cy:cfg.height / 2, rotation:0, scale:next.placements[0].scale, z:next.placements.length};
-  constrain(p, cfg); next.placements.push(p); recount(next); commit(next, id, `${target.name} добавлен на холст.`);
+  constrain(p, cfg); next.placements.push(p); placeByRole(next, p); recount(next); commit(next, id, `${target.name} добавлен на холст.`);
 }
 function removeSelected() {
   if (!selected || !scene) return;
@@ -434,13 +442,21 @@ field('rotation').oninput = () => { element('rotation-value').textContent = `${f
 field('rotation').onchange = () => change(draft => {
   const p = draft.placements.find(p => p.instanceId === selected)!; p.rotation = Number(field('rotation').value); constrain(p, draft.settings);
 }, 'Предмет повёрнут.');
-field('object-state').onchange = () => run(() => change(draft => {
+function placeByRole(draft: Scene, item: Placement) {
+  const background = assetOf(item).appearance === 'background';
+  const others = draft.placements.filter(p => p !== item).sort((a,b) => a.z - b.z);
+  const ordered = background ? [item, ...others] : [...others, item];
+  ordered.forEach((p, index) => { p.z = index; });
+  const roles = new Set(draft.placements.map(p => assetOf(p).appearance));
+  draft.settings.appearanceMode = roles.size > 1 ? 'mixed' : background ? 'background' : 'main';
+}
+element('object-state').onclick = () => run(() => change(draft => {
   const p = draft.placements.find(p => p.instanceId === selected)!;
-  p.assetId = variant(assetOf(p), assets, draft.settings.detail!, field('object-state').value as 'main' | 'background').id;
-  const states = new Set(draft.placements.map(p => assetOf(p).appearance));
-  draft.settings.appearanceMode = states.size > 1 ? 'mixed' : states.has('background') ? 'background' : 'main';
-  constrain(p, draft.settings);
-}, 'Состояние предмета изменено.'));
+  const asset = assetOf(p);
+  const role = asset.appearance === 'background' ? 'main' : 'background';
+  p.assetId = variant(asset, assets, draft.settings.detail!, role).id;
+  placeByRole(draft, p);
+}, 'Роль предмета изменена.'));
 element('source-svg').onclick = () => { const p = currentPlacement(); if (p) { const a = assetOf(p); download(a.thumbnail!, `${a.familyId}-${a.detail}-${a.appearance}.svg`, 'image/svg+xml'); } };
 element('export-svg').onclick = () => run(() => { if (scene) download(sceneSvg(checked(scene), assets), 'socheta-composition.svg', 'image/svg+xml'); });
 element('save-scene').onclick = () => run(() => { if (scene) download(JSON.stringify({...checked(scene), inputMode:mode}, null, 2), 'socheta-project.json', 'application/json'); });

@@ -45,7 +45,7 @@ test('local generator supports both query modes, backgrounds and vector export w
 test('dragging changes one placement, persists and exports source geometry; history and editing work', async ({page}) => {
   await page.goto('/');
   await expect(page.locator('#selection')).toBeHidden();
-  await page.getByText('Добавить предмет', {exact:true}).click();
+  if (!(await page.locator('#library').isVisible())) await page.getByText('Добавить предмет', {exact:true}).click();
   await page.getByTitle('Добавить: Монета', {exact:true}).click();
   const before = await savedScene(page), coin = before.placements.at(-1);
   await page.locator('#stage').scrollIntoViewIfNeeded();
@@ -63,13 +63,13 @@ test('dragging changes one placement, persists and exports source geometry; hist
   await page.locator('.layer-fold > summary').click();
   await page.locator('#layers button').first().click();
   await page.locator('#duplicate').click(); await expect(page.locator('#stage [data-instance-id]')).toHaveCount(6);
-  await page.locator('#object-state').selectOption('background');
-  await expect(page.locator('#object-state')).toHaveValue('background');
+  await page.getByRole('button', {name:'Сделать фоновым'}).click();
+  await expect(page.locator('#object-state')).toHaveText('Сделать обычным');
   await page.locator('#backward').click(); await page.locator('#delete').click();
   await expect(page.locator('#stage [data-instance-id]')).toHaveCount(5);
   await page.locator('#clear').click(); await expect(page.locator('#empty')).toBeVisible();
   await expect(page.locator('#export-svg')).toBeDisabled();
-  await page.getByText('Добавить предмет', {exact:true}).click();
+  if (!(await page.locator('#library').isVisible())) await page.getByText('Добавить предмет', {exact:true}).click();
   await page.getByTitle('Добавить: Книга', {exact:true}).click();
   await expect(page.locator('#stage [data-instance-id]')).toHaveCount(1);
 });
@@ -110,7 +110,7 @@ test('suggestions and numeric placement edits work with scene history', async ({
   await page.locator('#generate').click();
   await expect(page.locator('#stage [data-instance-id]')).toHaveCount(2);
   await expect(page.locator('#selection')).toBeHidden();
-  await page.getByText('Добавить предмет', {exact:true}).click();
+  if (!(await page.locator('#library').isVisible())) await page.getByText('Добавить предмет', {exact:true}).click();
   await page.getByTitle('Добавить: Монета', {exact:true}).click();
   await page.getByText('Размер и положение', {exact:true}).click();
   const input = page.locator('#center-x');
@@ -131,7 +131,7 @@ test('suggestions and numeric placement edits work with scene history', async ({
 test('scale and rotate a single object with canvas handles and round-trip its transforms', async ({page}) => {
   await page.goto('/');
   await expect(page.locator('#selection')).toBeHidden();
-  await page.getByText('Добавить предмет', {exact:true}).click();
+  if (!(await page.locator('#library').isVisible())) await page.getByText('Добавить предмет', {exact:true}).click();
   await page.getByTitle('Добавить: Монета', {exact:true}).click();
   const before = await savedScene(page);
   const start = before.placements.at(-1);
@@ -182,4 +182,26 @@ test('scale and rotate a single object with canvas handles and round-trip its tr
   await touch.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:finger.x+18,y:finger.y+10}]});
   await touch.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
   expect((await savedScene(page)).placements.at(-1).scale).toBeGreaterThan(rotated.placements.at(-1).scale);
+});
+
+
+test('right rail inserts a background asset and changes its role without losing transforms', async ({page}) => {
+  await page.goto('/');
+  const canvas = (await page.locator('.canvas-panel').boundingBox())!;
+  const rail = (await page.locator('.object-panel').boundingBox())!;
+  expect(rail.x).toBeGreaterThanOrEqual(canvas.x + canvas.width - 1);
+  await page.getByRole('button', {name:'Фоновый', exact:true}).click();
+  await page.getByTitle('Добавить: Книга', {exact:true}).click();
+  const before = (await savedScene(page)).placements;
+  const background = before.at(-1);
+  expect(background.assetId).toContain(':background');
+  expect(background.z).toBe(0);
+  await page.getByRole('button', {name:'Сделать обычным'}).click();
+  const ordinary = (await savedScene(page)).placements.at(-1);
+  expect(ordinary).toEqual({...background, assetId:background.assetId.replace(':background', ':main'), z:before.length-1});
+  await page.locator('#undo').click();
+  expect((await savedScene(page)).placements).toEqual(before);
+  await page.locator('#clear').click();
+  await page.getByTitle('Добавить: Книга', {exact:true}).click();
+  expect((await savedScene(page)).settings.appearanceMode).toBe('background');
 });

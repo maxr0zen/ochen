@@ -43,19 +43,19 @@
           <div class="canvas-well"><div id="stage" tabindex="0" aria-label="Редактор композиции. Выберите предмет и перетащите. Стрелки перемещают выбранный предмет." role="group"></div><div id="empty" hidden><span class="empty-mark">＋</span><h3>Пустой холст</h3><p>Добавьте предмет из библиотеки<br>или соберите сцену по запросу.</p></div></div>
           <div class="canvas-footer"><span id="object-count">4 предмета</span><p id="status" class="status" role="status" aria-live="polite">Готово к работе</p></div>
           
-          <div class="tool-shelf">
-            <details class="fold library-section"><summary>Добавить предмет</summary><div id="library" class="library-grid"></div></details>
+<noscript><p>Для работы конструктора включите JavaScript. Готовые примеры находятся ниже.</p></noscript>
+        </div>
+          <aside class="object-panel" aria-label="Предметы и слои">
+            <details class="fold library-section" open><summary>Добавить предмет</summary><div class="role-picker" role="group" aria-label="Роль добавляемого предмета"><button data-library-role="main" aria-pressed="true">Обычный</button><button data-library-role="background" aria-pressed="false">Фоновый</button></div><div id="library" class="library-grid"></div></details>
             <details class="fold layer-fold"><summary>Слои <small id="layer-count">4</small></summary><ol id="layers" class="layers"></ol><details class="rules"><summary>Связи предметов</summary><ul id="relations"></ul></details></details>
-          </div>
           <div id="selection" hidden>
             <div class="selected-heading"><img id="selected-preview" alt="" width="60" height="60"><div><strong id="selected-name"></strong><span id="selected-detail" class="hint"></span></div></div>
-            <label>Состояние<select id="object-state"><option value="main">Главный · цветной</option><option value="background">Фоновый · монохром</option></select></label>
+            <button id="object-state" class="role-action" type="button">Сделать фоновым</button>
             <details class="fold precise"><summary>Размер и положение</summary><div class="field-row coordinates"><label>Центр X, px<input id="center-x" type="number" step="any"></label><label>Центр Y, px<input id="center-y" type="number" step="any"></label></div><label>Ширина предмета, px<input id="object-width" type="number" min="1" step="any"></label><label>Поворот <span id="rotation-value">0°</span><input id="rotation" type="range" min="-180" max="180" step="1" value="0"></label>
             <p class="hint">Потяните угол рамки для масштаба, круг — для поворота. Shift задаёт шаг 15°.</p></details><div class="field-row object-actions"><button id="duplicate" class="subtle">Дублировать</button></div>
             <div class="field-row"><button id="backward" class="subtle">Слой ниже ↓</button><button id="forward" class="subtle">Слой выше ↑</button></div>
             <button id="source-svg" class="text-button">Скачать исходник предмета ↗</button>
-          </div><noscript><p>Для работы конструктора включите JavaScript. Готовые примеры находятся ниже.</p></noscript>
-        </div>
+          </div></aside>
 
 
       </div>
